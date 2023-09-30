@@ -22,3 +22,6 @@ func get_plant_tile(coords : Vector2i):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func tick():
+	_tile_map.all(func(tile): tile.tick())
