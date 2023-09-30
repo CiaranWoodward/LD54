@@ -7,10 +7,14 @@ enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, M
 enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
 
 # inverntory for produce
-var produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type): accum[type] = 0, {})
+var produceInventory: Dictionary = ProduceType.keys().reduce(func(accum, type):
+	accum[type] = 0
+	return accum, {})
 
 # inventory for seeds
-var seedInventory: Dictionary = PlantType.values().reduce(func(accum, type): accum[type] = 10, {})
+var seedInventory: Dictionary = PlantType.keys().reduce(func(accum, type):
+	accum[type] = 10
+	return accum, {})
 
 var produceQuota: Dictionary = {}
 
