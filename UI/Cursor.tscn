@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4j0a6xqs4pqq"]
+
+[ext_resource type="Script" path="res://UI/Cursor.gd" id="1_t3c3b"]
+[ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="2_h1yyv"]
+
+[node name="Cursor" type="Node2D"]
+modulate = Color(1, 1, 1, 0.588235)
+z_index = 100
+script = ExtResource("1_t3c3b")
+idle_color = Color(1, 1, 1, 0.470588)
+invalid_color = Color(0.705882, 0.0431373, 0.0666667, 0.470588)
+valid_color = Color(1, 1, 1, 0.470588)
+
+[node name="Destroy" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Destroy"]
+modulate = Color(1, 0.243137, 0.113725, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="Harvest" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Harvest"]
+modulate = Color(0.407843, 1, 0.329412, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="Weed" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Weed"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="Flower" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Flower"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="SpikyPlant" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpikyPlant"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="BerryVine" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BerryVine"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="Succulent" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Succulent"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="OrangeTree" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="OrangeTree"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
+
+[node name="Mushroom" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Mushroom"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_h1yyv")
