@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ck0d5qfohal"]
+
+[ext_resource type="Script" path="res://Plants/SpikyPlant.gd" id="1_28k8o"]
+
+[node name="SpikyPlant" type="Node2D"]
+script = ExtResource("1_28k8o")

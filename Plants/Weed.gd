@@ -1,8 +1,15 @@
+class_name Weed
 extends BasePlant
 
 ## Percentage chance of weed spreading to adjacent tiles
 @export var spread_percent_fertile = 20
 @export var spread_percent_infertile = 10
+
+static func plant_name():
+	return "Weed"
+
+static func plant_description():
+	return "Why won't it die?!"
 
 func harvest():
 	destroy()

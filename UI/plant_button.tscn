@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ivh3v87hka2i"]
+
+[ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_13m46"]
+[ext_resource type="Script" path="res://UI/plant_button.gd" id="1_bqnd4"]
+
+[node name="PlantButton" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_bqnd4")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("1_13m46")
