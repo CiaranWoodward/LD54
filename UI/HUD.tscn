@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://0aejnixhhw7h"]
+
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
+[ext_resource type="PackedScene" uid="uid://dxvpigtmbhrv2" path="res://UI/action_button.tscn" id="2_0g6q2"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ActionPanel" type="PanelContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_bdcb7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActionButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton2" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton3" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton4" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton5" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton6" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton7" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton8" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="ActionButton9" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
