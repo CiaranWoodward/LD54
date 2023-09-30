@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxvpigtmbhrv2"]
+[gd_scene load_steps=2 format=3 uid="uid://0qqdaelxnqdg"]
 
-[ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_2xr21"]
+[ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_adt00"]
 
-[node name="ActionButton" type="MarginContainer"]
+[node name="DestroyButton" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,5 +16,7 @@ theme_override_constants/margin_bottom = 10
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+tooltip_text = "Destroy the plant, removing it from the farm."
 toggle_mode = true
-button_group = ExtResource("1_2xr21")
+button_group = ExtResource("1_adt00")
+text = "Destroy"

@@ -1,8 +1,15 @@
+class_name Flower
 extends BasePlant
 
 ## How long until the plant is fully grown
 @export var time_to_grow = 3
 @export var time_to_dead = 6
+
+static func plant_name():
+	return "Flower"
+
+static func plant_description():
+	return "Improves soil mositure for later planting."
 
 func harvest():
 	destroy()

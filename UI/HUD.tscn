@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=5 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
-[ext_resource type="PackedScene" uid="uid://dxvpigtmbhrv2" path="res://UI/action_button.tscn" id="2_0g6q2"]
+[ext_resource type="PackedScene" uid="uid://dxvpigtmbhrv2" path="res://UI/harvest_button.tscn" id="2_0g6q2"]
+[ext_resource type="PackedScene" uid="uid://ivh3v87hka2i" path="res://UI/plant_button.tscn" id="2_b4o4e"]
+[ext_resource type="PackedScene" uid="uid://0qqdaelxnqdg" path="res://UI/destroy_button.tscn" id="4_u8uef"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -19,29 +21,35 @@ theme = ExtResource("1_bdcb7")
 layout_mode = 2
 alignment = 1
 
-[node name="ActionButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+[node name="PlantButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
 layout_mode = 2
 
-[node name="ActionButton2" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+[node name="PlantButton2" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 1
+
+[node name="PlantButton3" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 2
+
+[node name="PlantButton4" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 3
+
+[node name="PlantButton5" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 4
+
+[node name="PlantButton6" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 5
+
+[node name="PlantButton7" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 6
+
+[node name="HarvestButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
 layout_mode = 2
 
-[node name="ActionButton3" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton4" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton5" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton6" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton7" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton8" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
-layout_mode = 2
-
-[node name="ActionButton9" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+[node name="DestroyButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("4_u8uef")]
 layout_mode = 2
