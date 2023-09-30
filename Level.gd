@@ -4,6 +4,9 @@ extends Node2D
 func _ready():
 	Global.action_points = 5
 	$Cursor.clear_action_func = $HUD.clear_action
+	Global.day = 0
+	Global.set_quota_count(Global.ProduceType.BERRY, 5)
+	Global.set_produce_count(Global.ProduceType.BERRY, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,3 +27,4 @@ func _on_hud_action_changed(newAction, plantType):
 func _on_turn_end(): 
 	$HUD.clear_action()
 	$GardenTiles.tick()
+	Global.day += 1
