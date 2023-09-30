@@ -1,41 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://3ck0d5qfohal"]
+[gd_scene load_steps=8 format=3 uid="uid://3ck0d5qfohal"]
 
 [ext_resource type="Script" path="res://Plants/SpikyPlant.gd" id="1_28k8o"]
 [ext_resource type="Texture2D" uid="uid://c1sum1gn6wydn" path="res://Graphics/Plants/SpikyPlant/Spiky0000.png" id="2_eesy3"]
+[ext_resource type="Texture2D" uid="uid://8s52vy14g442" path="res://Graphics/Plants/SpikyPlant/Spike0000.png" id="3_ha4ft"]
 
-[sub_resource type="Curve" id="Curve_ytk2e"]
-max_value = 100.0
-_data = [Vector2(0, 76.8421), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Animation" id="Animation_aemxw"]
-resource_name = "Shoot"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spiky:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.4),
-"transitions": PackedFloat32Array(2.82843, 2.82843, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.945433, 0.945433), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Spiky/Shoot:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.15),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="Gradient" id="Gradient_ngbme"]
+offsets = PackedFloat32Array(0, 0.357616, 0.788079)
+colors = PackedColorArray(0.90625, 0.9375, 0.101563, 1, 0.90625, 0.9375, 0.101563, 1, 0.905882, 0.937255, 0.101961, 0)
 
 [sub_resource type="Animation" id="Animation_mge5r"]
 length = 0.001
@@ -64,6 +35,35 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_aemxw"]
+resource_name = "Shoot"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spiky:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.8),
+"transitions": PackedFloat32Array(2.82843, 2.82843, 0.466517, 2.82843),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.945433, 0.945433), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spiky/Shoot:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1k1cq"]
 _data = {
 "RESET": SubResource("Animation_mge5r"),
@@ -74,22 +74,28 @@ _data = {
 script = ExtResource("1_28k8o")
 
 [node name="Spiky" type="Sprite2D" parent="."]
-position = Vector2(-7, -136)
+position = Vector2(-1, -1)
 texture = ExtResource("2_eesy3")
+offset = Vector2(-6, -135)
 
 [node name="Shoot" type="CPUParticles2D" parent="Spiky"]
+position = Vector2(-3, -112)
+scale = Vector2(1, 0.5)
 emitting = false
 amount = 20
-lifetime = 0.4
+lifetime = 0.6
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.8
+texture = ExtResource("3_ha4ft")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 900.0
-initial_velocity_max = 1000.0
-damping_curve = SubResource("Curve_ytk2e")
-scale_amount_min = 41.4
-scale_amount_max = 41.4
+initial_velocity_max = 1300.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+color = Color(0.90625, 0.9375, 0.101563, 1)
+color_ramp = SubResource("Gradient_ngbme")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
