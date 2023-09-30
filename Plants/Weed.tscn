@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://ftuxuub5spex"]
+[gd_scene load_steps=5 format=3 uid="uid://ftuxuub5spex"]
 
 [ext_resource type="Script" path="res://Plants/Weed.gd" id="1_uuff7"]
+[ext_resource type="Texture2D" uid="uid://ccygdj8x5o272" path="res://Graphics/Plants/Weed/Weed10000.png" id="2_k3w0j"]
+[ext_resource type="Texture2D" uid="uid://11jc1s35xh1m" path="res://Graphics/Plants/Weed/Weed20000.png" id="3_j1es1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8v5m6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k3w0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1es1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Weed" type="Node2D"]
 script = ExtResource("1_uuff7")
+
+[node name="Weed" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weed"]
+position = Vector2(0, -88)
+sprite_frames = SubResource("SpriteFrames_8v5m6")
