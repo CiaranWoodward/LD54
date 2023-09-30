@@ -13,6 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func set_fertile(newFertile):
+	fertility = newFertile
 	if fertility > MAX_FERTILITY:
 		fertility = MAX_FERTILITY
 	if fertility < 0:

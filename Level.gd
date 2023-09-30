@@ -12,5 +12,4 @@ func _on_hud_action_changed(newAction, plantType):
 	pass # Replace with function body.
 	
 func _on_turn_end(): 
-	emit_signal("turn_end")
-
+	$GardenTiles.tick()
