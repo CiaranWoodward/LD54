@@ -38,7 +38,11 @@ func tick():
 	# decay the fertility by 1 randomly if unoccupied
 	if !is_occupied() && randi() % 100 < decay_percent:
 		self.fertility -= 1
+	else:
+		child_plant.tick()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+

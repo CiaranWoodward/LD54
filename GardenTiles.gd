@@ -15,6 +15,7 @@ func _ready():
 			newTile.position = self.map_to_local(pos)
 			add_child(newTile)
 			_tile_map[pos] = newTile
+	get_parent().connect("turn_end", tick)
 			
 func get_plant_tile(coords : Vector2i):
 	return _tile_map[coords]
@@ -22,3 +23,6 @@ func get_plant_tile(coords : Vector2i):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func tick():
+	_tile_map.all(func(tile): tile.tick())
