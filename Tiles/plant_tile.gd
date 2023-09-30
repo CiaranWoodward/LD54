@@ -13,6 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func set_fertile(newFertile):
+	fertility = newFertile
 	if fertility > MAX_FERTILITY:
 		fertility = MAX_FERTILITY
 	if fertility < 0:
@@ -36,9 +37,13 @@ func is_occupied() -> bool:
 	
 func tick():
 	# decay the fertility by 1 randomly if unoccupied
-	if !is_occupied() && randi() % 100 < decay_percent:
+	if is_occupied():
+		child_plant.tick()
+	elif randi() % 100 < decay_percent:
 		self.fertility -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+

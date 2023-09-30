@@ -6,3 +6,6 @@ static func plant_name():
 
 static func plant_description():
 	return "Will die if overwatered."
+
+func plant_type():
+	return Global.PlantType.SUCCULENT

@@ -6,4 +6,6 @@ static func plant_name():
 
 static func plant_description():
 	return "Spreads and fruits with delicious berries!"
-	
+
+func plant_type():
+	return Global.PlantType.BERRY_VINE

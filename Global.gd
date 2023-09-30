@@ -1,26 +1,38 @@
 extends Node
 
+signal inventory_updated
+signal action_points_changed(points: int)
+
 # enum for all plant types
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
 
 # enum for all produce types
 enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
 
-# inverntory for produce
-var produceInventory: Dictionary = ProduceType.keys().reduce(func(accum, type):
+enum ActionType {NONE, HARVEST, DESTROY, PLANT, END_TURN}
+
+# inventory for produce
+var _produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type):
 	accum[type] = 0
 	return accum, {})
 
 # inventory for seeds
-var seedInventory: Dictionary = PlantType.keys().reduce(func(accum, type):
+var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 	accum[type] = 10
 	return accum, {})
 
-var produceQuota: Dictionary = {}
+var _produceQuota: Dictionary = {}
+
+var action_points: int = 0: set = set_action_points
+
+func set_action_points(new_action_points):
+	action_points = new_action_points
+	if (action_points < 0):
+		action_points = 0
+	action_points_changed.emit(action_points)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_plant_name(PlantType.WEED))
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,3 +66,28 @@ func get_plant_class(type : PlantType):
 		PlantType.ORANGE_TREE: return OrangeTree
 		PlantType.MUSHROOM: return Mushroom
 	return null
+
+func get_produce_count(type : ProduceType):
+	return _produceInventory[type]
+func get_seed_count(type : PlantType):
+	return _seedInventory[type]
+func get_quota_count(type : ProduceType):
+	return _produceQuota[type]
+func set_produce_count(type : ProduceType, count : int):
+	_produceInventory[type] = count
+	inventory_updated.emit()
+func set_seed_count(type : PlantType, count : int):
+	_seedInventory[type] = count
+	inventory_updated.emit()
+func set_quota_count(type : ProduceType, count : int):
+	_produceQuota[type] = count
+	inventory_updated.emit()
+func change_produce_count(type : ProduceType, delta : int):
+	_produceInventory[type] += delta
+	inventory_updated.emit()
+func change_seed_count(type : PlantType, delta : int):
+	_seedInventory[type] += delta
+	inventory_updated.emit()
+func change_quota_count(type : ProduceType, delta : int):
+	_produceQuota[type] += delta
+	inventory_updated.emit()
