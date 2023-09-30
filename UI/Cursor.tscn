@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://UI/Cursor.gd" id="1_t3c3b"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="2_h1yyv"]
-[ext_resource type="Texture2D" uid="uid://c4u1bil35i8nc" path="res://Graphics/Icons/Flower0000.png" id="3_x7t2e"]
-[ext_resource type="Texture2D" uid="uid://c74y405w35xap" path="res://Graphics/Icons/SpikyPlant0000.png" id="4_3srsg"]
-[ext_resource type="Texture2D" uid="uid://bd442bntxao8i" path="res://Graphics/Icons/Succulent0000.png" id="5_gkas6"]
+[ext_resource type="Texture2D" uid="uid://du50r5ps5k2il" path="res://Graphics/Icons/Flower0000.png" id="3_x7t2e"]
+[ext_resource type="Texture2D" uid="uid://b1ea3b82nsw37" path="res://Graphics/Icons/SpikyPlant0000.png" id="4_3srsg"]
+[ext_resource type="Texture2D" uid="uid://c4v3h76qrgj06" path="res://Graphics/Icons/Succulent0000.png" id="5_gkas6"]
 
 [node name="Cursor" type="Node2D"]
 modulate = Color(1, 1, 1, 0.588235)
