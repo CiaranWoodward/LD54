@@ -15,6 +15,10 @@ func _ready():
 func _process(delta):
 	pass
 
+## Can the fruit be harvested?
+func can_harvest() -> bool:
+	return false
+
 ## Harvest the fruit (Might also destroy for some plants)
 func harvest():
 	pass

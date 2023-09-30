@@ -17,7 +17,12 @@ func _ready():
 			_tile_map[pos] = newTile
 			
 func get_plant_tile(coords : Vector2i):
+	if !_tile_map.has(coords):
+		return null
 	return _tile_map[coords]
+
+func get_plant_tile_at_pos(pos : Vector2):
+	return get_plant_tile(local_to_map(pos))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

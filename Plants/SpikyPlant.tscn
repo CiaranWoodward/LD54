@@ -71,6 +71,7 @@ _data = {
 }
 
 [node name="SpikyPlant" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_28k8o")
 
 [node name="Spiky" type="Sprite2D" parent="."]

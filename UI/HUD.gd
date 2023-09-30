@@ -11,6 +11,11 @@ func _ready():
 	for child in _buttons.get_children():
 		child.connect("toggled", _button_toggled)
 
+func clear_action():
+	var bg = load("res://UI/ActionButtonGroup.tres")
+	for b in bg.get_buttons():
+		b.button_pressed = false
+
 func current_action():
 	return _current_action
 
