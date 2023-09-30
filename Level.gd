@@ -3,7 +3,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.action_points = 5
-	pass # Replace with function body.
+	$Cursor.clear_action_func = $HUD.clear_action
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,6 +18,9 @@ func get_plant_tile_at_pos(pos : Vector2):
 
 func _on_hud_action_changed(newAction, plantType):
 	$Cursor.change_action(newAction, plantType)
+	if newAction == Global.ActionType.END_TURN:
+		_on_turn_end()
 	
 func _on_turn_end(): 
+	$HUD.clear_action()
 	$GardenTiles.tick()

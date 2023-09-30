@@ -20,7 +20,8 @@ func set_fertile(newFertile):
 		fertility = 0
 		
 func set_child_plant(newChildPlant: BasePlant): 
-	self.remove_child(child_plant)
+	if is_instance_valid(child_plant):
+		self.remove_child(child_plant)
 	self.add_child(newChildPlant)
 	child_plant = newChildPlant
 		

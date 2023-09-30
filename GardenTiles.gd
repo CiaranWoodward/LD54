@@ -29,4 +29,4 @@ func _process(delta):
 	pass
 	
 func tick():
-	_tile_map.all(func(tile): tile.tick())
+	_tile_map.values().all(func(tile): tile.tick())

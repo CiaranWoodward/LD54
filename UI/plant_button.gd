@@ -9,6 +9,7 @@ var pressed : bool = false
 func _ready():
 	$Button.text = Global.get_plant_name(plant_type)
 	$Button.tooltip_text = Global.get_plant_description(plant_type)
+	Global.action_points_changed.connect(_ap_changed)
 	Global.inventory_updated.connect(update_count)
 	update_count()
 
@@ -24,3 +25,6 @@ func update_count():
 func _on_button_toggled(button_pressed):
 	pressed = button_pressed
 	toggled.emit(button_pressed)
+
+func _ap_changed(new_ap):
+	$Button.disabled = (new_ap <= 0)
