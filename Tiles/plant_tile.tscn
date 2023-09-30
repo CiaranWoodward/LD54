@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pu847djr5b2l"]
+
+[ext_resource type="Script" path="res://Tiles/plant_tile.gd" id="1_de4tv"]
+[ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_sn4ht"]
+
+[node name="PlantTile" type="Node2D"]
+script = ExtResource("1_de4tv")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_sn4ht")

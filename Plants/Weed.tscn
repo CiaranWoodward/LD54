@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ftuxuub5spex"]
+
+[ext_resource type="Script" path="res://Plants/Weed.gd" id="1_uuff7"]
+
+[node name="Weed" type="Node2D"]
+script = ExtResource("1_uuff7")
