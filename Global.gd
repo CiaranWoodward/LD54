@@ -2,6 +2,7 @@ extends Node
 
 signal inventory_updated
 signal action_points_changed(points: int)
+signal day_changed(day: int)
 
 # enum for all plant types
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
@@ -30,6 +31,13 @@ func set_action_points(new_action_points):
 	if (action_points < 0):
 		action_points = 0
 	action_points_changed.emit(action_points)
+	
+var day: int: set = set_day
+
+func set_day(new_day):
+	day = new_day
+	day_changed.emit(day)
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,12 +75,21 @@ func get_plant_class(type : PlantType):
 		PlantType.MUSHROOM: return Mushroom
 	return null
 
+func get_produce_name(type : ProduceType):
+	match(type):
+		ProduceType.FLOWER: return "Flower"
+		ProduceType.BERRY: return "Berry"
+		ProduceType.ORANGE: return "Orange"
+		ProduceType.SUCCULENT: return "Succulent"
+		ProduceType.MUSHROOM: return "Mushroom"
+	return null
+
 func get_produce_count(type : ProduceType):
 	return _produceInventory[type]
 func get_seed_count(type : PlantType):
 	return _seedInventory[type]
 func get_quota_count(type : ProduceType):
-	return _produceQuota[type]
+	return _produceQuota.get(type, 0)
 func set_produce_count(type : ProduceType, count : int):
 	_produceInventory[type] = count
 	inventory_updated.emit()

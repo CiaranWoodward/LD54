@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dj6pwf4pbg3ar"]
+
+[node name="Checkbox" type="TextureRect"]
+custom_minimum_size = Vector2(23, 23)
+anchors_preset = -1
+anchor_right = 0.02
+anchor_bottom = 0.035
+offset_right = -0.0400009
+offset_bottom = 0.32
+grow_horizontal = 2
+grow_vertical = 2
