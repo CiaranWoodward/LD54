@@ -1,6 +1,7 @@
 extends Node
 
 signal inventory_updated
+signal action_points_changed(points: int)
 
 # enum for all plant types
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
@@ -10,7 +11,7 @@ enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
 
 enum ActionType {NONE, HARVEST, DESTROY, PLANT, END_TURN}
 
-# inverntory for produce
+# inventory for produce
 var _produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type):
 	accum[type] = 0
 	return accum, {})
@@ -22,9 +23,16 @@ var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 
 var _produceQuota: Dictionary = {}
 
+var action_points: int = 0: set = set_action_points
+
+func set_action_points(new_action_points):
+	action_points = new_action_points
+	if (action_points < 0):
+		action_points = 0
+	action_points_changed.emit(action_points)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_plant_name(PlantType.WEED))
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
