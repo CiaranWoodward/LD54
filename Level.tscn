@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=6 format=3 uid="uid://b6y8ec8tar23r"]
 
+[ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
 [ext_resource type="Script" path="res://PlayerCam.gd" id="2_hoiau"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
+texture = ExtResource("1_k5ldj")
+margins = Vector2i(15, 15)
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_rukn1"]
 tile_shape = 3
+tile_size = Vector2i(100, 100)
+sources/0 = SubResource("TileSetAtlasSource_golho")
 
 [node name="Level" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="GardenTiles" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_rukn1")
 format = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(82, 82)
-texture = ExtResource("1_k5ldj")
+script = ExtResource("1_5n8ii")
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 script = ExtResource("2_hoiau")

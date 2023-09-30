@@ -19,6 +19,7 @@ var moving = false
 var dragging = false
 var rezoom = false
 
+## Maximum camera position
 @export var MaxPos : Vector2 = Vector2(1000, 1000)
 
 # Called when the node enters the scene tree for the first time.

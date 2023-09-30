@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8xwku2rgn7i8"]
+
+[ext_resource type="Script" path="res://Plants/Flower.gd" id="1_3fli0"]
+
+[node name="Flower" type="Node2D"]
+script = ExtResource("1_3fli0")
