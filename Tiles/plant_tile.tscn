@@ -1,7 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://pu847djr5b2l"]
+[gd_scene load_steps=12 format=3 uid="uid://pu847djr5b2l"]
 
 [ext_resource type="Script" path="res://Tiles/plant_tile.gd" id="1_de4tv"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_sn4ht"]
+[ext_resource type="Texture2D" uid="uid://cxaoeddi5rea1" path="res://Graphics/Tile/TileFront0000.png" id="3_jjdjy"]
+[ext_resource type="Texture2D" uid="uid://djbu7h23ajuk1" path="res://Graphics/Tile/Dry10000.png" id="4_axsnd"]
+[ext_resource type="Texture2D" uid="uid://dbxmauxy7vkbe" path="res://Graphics/Tile/Dry20000.png" id="5_tjwee"]
+[ext_resource type="Texture2D" uid="uid://eiorwtcrkrfe" path="res://Graphics/Tile/Dry30000.png" id="6_o3psj"]
+[ext_resource type="Texture2D" uid="uid://dwfq2hlxbkmee" path="res://Graphics/Tile/Wet10000.png" id="7_m3aqs"]
+[ext_resource type="Texture2D" uid="uid://dvittnpx2of7y" path="res://Graphics/Tile/Wet20000.png" id="8_6fmo7"]
+[ext_resource type="Texture2D" uid="uid://cokn7hd10gce2" path="res://Graphics/Tile/Wet30000.png" id="9_kian4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwj4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_axsnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tjwee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o3psj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alfh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_m3aqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6fmo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kian4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PlantTile" type="Node2D"]
 script = ExtResource("1_de4tv")
@@ -9,3 +50,18 @@ script = ExtResource("1_de4tv")
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_sn4ht")
+
+[node name="Tile" type="Node2D" parent="."]
+modulate = Color(0.560784, 0.403922, 0.2, 1)
+position = Vector2(0, -30)
+scale = Vector2(0.5, 0.5)
+
+[node name="Tilefront" type="Sprite2D" parent="Tile"]
+texture = ExtResource("3_jjdjy")
+
+[node name="Dry" type="AnimatedSprite2D" parent="Tile"]
+sprite_frames = SubResource("SpriteFrames_rwj4h")
+
+[node name="Wet" type="AnimatedSprite2D" parent="Tile"]
+sprite_frames = SubResource("SpriteFrames_alfh7")
+frame = 2

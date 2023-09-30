@@ -14,7 +14,8 @@ texture_region_size = Vector2i(100, 100)
 
 [sub_resource type="TileSet" id="TileSet_rukn1"]
 tile_shape = 3
-tile_size = Vector2i(100, 100)
+tile_offset_axis = 1
+tile_size = Vector2i(163, 104)
 sources/0 = SubResource("TileSetAtlasSource_golho")
 
 [node name="Level" type="Node2D"]
