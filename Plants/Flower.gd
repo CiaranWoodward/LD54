@@ -5,6 +5,7 @@ extends BasePlant
 @export var time_to_dead = 6
 
 func harvest():
+	Global.produceInventory.FLOWER += 1
 	destroy()
 
 func destroy():
