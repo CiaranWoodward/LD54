@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=7 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
+[ext_resource type="Script" path="res://UI/HUD.gd" id="1_xlc34"]
 [ext_resource type="PackedScene" uid="uid://dxvpigtmbhrv2" path="res://UI/harvest_button.tscn" id="2_0g6q2"]
 [ext_resource type="PackedScene" uid="uid://ivh3v87hka2i" path="res://UI/plant_button.tscn" id="2_b4o4e"]
 [ext_resource type="PackedScene" uid="uid://0qqdaelxnqdg" path="res://UI/destroy_button.tscn" id="4_u8uef"]
 [ext_resource type="PackedScene" uid="uid://dwa26aog7olj5" path="res://UI/end_turn_button.tscn" id="5_uy6yv"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xlc34")
 
 [node name="ActionPanel" type="PanelContainer" parent="."]
 anchors_preset = 12

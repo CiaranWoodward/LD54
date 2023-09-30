@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwa26aog7olj5"]
+[gd_scene load_steps=3 format=3 uid="uid://dwa26aog7olj5"]
 
+[ext_resource type="Script" path="res://UI/action_button.gd" id="1_0qajt"]
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_06gra"]
 
 [node name="EndTurnButton" type="MarginContainer"]
@@ -12,6 +13,8 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_0qajt")
+action_type = 3
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 50)

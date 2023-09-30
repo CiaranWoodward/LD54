@@ -8,6 +8,8 @@ enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, M
 # enum for all produce types
 enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
 
+enum ActionType {NONE, HARVEST, DESTROY, PLANT, END_TURN}
+
 # inverntory for produce
 var _produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type):
 	accum[type] = 0
