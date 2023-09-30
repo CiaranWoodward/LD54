@@ -10,9 +10,12 @@ static func plant_name():
 
 static func plant_description():
 	return "Improves soil mositure for later planting."
+	
+func plant_type():
+	return Global.PlantType.FLOWER
 
 func harvest():
-	Global.produceInventory.FLOWER += 1
+	Global.change_produce_count(Global.ProduceType.FLOWER, 1)
 	destroy()
 
 func destroy():

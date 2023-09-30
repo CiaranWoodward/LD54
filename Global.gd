@@ -1,5 +1,7 @@
 extends Node
 
+signal inventory_updated
+
 # enum for all plant types
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
 
@@ -7,16 +9,16 @@ enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, M
 enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
 
 # inverntory for produce
-var produceInventory: Dictionary = ProduceType.keys().reduce(func(accum, type):
+var _produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type):
 	accum[type] = 0
 	return accum, {})
 
 # inventory for seeds
-var seedInventory: Dictionary = PlantType.keys().reduce(func(accum, type):
+var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 	accum[type] = 10
 	return accum, {})
 
-var produceQuota: Dictionary = {}
+var _produceQuota: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,3 +56,28 @@ func get_plant_class(type : PlantType):
 		PlantType.ORANGE_TREE: return OrangeTree
 		PlantType.MUSHROOM: return Mushroom
 	return null
+
+func get_produce_count(type : ProduceType):
+	return _produceInventory[type]
+func get_seed_count(type : PlantType):
+	return _seedInventory[type]
+func get_quota_count(type : ProduceType):
+	return _produceQuota[type]
+func set_produce_count(type : ProduceType, count : int):
+	_produceInventory[type] = count
+	inventory_updated.emit()
+func set_seed_count(type : PlantType, count : int):
+	_seedInventory[type] = count
+	inventory_updated.emit()
+func set_quota_count(type : ProduceType, count : int):
+	_produceQuota[type] = count
+	inventory_updated.emit()
+func change_produce_count(type : ProduceType, delta : int):
+	_produceInventory[type] += delta
+	inventory_updated.emit()
+func change_seed_count(type : PlantType, delta : int):
+	_seedInventory[type] += delta
+	inventory_updated.emit()
+func change_quota_count(type : ProduceType, delta : int):
+	_produceQuota[type] += delta
+	inventory_updated.emit()

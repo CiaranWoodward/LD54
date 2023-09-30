@@ -6,3 +6,6 @@ static func plant_name():
 
 static func plant_description():
 	return "Kills everything around it."
+
+func plant_type():
+	return Global.PlantType.SPIKY_PLANT

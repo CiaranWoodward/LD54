@@ -11,6 +11,9 @@ static func plant_name():
 static func plant_description():
 	return "Why won't it die?!"
 
+func plant_type():
+	return Global.PlantType.WEED
+
 func harvest():
 	destroy()
 
