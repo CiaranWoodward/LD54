@@ -97,7 +97,7 @@ func _apply_action():
 				return
 			if !_current_tile.child_plant.can_harvest:
 				return
-			_current_tile.harvest()
+			_current_tile.child_plant.harvest()
 		Global.ActionType.PLANT:
 			if !_current_plantinstance.can_sow(_current_tile):
 				return

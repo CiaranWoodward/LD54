@@ -29,5 +29,5 @@ func _process(delta):
 	pass
 	
 func tick():
-	for tile in _tile_map:
+	for tile in _tile_map.values():
 		tile.tick()
