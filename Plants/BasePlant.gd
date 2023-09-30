@@ -21,7 +21,9 @@ func harvest():
 
 ## Destroy the plant (Also harvests anything harvestable)
 func destroy():
-	pass
+	if is_instance_valid(parent_tile):
+		parent_tile.child_plant = null
+		parent_tile = null
 
 ## Run the plant logic, which might affect neighboring tiles
 func tick():
