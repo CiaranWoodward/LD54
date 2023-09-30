@@ -1,10 +1,10 @@
 extends Camera2D
 
-@export var MAX_SPEED = 150.0
+@export var MAX_SPEED = 1000.0
 @export var ACCEL_TIME = 0.5
 @export var STOP_TIME = 0.2
 @export var ZOOM_AMOUNT = 0.2
-@export var ZOOM_TIME = 0.2
+@export var ZOOM_TIME = 0.15
 @export var ZOOM_MIN = 0.4
 @export var ZOOM_MAX = 4
 
@@ -24,17 +24,15 @@ var rezoom = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	zoom_tween = create_tween()
-	move_tween = create_tween()
-	dir_tween = create_tween()
+	pass
 
 func _unhandled_input(event):
 	# Only allow unhandled input for start drag
 	if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_RIGHT || event.button_index == MOUSE_BUTTON_MIDDLE):
 		if event.is_pressed():
 			dragging = true
-			dir_tween.kill()
-			move_tween.kill()
+			dir_tween = null
+			move_tween = null
 			speed = 0
 			moving = false
 			dir_vec = Vector2.ZERO
@@ -73,7 +71,6 @@ func _physics_process(delta):
 		if target_zoom.x < ZOOM_MIN:
 			target_zoom = Vector2(ZOOM_MIN, ZOOM_MIN)
 		if target_zoom != zoom:
-			zoom_tween.kill()
 			zoom_tween = create_tween()
 			zoom_tween.tween_property(self, "zoom", target_zoom, ZOOM_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		rezoom = false
@@ -94,19 +91,16 @@ func _physics_process(delta):
 		dir_vec = dir_delta
 	if dir_delta != Vector2.ZERO:
 		dir_delta = dir_delta.normalized()
-		dir_tween.kill()
 		dir_tween = create_tween()
 		dir_tween.tween_property(self, "dir_vec", dir_delta, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
 	if dir_delta != Vector2.ZERO && !moving:
 		# just started moving
-		move_tween.kill()
 		move_tween = create_tween()
 		move_tween.tween_property(self, "speed", MAX_SPEED, ACCEL_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		moving = true
 	elif dir_delta == Vector2.ZERO && moving:
 		# just stopped moving
-		move_tween.kill()
 		move_tween = create_tween()
 		move_tween.tween_property(self, "speed", 0, STOP_TIME).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		moving = false
