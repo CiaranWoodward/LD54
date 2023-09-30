@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceyd71bbq1om7"]
+
+[ext_resource type="Script" path="res://Plants/BerryVine.gd" id="1_pts4f"]
+
+[node name="BerryVine" type="Node2D"]
+script = ExtResource("1_pts4f")

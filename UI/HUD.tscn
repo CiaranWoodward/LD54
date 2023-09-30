@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://0aejnixhhw7h"]
+
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
+[ext_resource type="PackedScene" uid="uid://dxvpigtmbhrv2" path="res://UI/harvest_button.tscn" id="2_0g6q2"]
+[ext_resource type="PackedScene" uid="uid://ivh3v87hka2i" path="res://UI/plant_button.tscn" id="2_b4o4e"]
+[ext_resource type="PackedScene" uid="uid://0qqdaelxnqdg" path="res://UI/destroy_button.tscn" id="4_u8uef"]
+[ext_resource type="PackedScene" uid="uid://dwa26aog7olj5" path="res://UI/end_turn_button.tscn" id="5_uy6yv"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ActionPanel" type="PanelContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_bdcb7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlantButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+
+[node name="PlantButton2" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 1
+
+[node name="PlantButton3" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 2
+
+[node name="PlantButton4" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 3
+
+[node name="PlantButton5" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 4
+
+[node name="PlantButton6" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 5
+
+[node name="PlantButton7" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
+layout_mode = 2
+plant_type = 6
+
+[node name="HarvestButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_0g6q2")]
+layout_mode = 2
+
+[node name="DestroyButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("4_u8uef")]
+layout_mode = 2
+
+[node name="EndTurnButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("5_uy6yv")]
+layout_mode = 2
