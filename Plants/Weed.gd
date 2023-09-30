@@ -12,15 +12,18 @@ func destroy():
 
 func tick():
 	super()
-	# get the tiles this weed will spread to
-	var spreading_to = parent_tile.getAdjacent().filter(func(tile: PlantTile): 
+	# get the tiles that the weed will spread to
+	parent_tile.getAdjacent().filter(func(tile: PlantTile):
+		# exclude occupied tiles
+		if tile.is_occupied():
+			return false
+			
 		if tile.is_fertile():
 			return randi() % 100 < spread_percent_fertile
 		else:
 			return randi() % 100 < spread_percent_infertile
-	)
-	
-	spreading_to.all(func(tile: PlantTile):
+	# Create a new weed on the tiles which it is spreading to
+	).all(func(tile: PlantTile):
 		var weed = load("res://Plants/Weed.tscn").instantiate()
 		weed.sow(tile)
 		return true
