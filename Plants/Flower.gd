@@ -4,14 +4,11 @@ extends BasePlant
 @export var time_to_grow = 3
 @export var time_to_dead = 6
 
-func _ready():
-	pass
-
 func harvest():
 	destroy()
 
 func destroy():
-	pass
+	super.destroy()
 
 func tick():
 	super()

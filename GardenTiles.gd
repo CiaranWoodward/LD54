@@ -1,3 +1,4 @@
+class_name GardenTiles
 extends TileMap
 
 @export var dimensions = Vector2i(10,10)
