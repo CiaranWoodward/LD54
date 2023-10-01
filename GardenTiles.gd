@@ -6,11 +6,15 @@ extends TileMap
 @export var ripple_delay = 0.1
 @export var ripple_height = 10.0
 @export var ripple_height_decay = 2.0
-var _ripple_tweens = []
+@export var ripple_sweep_delay = 0.05
+@export var ripple_sweep_height = 5.0
 
 var _tile_map = {}
+var _minx = 0
 
 func _add_tile_to_set(x: int, y: int, tileScene: Resource):
+	if x < _minx:
+		_minx = x
 	var newTile = tileScene.instantiate()
 	var pos = Vector2i(x, y)
 	newTile.position = self.map_to_local(pos)
@@ -39,13 +43,19 @@ func get_plant_tile_at_pos(pos : Vector2):
 
 func ripple_from(pos : Vector2i):
 	var posf = Vector2(pos)
-	_ripple_tweens.clear()
 	for coord in _tile_map.keys():
 		var distance = posf.distance_to(Vector2(coord))
 		var delay = distance * ripple_delay
 		var height = ripple_height - distance * ripple_height_decay
 		if height <= 0: continue
-		_tile_map[coord].ripple(height, delay)
+		_tile_map[coord].ripple(height, delay, false)
+
+func ripple_sweep():
+	for coord in _tile_map.keys():
+		var distance = Vector2(coord).x - _minx
+		var delay = distance * ripple_sweep_delay
+		var height = ripple_sweep_height
+		_tile_map[coord].ripple(height, delay, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -54,3 +64,4 @@ func _process(delta):
 func tick():
 	for tile in _tile_map.values():
 		tile.tick()
+	ripple_sweep()

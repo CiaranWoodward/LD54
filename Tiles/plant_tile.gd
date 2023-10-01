@@ -65,8 +65,8 @@ func _update_color():
 	_color_tween = create_tween()
 	_color_tween.tween_property($Tile, "modulate", newcolor, randf_range(0.8, 1.5)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
-func ripple(height: float, delay: float):
-	if height < _next_height:
+func ripple(height: float, delay: float, forced: bool):
+	if !forced && height < _next_height:
 		return
 	if height < 0.5:
 		position = _base_position
@@ -78,8 +78,9 @@ func ripple(height: float, delay: float):
 	new_tween.tween_property(self, "position", _base_position + offset, ripple_period / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	new_tween.tween_property(self, "position", _base_position - offset / 2, ripple_period).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	new_tween.tween_property(self, "position", _base_position, ripple_period / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	_next_height = height * ripple_inverse_damping
-	new_tween.tween_callback(func(): ripple(_next_height, 0.0))
+	if !forced:
+		_next_height = height * ripple_inverse_damping
+		new_tween.tween_callback(func(): ripple(_next_height, 0.0, false))
 
 func set_child_plant(newChildPlant: BasePlant): 
 	if is_instance_valid(child_plant):
