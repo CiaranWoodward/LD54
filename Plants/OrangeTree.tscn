@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c87nq5dbmey1g"]
+[gd_scene load_steps=41 format=3 uid="uid://c87nq5dbmey1g"]
 
 [ext_resource type="Script" path="res://Plants/OrangeTree.gd" id="1_runvr"]
 [ext_resource type="Texture2D" uid="uid://bgqjtjktge8xi" path="res://Graphics/Plants/OrangeTree/LightTop0000.png" id="2_5nxoq"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cm2tr0utq2g3w" path="res://Graphics/Plants/OrangeTree/LightBot20000.png" id="11_7s0tv"]
 [ext_resource type="Texture2D" uid="uid://1lv0qgwtp663" path="res://Graphics/Plants/OrangeTree/DarkBot0000.png" id="12_gxutj"]
 [ext_resource type="Texture2D" uid="uid://cqy0nb3bqtvsy" path="res://Graphics/Plants/OrangeTree/DarkBot20000.png" id="13_2orp6"]
+[ext_resource type="Texture2D" uid="uid://2lp2voawn2f" path="res://Graphics/Plants/OrangeTree/Orange10000.png" id="14_tnms8"]
+[ext_resource type="Texture2D" uid="uid://bb2kknfik1mql" path="res://Graphics/Plants/OrangeTree/Orange20000.png" id="15_xgibi"]
+[ext_resource type="Texture2D" uid="uid://cenyb51tsxjpd" path="res://Graphics/Plants/OrangeTree/Orange30000.png" id="16_deyjk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vlxrx"]
 animations = [{
@@ -78,6 +81,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_m1cpa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfous"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_tnms8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xgibi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_deyjk")
 }],
 "loop": true,
 "name": &"default",
@@ -869,6 +889,11 @@ texture = ExtResource("7_ajxp0")
 visible = false
 position = Vector2(8, -122)
 texture = ExtResource("4_3fgn8")
+
+[node name="Orange" type="AnimatedSprite2D" parent="Tree"]
+position = Vector2(8, -120)
+sprite_frames = SubResource("SpriteFrames_hfous")
+frame = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ccekx")
