@@ -2,8 +2,8 @@ class_name Flower
 extends BasePlant
 
 ## How long until the plant is fully grown
-@export var time_to_grow = 3
-@export var time_to_dead = 6
+@export var time_to_grow: int = 2
+@export var time_to_dead: int = 5
 
 @onready var stateMachine = $AnimationTree["parameters/playback"]
 
@@ -26,12 +26,22 @@ func harvest():
 	destroy()
 
 func destroy():
-	super.destroy()
+	super()
+	
+func kill():
+	super()
+	age += time_to_dead
+	status = Status.DEAD
+	stateMachine.travel("Withered")
 
 func tick():
 	super()
+	# if flower isnt dead, increase fertility of tile and tiles adjacent
 	if status != Status.DEAD:
 		parent_tile.fertility += 2
+		var to_fertilize = parent_tile.getAdjacent()
+		for tile in to_fertilize:
+			tile.fertility += 1
 	if age > time_to_dead:
 		if status != Status.DEAD:
 			stateMachine.travel("Withered")

@@ -29,6 +29,10 @@ func destroy():
 		parent_tile.child_plant = null
 		parent_tile = null
 
+## Make the plant dead
+func kill():
+	pass
+
 ## Run the plant logic, which might affect neighboring tiles
 func tick():
 	age += 1

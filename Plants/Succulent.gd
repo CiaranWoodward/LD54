@@ -9,3 +9,8 @@ static func plant_description():
 
 func plant_type():
 	return Global.PlantType.SUCCULENT
+	
+func kill():
+	super()
+	destroy()
+
