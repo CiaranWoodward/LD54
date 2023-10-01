@@ -1,0 +1,332 @@
+[gd_scene load_steps=16 format=3 uid="uid://bns8uj1fml6u"]
+
+[ext_resource type="Script" path="res://Plants/IndiMush.gd" id="1_5x3g2"]
+[ext_resource type="Texture2D" uid="uid://cu4lw4lxx0unn" path="res://Graphics/Plants/Mushroom/Leggy10000.png" id="1_8lpt7"]
+[ext_resource type="Texture2D" uid="uid://cxlkbjm54qbqx" path="res://Graphics/Plants/Mushroom/Leggy20000.png" id="2_6dvso"]
+[ext_resource type="Texture2D" uid="uid://bt72ir8c1aia3" path="res://Graphics/Plants/Mushroom/Leggy30000.png" id="3_nladj"]
+[ext_resource type="Texture2D" uid="uid://uaaouc3ixt5y" path="res://Graphics/Plants/Mushroom/Stumpy10000.png" id="4_uudw2"]
+[ext_resource type="Texture2D" uid="uid://d1qrsp16aj058" path="res://Graphics/Plants/Mushroom/Stumpy20000.png" id="5_2ly78"]
+[ext_resource type="Texture2D" uid="uid://bflxyi1f2g0mp" path="res://Graphics/Plants/Mushroom/Stumpy30000.png" id="6_466hf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8y0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8lpt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6dvso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nladj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5frv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uudw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ly78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_466hf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gtefv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndiMush:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndiMush:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IndiMush:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IndiMush:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jdwwq"]
+resource_name = "Squidge"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndiMush:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndiMush:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IndiMush:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IndiMush:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.7),
+"transitions": PackedFloat32Array(1.86607, 0.517633, 1.8025, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.8), Vector2(0.9, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bru7i"]
+resource_name = "Sway1"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndiMush:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndiMush:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IndiMush:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(0.392292, 1.62451, 0.68302, 1.56917, 0.482968, 1.68179, 1),
+"update": 0,
+"values": [0.0, 0.139626, -0.191986, 0.0698132, -0.0349066, 0.0174533, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IndiMush:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1.86607, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b8aap"]
+resource_name = "Sway2"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndiMush:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndiMush:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IndiMush:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4, 0.65, 0.75, 0.85, 0.9),
+"transitions": PackedFloat32Array(0.392292, 1.62451, 0.68302, 1.56917, 0.482968, 1.68179, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.174533, -0.0785398, 0.0349066, -0.0174533, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IndiMush:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1.86607, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ymjhh"]
+resource_name = "Up"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IndiMush:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.55, 0.7),
+"transitions": PackedFloat32Array(0.732043, 1.93187, 0.68302, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -28), Vector2(0, 3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IndiMush:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IndiMush:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IndiMush:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1.86607, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_br5nf"]
+_data = {
+"RESET": SubResource("Animation_gtefv"),
+"Squidge": SubResource("Animation_jdwwq"),
+"Sway1": SubResource("Animation_bru7i"),
+"Sway2": SubResource("Animation_b8aap"),
+"Up": SubResource("Animation_ymjhh")
+}
+
+[node name="IndiMush" type="Node2D"]
+script = ExtResource("1_5x3g2")
+
+[node name="IndiMush" type="Node2D" parent="."]
+
+[node name="Leggy" type="AnimatedSprite2D" parent="IndiMush"]
+position = Vector2(0, -117)
+sprite_frames = SubResource("SpriteFrames_c8y0c")
+
+[node name="Stumpy" type="AnimatedSprite2D" parent="IndiMush"]
+visible = false
+position = Vector2(0, -117)
+sprite_frames = SubResource("SpriteFrames_5frv6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_br5nf")
+}
