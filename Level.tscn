@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Level.gd" id="1_k876p"]
 [ext_resource type="Script" path="res://PlayerCam.gd" id="2_hoiau"]
 [ext_resource type="PackedScene" uid="uid://0aejnixhhw7h" path="res://UI/HUD.tscn" id="4_mp570"]
-[ext_resource type="PackedScene" path="res://UI/Cursor.tscn" id="6_ec5jv"]
+[ext_resource type="PackedScene" uid="uid://d4j0a6xqs4pqq" path="res://UI/Cursor.tscn" id="6_ec5jv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
 texture = ExtResource("1_k5ldj")

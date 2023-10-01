@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://c87nq5dbmey1g"]
+[gd_scene load_steps=45 format=3 uid="uid://c87nq5dbmey1g"]
 
 [ext_resource type="Script" path="res://Plants/OrangeTree.gd" id="1_runvr"]
 [ext_resource type="Texture2D" uid="uid://bgqjtjktge8xi" path="res://Graphics/Plants/OrangeTree/LightTop0000.png" id="2_5nxoq"]
+[ext_resource type="Texture2D" uid="uid://bg7d0iap667u3" path="res://Graphics/Plants/OrangeTree/DeadLeaves0000.png" id="2_egguf"]
 [ext_resource type="Texture2D" uid="uid://b62m1htmg2c6t" path="res://Graphics/Plants/OrangeTree/LightTop20000.png" id="3_m1cpa"]
 [ext_resource type="Texture2D" uid="uid://bciu4rx3r5ymq" path="res://Graphics/Plants/OrangeTree/LightTop30000.png" id="4_3fgn8"]
 [ext_resource type="Texture2D" uid="uid://brw6yrlidyyt0" path="res://Graphics/Plants/OrangeTree/DarkTop0000.png" id="5_4d2uh"]
@@ -16,6 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://2lp2voawn2f" path="res://Graphics/Plants/OrangeTree/Orange10000.png" id="14_tnms8"]
 [ext_resource type="Texture2D" uid="uid://bb2kknfik1mql" path="res://Graphics/Plants/OrangeTree/Orange20000.png" id="15_xgibi"]
 [ext_resource type="Texture2D" uid="uid://cenyb51tsxjpd" path="res://Graphics/Plants/OrangeTree/Orange30000.png" id="16_deyjk"]
+[ext_resource type="Texture2D" uid="uid://b12vy3lcl7xu" path="res://Graphics/Plants/Particles/WhiteLeaf0000.png" id="17_7q2d3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iexjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_6sflf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kpit7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vlxrx"]
 animations = [{
@@ -39,20 +55,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_7s0tv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iexjp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_6sflf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_kpit7")
 }],
 "loop": true,
 "name": &"default",
@@ -103,6 +105,13 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_d2xgx"]
+offsets = PackedFloat32Array(0, 0.556291, 0.788079, 1)
+colors = PackedColorArray(0.00390625, 0.644531, 0.128906, 1, 0.74, 0.552533, 0.148, 1, 0.738281, 0.550781, 0.148438, 1, 0.73, 0.5986, 0.4015, 0)
+
+[sub_resource type="Gradient" id="Gradient_y52bp"]
+colors = PackedColorArray(1, 1, 1, 1, 0.64, 0.64, 0.64, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13aud"]
 animation = &"Big"
@@ -156,7 +165,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -168,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -180,7 +189,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -192,7 +201,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -216,7 +225,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -228,7 +237,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -240,11 +249,11 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_2x47q"]
 resource_name = "Dying"
-loop_mode = 2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -256,7 +265,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -268,7 +277,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -280,7 +289,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -304,7 +313,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -316,7 +325,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -328,7 +337,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Tree/DarkBot:visible")
+tracks/7/path = NodePath("Tree/Leaves/DarkBot:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -340,7 +349,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Tree/LightBot:visible")
+tracks/8/path = NodePath("Tree/Leaves/LightBot:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -352,7 +361,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Tree/DarkTop:visible")
+tracks/9/path = NodePath("Tree/Leaves/DarkTop:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -364,7 +373,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Tree/LightTop:visible")
+tracks/10/path = NodePath("Tree/Leaves/LightTop:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -373,13 +382,61 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tree/LeavesFall:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tree/Leaves:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1.86607, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tree/DeadLeaves:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Tree/DeadLeaves:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(2.63902, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_dor4b"]
 resource_name = "Grow"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -391,7 +448,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -403,7 +460,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -415,7 +472,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -439,7 +496,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -451,7 +508,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -466,7 +523,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -478,7 +535,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -490,7 +547,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -502,7 +559,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -526,7 +583,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -538,7 +595,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -550,7 +607,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Tree/DarkBot:visible")
+tracks/7/path = NodePath("Tree/Leaves/DarkBot:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -562,7 +619,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Tree/LightBot:visible")
+tracks/8/path = NodePath("Tree/Leaves/LightBot:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -574,7 +631,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Tree/DarkTop:visible")
+tracks/9/path = NodePath("Tree/Leaves/DarkTop:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -586,7 +643,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Tree/LightTop:visible")
+tracks/10/path = NodePath("Tree/Leaves/LightTop:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -607,6 +664,78 @@ tracks/11/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tree/LeavesFall:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tree/Leaves:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Tree/DeadLeaves:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Tree/DeadLeaves:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Tree/Leaves:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Tree/Leaves/DarkTop3:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wvcfo"]
 resource_name = "Small"
@@ -614,7 +743,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -626,7 +755,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -638,7 +767,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -650,7 +779,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -674,7 +803,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -686,7 +815,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -694,6 +823,90 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Tree/Leaves:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Tree/Leaves:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tree/Leaves/DarkBot:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Tree/Leaves/LightBot:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tree/Leaves/DarkTop3:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Tree/Leaves/LightTop:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Tree/Leaves/DarkTop:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_01m3x"]
@@ -703,7 +916,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tree/LightTop:frame")
+tracks/0/path = NodePath("Tree/Leaves/LightTop:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -715,7 +928,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tree/DarkTop:frame")
+tracks/1/path = NodePath("Tree/Leaves/DarkTop:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -727,7 +940,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tree/LightBot:frame")
+tracks/2/path = NodePath("Tree/Leaves/LightBot:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -739,7 +952,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/DarkBot:frame")
+tracks/3/path = NodePath("Tree/Leaves/DarkBot:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -763,7 +976,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Tree/LightTop3:visible")
+tracks/5/path = NodePath("Tree/Leaves/LightTop3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -775,7 +988,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/DarkTop3:visible")
+tracks/6/path = NodePath("Tree/Leaves/DarkTop3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -787,7 +1000,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Tree/DarkBot:visible")
+tracks/7/path = NodePath("Tree/Leaves/DarkBot:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -799,7 +1012,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Tree/LightBot:visible")
+tracks/8/path = NodePath("Tree/Leaves/LightBot:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -811,7 +1024,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Tree/DarkTop:visible")
+tracks/9/path = NodePath("Tree/Leaves/DarkTop:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -823,7 +1036,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Tree/LightTop:visible")
+tracks/10/path = NodePath("Tree/Leaves/LightTop:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -858,46 +1071,75 @@ _data = {
 [node name="OrangeTree" type="Node2D"]
 script = ExtResource("1_runvr")
 
-[node name="Tree" type="Sprite2D" parent="."]
+[node name="Tree" type="Node2D" parent="."]
 
-[node name="DarkBot" type="AnimatedSprite2D" parent="Tree"]
-position = Vector2(8, -120)
-sprite_frames = SubResource("SpriteFrames_vlxrx")
-
-[node name="LightBot" type="AnimatedSprite2D" parent="Tree"]
-position = Vector2(8, -120)
-sprite_frames = SubResource("SpriteFrames_0im37")
+[node name="DeadLeaves" type="Sprite2D" parent="Tree"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(8, -86)
+texture = ExtResource("2_egguf")
 
 [node name="Trunk" type="AnimatedSprite2D" parent="Tree"]
 position = Vector2(8, -120)
 sprite_frames = SubResource("SpriteFrames_iexjp")
 
-[node name="DarkTop" type="AnimatedSprite2D" parent="Tree"]
+[node name="Leaves" type="Node2D" parent="Tree"]
+
+[node name="DarkBot" type="AnimatedSprite2D" parent="Tree/Leaves"]
+show_behind_parent = true
+position = Vector2(8, -120)
+sprite_frames = SubResource("SpriteFrames_vlxrx")
+
+[node name="LightBot" type="AnimatedSprite2D" parent="Tree/Leaves"]
+position = Vector2(8, -120)
+sprite_frames = SubResource("SpriteFrames_0im37")
+
+[node name="DarkTop" type="AnimatedSprite2D" parent="Tree/Leaves"]
 position = Vector2(8, -120)
 sprite_frames = SubResource("SpriteFrames_7q75m")
 
-[node name="LightTop" type="AnimatedSprite2D" parent="Tree"]
+[node name="LightTop" type="AnimatedSprite2D" parent="Tree/Leaves"]
 position = Vector2(8, -120)
 sprite_frames = SubResource("SpriteFrames_uk5hk")
 
-[node name="DarkTop3" type="Sprite2D" parent="Tree"]
+[node name="DarkTop3" type="Sprite2D" parent="Tree/Leaves"]
 visible = false
 position = Vector2(5, -120)
 texture = ExtResource("7_ajxp0")
 
-[node name="LightTop3" type="Sprite2D" parent="Tree"]
+[node name="LightTop3" type="Sprite2D" parent="Tree/Leaves"]
 visible = false
-position = Vector2(8, -122)
+position = Vector2(8, -134)
 texture = ExtResource("4_3fgn8")
 
-[node name="Orange" type="AnimatedSprite2D" parent="Tree"]
+[node name="Orange" type="AnimatedSprite2D" parent="Tree/Leaves"]
+visible = false
 position = Vector2(8, -120)
 sprite_frames = SubResource("SpriteFrames_hfous")
 frame = 2
 
+[node name="LeavesFall" type="CPUParticles2D" parent="Tree"]
+position = Vector2(0, -197)
+emitting = false
+amount = 30
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.1
+texture = ExtResource("17_7q2d3")
+emission_shape = 3
+emission_rect_extents = Vector2(90, 60)
+angle_min = -80.0
+angle_max = 80.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color_ramp = SubResource("Gradient_d2xgx")
+color_initial_ramp = SubResource("Gradient_y52bp")
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ccekx")
 anim_player = NodePath("AnimationPlayer")
+active = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
 root_node = NodePath("../..")
