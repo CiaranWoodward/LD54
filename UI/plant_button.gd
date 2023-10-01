@@ -7,7 +7,7 @@ var pressed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Button.text = Global.get_plant_name(plant_type)
+	$Label.text = Global.get_plant_name(plant_type)
 	$Button.tooltip_text = Global.get_plant_description(plant_type)
 	Global.action_points_changed.connect(_ap_changed)
 	Global.inventory_updated.connect(update_count)

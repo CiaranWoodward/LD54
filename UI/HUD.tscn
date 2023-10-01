@@ -25,6 +25,7 @@ theme = ExtResource("1_bdcb7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ActionPanel"]
 layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
 [node name="PlantButton" parent="ActionPanel/HBoxContainer" instance=ExtResource("2_b4o4e")]
