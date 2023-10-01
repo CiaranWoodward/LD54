@@ -85,7 +85,8 @@ func ripple(height: float, delay: float, forced: bool):
 func set_child_plant(newChildPlant: BasePlant): 
 	if is_instance_valid(child_plant):
 		self.remove_child(child_plant)
-	self.add_child(newChildPlant)
+	if is_instance_valid(newChildPlant):
+		self.add_child(newChildPlant)
 	child_plant = newChildPlant
 
 func getAdjacent() -> Array:
