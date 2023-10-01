@@ -82,10 +82,13 @@ func set_child_plant(newChildPlant: BasePlant):
 	self.add_child(newChildPlant)
 	child_plant = newChildPlant
 
-func getAdjacent() -> Array[PlantTile]:
+func getAdjacent() -> Array:
 	var parent = (self.get_parent() as GardenTiles)
-	return parent.get_surrounding_cells(self.position).map(func(pos: Vector2i):
-		return parent.get_plant_tile(pos))
+	return parent.get_surrounding_cells(parent.local_to_map(position)).map(func(pos: Vector2i):
+		return parent.get_plant_tile(pos)
+	).filter(func(tile): 
+		return is_instance_valid(tile)
+	)
 
 func is_fertile() -> bool:
 	return (fertility > 5)
