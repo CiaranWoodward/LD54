@@ -10,23 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dvittnpx2of7y" path="res://Graphics/Tile/Wet20000.png" id="8_6fmo7"]
 [ext_resource type="Texture2D" uid="uid://cokn7hd10gce2" path="res://Graphics/Tile/Wet30000.png" id="9_kian4"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rwj4h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_axsnd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_tjwee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_o3psj")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_alfh7"]
 animations = [{
 "frames": [{
@@ -44,8 +27,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwj4h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_axsnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tjwee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o3psj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="PlantTile" type="Node2D"]
 script = ExtResource("1_de4tv")
+color_fertile = Color(0.341176, 0.203922, 0.0901961, 1)
+color_dry = Color(0.65098, 0.509804, 0.388235, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
@@ -53,15 +55,17 @@ texture = ExtResource("1_sn4ht")
 
 [node name="Tile" type="Node2D" parent="."]
 modulate = Color(0.560784, 0.403922, 0.2, 1)
-position = Vector2(0, -30)
 scale = Vector2(0.5, 0.5)
 
 [node name="Tilefront" type="Sprite2D" parent="Tile"]
+position = Vector2(0, -60)
 texture = ExtResource("3_jjdjy")
 
-[node name="Dry" type="AnimatedSprite2D" parent="Tile"]
-sprite_frames = SubResource("SpriteFrames_rwj4h")
-
 [node name="Wet" type="AnimatedSprite2D" parent="Tile"]
+position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_alfh7")
 frame = 2
+
+[node name="Dry" type="AnimatedSprite2D" parent="Tile"]
+position = Vector2(0, -60)
+sprite_frames = SubResource("SpriteFrames_rwj4h")
