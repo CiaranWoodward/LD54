@@ -1,11 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=14 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
 [ext_resource type="Script" path="res://Level.gd" id="1_k876p"]
 [ext_resource type="Script" path="res://PlayerCam.gd" id="2_hoiau"]
+[ext_resource type="Texture2D" uid="uid://cav6eqaldotxf" path="res://Graphics/Background/LeftPillar0000.png" id="3_47has"]
+[ext_resource type="Texture2D" uid="uid://c7bxvv2nnio4s" path="res://Graphics/Background/RightPillar0000.png" id="4_bn3l5"]
 [ext_resource type="PackedScene" uid="uid://0aejnixhhw7h" path="res://UI/HUD.tscn" id="4_mp570"]
-[ext_resource type="PackedScene" path="res://UI/Cursor.tscn" id="6_ec5jv"]
+[ext_resource type="PackedScene" uid="uid://d4j0a6xqs4pqq" path="res://UI/Cursor.tscn" id="6_ec5jv"]
+[ext_resource type="Texture2D" uid="uid://c6n8fbdm800f" path="res://Graphics/Background/Surface0000.png" id="7_rqtcc"]
+[ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
+
+[sub_resource type="Curve2D" id="Curve2D_y42ux"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -111, 609, 0, 0, 0, 0, 201, -98, 0, 0, 0, 0, 433, -324, 0, 0, 0, 0, 987, -567, 0, 0, 0, 0, 1570, -561, 0, 0, 0, 0, 2053, -307, 0, 0, 0, 0, 2447, 86, 0, 0, 0, 0, 2693, 610)
+}
+point_count = 8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
 texture = ExtResource("1_k5ldj")
@@ -22,6 +33,55 @@ sources/0 = SubResource("TileSetAtlasSource_golho")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_k876p")
+
+[node name="SunPath" type="Path2D" parent="."]
+position = Vector2(-1267, -330)
+curve = SubResource("Curve2D_y42ux")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SunPath"]
+position = Vector2(-111, 609)
+rotation = -1.1552
+rotates = false
+
+[node name="Sun" type="Sprite2D" parent="SunPath/PathFollow2D"]
+position = Vector2(142.074, -180.597)
+rotation = 1.1552
+texture = ExtResource("7_rqtcc")
+
+[node name="Sunlight" type="PointLight2D" parent="SunPath/PathFollow2D"]
+position = Vector2(485.389, 753.142)
+rotation = 1.1552
+color = Color(0.905882, 0.768627, 0.517647, 1)
+energy = 1.15
+blend_mode = 2
+texture = ExtResource("7_rqtcc")
+texture_scale = 1.45
+
+[node name="Pillar" type="Node2D" parent="."]
+position = Vector2(-13, 23)
+scale = Vector2(2, 2)
+
+[node name="Surface" type="Sprite2D" parent="Pillar"]
+position = Vector2(-13, 0)
+scale = Vector2(1.04, 1.04)
+texture = ExtResource("7_rqtcc")
+
+[node name="Left" type="Sprite2D" parent="Pillar/Surface"]
+self_modulate = Color(0.933333, 0.933333, 0.933333, 1)
+show_behind_parent = true
+position = Vector2(0, 384.135)
+texture = ExtResource("3_47has")
+
+[node name="Right" type="Sprite2D" parent="Pillar/Surface"]
+self_modulate = Color(0.87451, 0.87451, 0.87451, 1)
+show_behind_parent = true
+position = Vector2(0, 384.135)
+texture = ExtResource("4_bn3l5")
+
+[node name="Shadow" type="Sprite2D" parent="Pillar"]
+self_modulate = Color(0, 0, 0, 0.627451)
+position = Vector2(-13, 0)
+texture = ExtResource("8_r01vt")
 
 [node name="GardenTiles" type="TileMap" parent="."]
 y_sort_enabled = true
