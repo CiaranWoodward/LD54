@@ -10,6 +10,8 @@ func _ready():
 	Global.day = 0
 	Global.set_quota_count(Global.ProduceType.BERRY, 5)
 	Global.set_produce_count(Global.ProduceType.BERRY, 2)
+	# This should trigger only the start dialogue.
+	_tick_story()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,9 +28,15 @@ func _on_hud_action_changed(newAction, plantType):
 	$Cursor.change_action(newAction, plantType)
 	if newAction == Global.ActionType.END_TURN:
 		_on_turn_end()
-	
+
+func _tick_story():
+	$HUD.set_show_action_panel(false)
+	await Story.tick_story($HUD/Dialogue)
+	$HUD.set_show_action_panel(true)
+
 func _on_turn_end(): 
 	$HUD.clear_action()
 	$GardenTiles.tick()
 	Global.day += 1
 	Global.action_points = AP_per_day
+	await _tick_story()
