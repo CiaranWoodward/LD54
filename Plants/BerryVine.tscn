@@ -1,11 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceyd71bbq1om7"]
+[gd_scene load_steps=21 format=3 uid="uid://ceyd71bbq1om7"]
 
 [ext_resource type="Script" path="res://Plants/BerryVine.gd" id="1_pts4f"]
+[ext_resource type="Texture2D" uid="uid://bmnw5f48oef5w" path="res://Graphics/Plants/BerryVine/DeadCentre10000.png" id="2_ise3r"]
 [ext_resource type="Texture2D" uid="uid://c3xyelt6exr4g" path="res://Graphics/Plants/BerryVine/Centre10000.png" id="2_vbfxy"]
 [ext_resource type="Texture2D" uid="uid://dh35er3tjhcwg" path="res://Graphics/Plants/BerryVine/Centre20000.png" id="3_fjqnm"]
+[ext_resource type="Texture2D" uid="uid://cghd6kjgrw8ti" path="res://Graphics/Plants/BerryVine/DeadCentre20000.png" id="3_xpo53"]
 [ext_resource type="Texture2D" uid="uid://dg4rcmcna7psq" path="res://Graphics/Plants/BerryVine/Berry10000.png" id="4_j52dy"]
 [ext_resource type="Texture2D" uid="uid://bwxcm2nphueqf" path="res://Graphics/Plants/BerryVine/Berry20000.png" id="5_n4isl"]
 [ext_resource type="Texture2D" uid="uid://lcmc51egpe2a" path="res://Graphics/Plants/BerryVine/Berry30000.png" id="6_s2yr1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5m5up"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ise3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xpo53")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sjc03"]
 animations = [{
@@ -38,6 +54,138 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xdl8u"]
+animation = &"Alive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2umxc"]
+animation = &"Dying"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op3uw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xbdra"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ar24"]
+states/Alive/node = SubResource("AnimationNodeAnimation_xdl8u")
+states/Alive/position = Vector2(319, 100)
+states/Dying/node = SubResource("AnimationNodeAnimation_2umxc")
+states/Dying/position = Vector2(379, 177)
+transitions = ["Start", "Alive", SubResource("AnimationNodeStateMachineTransition_op3uw"), "Alive", "Dying", SubResource("AnimationNodeStateMachineTransition_xbdra")]
+graph_offset = Vector2(-55, 17)
+
+[sub_resource type="Animation" id="Animation_as4wg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BerryVine/Centre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BerryVine/Centre:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5lisw"]
+resource_name = "Alive"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BerryVine/Centre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ggtuc"]
+resource_name = "Dying"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BerryVine/Centre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BerryVine/Centre:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hugo0"]
+_data = {
+"Alive": SubResource("Animation_5lisw"),
+"Dying": SubResource("Animation_ggtuc"),
+"RESET": SubResource("Animation_as4wg")
+}
+
 [node name="BerryVine" type="Node2D"]
 script = ExtResource("1_pts4f")
 
@@ -45,9 +193,24 @@ script = ExtResource("1_pts4f")
 position = Vector2(0, -36)
 scale = Vector2(0.5, 0.5)
 
+[node name="DeadCentre" type="AnimatedSprite2D" parent="BerryVine"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5m5up")
+frame = 1
+
 [node name="Centre" type="AnimatedSprite2D" parent="BerryVine"]
 sprite_frames = SubResource("SpriteFrames_sjc03")
 frame = 1
 
-[node name="Berry" type="AnimatedSprite2D" parent="BerryVine"]
+[node name="Berry" type="AnimatedSprite2D" parent="BerryVine/Centre"]
 sprite_frames = SubResource("SpriteFrames_nfhed")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_1ar24")
+anim_player = NodePath("AnimationPlayer")
+active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+libraries = {
+"": SubResource("AnimationLibrary_hugo0")
+}
