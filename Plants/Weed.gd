@@ -39,10 +39,10 @@ func spread_impl(tiles):
 			tile.child_plant.kill()
 		else:
 			var weed = load("res://Plants/Weed.tscn").instantiate()
-			weed.sow(tile)
+			weed.sow(tile, false)
 
-func can_sow(tile : PlantTile) -> bool:
+func can_sow(tile : PlantTile, use_seed: bool = false) -> bool:
 	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT)
 
-func sow(tile : PlantTile) -> bool:
-	return super(tile)
+func sow(tile : PlantTile, use_seed: bool = false) -> bool:
+	return super(tile, use_seed)

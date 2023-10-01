@@ -46,18 +46,19 @@ func tick():
 	ticked.emit()
 
 ## Can this plant be sown on this tile
-func can_sow(tile : PlantTile) -> bool:
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	if (tile.is_occupied()):
 		return false
-	if Global.get_seed_count(plant_type()) <= 0:
+	if use_seed && Global.get_seed_count(plant_type()) <= 0:
 		return false
 	return true
 
 ## Attempt to sow a seed on a tile, returns false if unsuccessful
-func sow(tile : PlantTile) -> bool:
-	if !can_sow(tile):
+func sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	if !can_sow(tile, use_seed):
 		return false
-	Global.change_seed_count(plant_type(), -1)
+	if use_seed:
+		Global.change_seed_count(plant_type(), -1)
 	tile.child_plant = self
 	parent_tile = tile
 	return true

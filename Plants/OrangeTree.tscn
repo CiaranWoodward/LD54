@@ -837,6 +837,8 @@ _data = {
 
 [node name="OrangeTree" type="Node2D"]
 script = ExtResource("1_runvr")
+spread_percent_fertile = null
+spread_percent_infertile = null
 
 [node name="Tree" type="Sprite2D" parent="."]
 

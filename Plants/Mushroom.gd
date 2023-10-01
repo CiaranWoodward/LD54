@@ -34,13 +34,16 @@ func _ready():
 func plant_type():
 	return Global.PlantType.MUSHROOM
 	
-func can_sow(tile : PlantTile) -> bool:
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD && Global.get_seed_count(plant_type()) > 0
-	
-func sow(tile: PlantTile):
-	if !can_sow(tile):
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	if use_seed && Global.get_seed_count(plant_type()) <= 0:
 		return false
-	Global.change_seed_count(plant_type(), -1)
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD
+	
+func sow(tile: PlantTile, use_seed: bool = true):
+	if !can_sow(tile, use_seed):
+		return false
+	if use_seed:
+		Global.change_seed_count(plant_type(), -1)
 	host = tile.child_plant
 	host.ticked.connect(tick)
 	parent_tile = tile
@@ -65,4 +68,4 @@ func spread_impl(tiles):
 		if (tile.is_occupied() && tile.child_plant.status == Status.DEAD && tile.child_plant.hosted_plant == null):
 			var mushroom = load("res://Plants/Mushroom.tscn").instantiate()
 			mushroom.cluster_varient = cluster_varient
-			mushroom.sow(tile)
+			mushroom.sow(tile, false)

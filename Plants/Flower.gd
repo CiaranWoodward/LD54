@@ -56,11 +56,11 @@ func spread_impl(tiles):
 	for tile in tiles:
 		if (!tile.is_occupied()):
 			var flower = load("res://Plants/Flower.tscn").instantiate()
-			flower.sow(tile)
+			flower.sow(tile, false)
 			
 
-func can_sow(tile : PlantTile) -> bool:
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && super(tile)
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && super(tile, use_seed)
 
-func sow(tile : PlantTile) -> bool:
-	return super(tile)
+func sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return super(tile, use_seed)

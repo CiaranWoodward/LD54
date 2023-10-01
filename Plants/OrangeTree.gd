@@ -14,5 +14,5 @@ func kill():
 	super()
 	destroy()
 	
-func can_sow(tile : PlantTile) -> bool:
-	return super(tile)
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return super(tile, use_seed)
