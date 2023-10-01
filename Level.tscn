@@ -48,15 +48,6 @@ position = Vector2(142.074, -180.597)
 rotation = 1.1552
 texture = ExtResource("7_rqtcc")
 
-[node name="Sunlight" type="PointLight2D" parent="SunPath/PathFollow2D"]
-position = Vector2(485.389, 753.142)
-rotation = 1.1552
-color = Color(0.905882, 0.768627, 0.517647, 1)
-energy = 1.15
-blend_mode = 2
-texture = ExtResource("7_rqtcc")
-texture_scale = 1.45
-
 [node name="Pillar" type="Node2D" parent="."]
 position = Vector2(-13, 23)
 scale = Vector2(2, 2)

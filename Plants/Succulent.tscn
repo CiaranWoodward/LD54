@@ -8,6 +8,6 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_msnik")
 
 [node name="Succulent" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, 26)
 texture = ExtResource("2_qsf6e")
 offset = Vector2(0, -138)
