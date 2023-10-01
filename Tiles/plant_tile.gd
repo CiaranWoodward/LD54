@@ -95,6 +95,13 @@ func getAdjacent() -> Array:
 		return is_instance_valid(tile)
 	)
 
+func has_adjacent(type = null) -> bool:
+	return !getAdjacent().filter(func(tile: PlantTile): 
+		return tile.is_occupied()
+	).filter(func(tile: PlantTile): 
+		return type == null || tile.child_plant.plant_type() == type
+	).is_empty()
+
 func is_occupied() -> bool:
 	return is_instance_valid(child_plant)
 	
