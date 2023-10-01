@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b12vy3lcl7xu"
-path="res://.godot/imported/WhiteLeaf0000.png-af2ac87bd190f410e61005ccabd76a2a.ctex"
+uid="uid://cayb2il4kvn8j"
+path="res://.godot/imported/Soil0000.png-23786db8cdba4f19c498a1aedd5fdec3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Plants/Particles/WhiteLeaf0000.png"
-dest_files=["res://.godot/imported/WhiteLeaf0000.png-af2ac87bd190f410e61005ccabd76a2a.ctex"]
+source_file="res://Graphics/Particles/Soil0000.png"
+dest_files=["res://.godot/imported/Soil0000.png-23786db8cdba4f19c498a1aedd5fdec3.ctex"]
 
 [params]
 
