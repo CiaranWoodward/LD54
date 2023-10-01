@@ -31,3 +31,6 @@ func tick():
 func kill():
 	super()
 	destroy()
+
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return super(tile, use_seed)

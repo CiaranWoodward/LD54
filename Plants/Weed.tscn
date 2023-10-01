@@ -20,6 +20,8 @@ animations = [{
 
 [node name="Weed" type="Node2D"]
 script = ExtResource("1_uuff7")
+spread_percent_fertile = 5
+spread_percent_infertile = 2
 
 [node name="Weed" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

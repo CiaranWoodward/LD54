@@ -9,3 +9,10 @@ static func plant_description():
 
 func plant_type():
 	return Global.PlantType.ORANGE_TREE
+	
+func kill():
+	super()
+	destroy()
+	
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return super(tile, use_seed)

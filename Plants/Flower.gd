@@ -49,10 +49,18 @@ func tick():
 	elif age > time_to_grow:
 		if status != Status.HARVESTABLE:
 			stateMachine.travel("Big")
+			spread()
 		status = Status.HARVESTABLE
 
-func can_sow(tile : PlantTile) -> bool:
-	return super(tile)
+func spread_impl(tiles):
+	for tile in tiles:
+		if (!tile.is_occupied()):
+			var flower = load("res://Plants/Flower.tscn").instantiate()
+			flower.sow(tile, false)
+			
 
-func sow(tile : PlantTile) -> bool:
-	return super(tile)
+func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && super(tile, use_seed)
+
+func sow(tile : PlantTile, use_seed: bool = true) -> bool:
+	return super(tile, use_seed)
