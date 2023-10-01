@@ -55,10 +55,10 @@ func _input(event):
 		_bound_level()
 
 func _bound_level():
-	if position.x < 0:
-		position.x = 0
-	if position.y < 0:
-		position.y = 0
+	if position.x < -MaxPos.x:
+		position.x = -MaxPos.x
+	if position.y < -MaxPos.y:
+		position.y = -MaxPos.y
 	if position.x > MaxPos.x:
 		position.x = MaxPos.x
 	if position.y > MaxPos.y:
