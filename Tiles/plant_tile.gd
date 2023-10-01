@@ -3,7 +3,7 @@ extends Node2D
 
 const MAX_FERTILITY = 10
 
-@export var decay_percent = 50
+@export var decay_percent = 20
 
 @export var color_fertile = Color.BROWN
 @export var color_dry = Color.BEIGE
@@ -11,7 +11,8 @@ const MAX_FERTILITY = 10
 @export var ripple_period = 0.25
 @export_range(0.00, 1.0) var ripple_inverse_damping = 0.5
 
-var fertility : int = 10 : set = set_fertile
+var fertility : int = randi_range(4, 7) : set = set_fertile
+var is_fertile: bool = fertility > 5
 var child_plant : BasePlant = null : set = set_child_plant
 
 var _dry_tween
@@ -26,18 +27,22 @@ func _ready():
 	_base_position = position
 
 func set_fertile(newFertile):
-	var was_fertile = is_fertile()
+	var was_fertile = is_fertile
 	fertility = newFertile
 	if fertility > MAX_FERTILITY:
 		fertility = MAX_FERTILITY
 	if fertility < 0:
 		fertility = 0
-	if is_fertile() != was_fertile:
+	if (was_fertile && fertility <= 3):
+		is_fertile = false
+	if (!was_fertile && fertility >= 7):
+		is_fertile = true
+	if is_fertile != was_fertile:
 		_update_image()
 	_update_color()
 
 func _update_image():
-	if is_fertile():
+	if is_fertile:
 		$Tile/Dry.visible = false
 		$Tile/Wet.frame = randi() % $Tile/Wet.sprite_frames.get_frame_count("default")
 		$Tile/Wet.scale = Vector2(1 if randi() % 2 else -1, 1)
@@ -90,9 +95,6 @@ func getAdjacent() -> Array:
 		return is_instance_valid(tile)
 	)
 
-func is_fertile() -> bool:
-	return (fertility > 5)
-
 func is_occupied() -> bool:
 	return is_instance_valid(child_plant)
 	
@@ -100,7 +102,7 @@ func tick():
 	# decay the fertility by 1 randomly if unoccupied
 	if is_occupied():
 		child_plant.tick()
-	elif randi() % 100 < decay_percent:
+	if randi_range(0, 100) < decay_percent:
 		self.fertility -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
