@@ -32,7 +32,7 @@ func _ready():
 			name = "Mr. Godot",
 		}
 	])
-	test_convo.yes_script([
+	test_convo.no_script([
 		{
 			text = "Thank you.",
 			image = "GodotFace",

@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ivh3v87hka2i"]
+[gd_scene load_steps=6 format=3 uid="uid://ivh3v87hka2i"]
 
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_13m46"]
 [ext_resource type="Script" path="res://UI/plant_button.gd" id="1_bqnd4"]
-[ext_resource type="Texture2D" uid="uid://dwcvyeimvap82" path="res://Graphics/Background/SeedJar0000.png" id="3_6nmco"]
-[ext_resource type="Texture2D" uid="uid://tm24us0h2aah" path="res://Graphics/Background/JarLid0000.png" id="4_5fnpi"]
 [ext_resource type="Texture2D" uid="uid://bbebnlpbj1o77" path="res://Graphics/Background/AJar0000.png" id="5_m23gh"]
 [ext_resource type="Texture2D" uid="uid://dj6s3wwu8lk1s" path="res://Graphics/Background/OpenJar0000.png" id="6_vtorv"]
 [ext_resource type="Texture2D" uid="uid://brk133p7qgyc" path="res://Graphics/Background/AjarJar0000.png" id="7_2jmdk"]
@@ -24,11 +22,9 @@ script = ExtResource("1_bqnd4")
 visible = false
 position = Vector2(60, 61)
 scale = Vector2(0.343144, 0.343144)
-texture = ExtResource("3_6nmco")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 visible = false
-texture = ExtResource("4_5fnpi")
 
 [node name="Button" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(80, 80)

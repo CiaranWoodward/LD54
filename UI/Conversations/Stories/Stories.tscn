@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3qtnf3cihei4"]
 
-[ext_resource type="Script" path="res://UI/Conversations/Stories/TestStory.gd" id="1_aofqm"]
+[ext_resource type="Script" path="res://UI/Conversations/Stories/MainStory.gd" id="1_cc6ok"]
 
 [node name="Stories" type="Node2D"]
 
-[node name="TestStory" type="Node" parent="."]
-script = ExtResource("1_aofqm")
+[node name="MainStory" type="Node" parent="."]
+script = ExtResource("1_cc6ok")

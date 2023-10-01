@@ -56,7 +56,7 @@ func run_conversation(convo : Conversation):
 
 func _run_conversation_meat(convo : Conversation):
 	# Go through conversation.
-	_run_dialogue_pages(convo.dialogue_pages)
+	await _run_dialogue_pages(convo.dialogue_pages)
 	
 	# Choice?
 	if !convo.choice_text.is_empty():
@@ -64,22 +64,24 @@ func _run_conversation_meat(convo : Conversation):
 		$QuestionDialog.visible = true
 		var answer = await _choice_confirmed
 		convo.choice.call(answer)
-		if answer: _run_dialogue_pages(convo.dialogue_pages_choice_yes)
-		else: _run_dialogue_pages(convo.dialogue_pages_choice_no)
+		if answer: await _run_dialogue_pages(convo.dialogue_pages_choice_yes)
+		else: await _run_dialogue_pages(convo.dialogue_pages_choice_no)
 
 	# Is there more?
 	if is_instance_valid(convo.next):
 		await _run_conversation_meat(convo.next)
 
 func _run_dialogue_pages(pages : Array[Dictionary]):
-	var prev_name = ""
-	var prev_image = ""
+	var name = ""
+	var image = ""
 	for page in pages:
 		if page.has("when"):
-			if page["when"].call():
+			if !page["when"].call():
 				continue
-		_show_picture(page.get("image", prev_image))
-		$NinePatchRect/Name.text = page.get("name", prev_name)
+		name = page.get("name", name)
+		image = page.get("image", image)
+		_show_picture(image)
+		$NinePatchRect/Name.text = name
 		$NinePatchRect/Text.text = page["text"]
 		$NinePatchRect/Text.visible_characters = 0
 		_character_tween = create_tween()
