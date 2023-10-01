@@ -6,7 +6,7 @@ signal interacted_with_tile(tile : PlantTile)
 @export var invalid_color : Color = Color.WHITE
 @export var valid_color : Color = Color.WHITE
 
-var _current_action
+var _current_action = Global.ActionType.NONE
 var _current_plant
 var _current_plantinstance
 var _current_tile
