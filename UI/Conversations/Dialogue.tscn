@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://bljefgflbomjq"]
+
+[ext_resource type="Script" path="res://UI/Conversations/Dialogue.gd" id="1_kgon7"]
+[ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="2_es2ro"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kgon7")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -177.0
+offset_right = -42.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_es2ro")
+patch_margin_left = 62
+patch_margin_top = 64
+patch_margin_right = 62
+patch_margin_bottom = 58
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 16.0
+offset_right = -151.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "The quick brown fox jumped over the lazy dog
+That damn
+lazy dog"
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Pictures" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_right = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GodotFace" type="Sprite2D" parent="NinePatchRect/Pictures"]
+texture = ExtResource("2_es2ro")
+
+[node name="Name" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -49.0
+offset_right = 95.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 30
+text = "Nigel"
+
+[node name="QuestionDialog" type="ConfirmationDialog" parent="."]
+gui_embed_subwindows = true
+title = ""
+initial_position = 2
+size = Vector2i(300, 100)
+exclusive = false
+unresizable = true
+borderless = true
+always_on_top = true
+popup_window = true
+ok_button_text = "Yes"
+dialog_text = "Give Paul 3 mushrooms?"
+dialog_close_on_escape = false
+dialog_autowrap = true
+cancel_button_text = "No"
+
+[connection signal="canceled" from="QuestionDialog" to="." method="_on_question_dialog_denied"]
+[connection signal="confirmed" from="QuestionDialog" to="." method="_on_question_dialog_confirmed"]

@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cav6eqaldotxf" path="res://Graphics/Background/LeftPillar0000.png" id="3_47has"]
 [ext_resource type="Texture2D" uid="uid://c7bxvv2nnio4s" path="res://Graphics/Background/RightPillar0000.png" id="4_bn3l5"]
 [ext_resource type="PackedScene" uid="uid://0aejnixhhw7h" path="res://UI/HUD.tscn" id="4_mp570"]
+[ext_resource type="PackedScene" uid="uid://bljefgflbomjq" path="res://UI/Conversations/Dialogue.tscn" id="6_5r73e"]
 [ext_resource type="PackedScene" uid="uid://d4j0a6xqs4pqq" path="res://UI/Cursor.tscn" id="6_ec5jv"]
 [ext_resource type="Texture2D" uid="uid://c6n8fbdm800f" path="res://Graphics/Background/Surface0000.png" id="7_rqtcc"]
+[ext_resource type="PackedScene" uid="uid://b3qtnf3cihei4" path="res://UI/Conversations/Stories/Stories.tscn" id="8_0o1h3"]
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
 
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
@@ -96,6 +98,11 @@ MaxPos = Vector2(400, 400)
 
 [node name="HUD" parent="." instance=ExtResource("4_mp570")]
 
+[node name="Dialogue" parent="HUD" instance=ExtResource("6_5r73e")]
+visible = false
+
 [node name="Cursor" parent="." instance=ExtResource("6_ec5jv")]
+
+[node name="Stories" parent="." instance=ExtResource("8_0o1h3")]
 
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]

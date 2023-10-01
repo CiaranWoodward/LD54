@@ -32,3 +32,6 @@ func _on_turn_end():
 	$GardenTiles.tick()
 	Global.day += 1
 	Global.action_points = AP_per_day
+	$HUD.set_show_action_panel(false)
+	await Story.tick_story($HUD/Dialogue)
+	$HUD.set_show_action_panel(true)
