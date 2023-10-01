@@ -1,6 +1,125 @@
-[gd_scene load_steps=2 format=3 uid="uid://draeb2mjmoqj"]
+[gd_scene load_steps=5 format=3 uid="uid://draeb2mjmoqj"]
 
 [ext_resource type="Script" path="res://Plants/Mushroom.gd" id="1_3e0xn"]
+[ext_resource type="PackedScene" uid="uid://bns8uj1fml6u" path="res://Plants/IndiMush.tscn" id="2_wvmaw"]
+
+[sub_resource type="Animation" id="Animation_tpqll"]
+resource_name = "Wave"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cluster/IndiMush4")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cluster/IndiMush5")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cluster/IndiMush")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cluster/IndiMush3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cluster/IndiMush6")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cluster/IndiMush2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Up"],
+"method": &"play_anim"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jgeu"]
+_data = {
+"Wave": SubResource("Animation_tpqll")
+}
 
 [node name="Mushroom" type="Node2D"]
 script = ExtResource("1_3e0xn")
+
+[node name="Cluster" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="IndiMush" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(-16, -56)
+
+[node name="IndiMush2" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(94, 4)
+
+[node name="IndiMush3" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(10, -4)
+
+[node name="IndiMush4" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(-70, 18)
+
+[node name="IndiMush5" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(-22, 74)
+
+[node name="IndiMush6" parent="Cluster" instance=ExtResource("2_wvmaw")]
+position = Vector2(60, 54)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7jgeu")
+}

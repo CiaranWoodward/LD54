@@ -1,6 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceyd71bbq1om7"]
+[gd_scene load_steps=9 format=3 uid="uid://ceyd71bbq1om7"]
 
 [ext_resource type="Script" path="res://Plants/BerryVine.gd" id="1_pts4f"]
+[ext_resource type="Texture2D" uid="uid://c3xyelt6exr4g" path="res://Graphics/Plants/BerryVine/Centre10000.png" id="2_vbfxy"]
+[ext_resource type="Texture2D" uid="uid://dh35er3tjhcwg" path="res://Graphics/Plants/BerryVine/Centre20000.png" id="3_fjqnm"]
+[ext_resource type="Texture2D" uid="uid://dg4rcmcna7psq" path="res://Graphics/Plants/BerryVine/Berry10000.png" id="4_j52dy"]
+[ext_resource type="Texture2D" uid="uid://bwxcm2nphueqf" path="res://Graphics/Plants/BerryVine/Berry20000.png" id="5_n4isl"]
+[ext_resource type="Texture2D" uid="uid://lcmc51egpe2a" path="res://Graphics/Plants/BerryVine/Berry30000.png" id="6_s2yr1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjc03"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vbfxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fjqnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfhed"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_j52dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n4isl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s2yr1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BerryVine" type="Node2D"]
 script = ExtResource("1_pts4f")
+
+[node name="BerryVine" type="Node2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(0.5, 0.5)
+
+[node name="Centre" type="AnimatedSprite2D" parent="BerryVine"]
+sprite_frames = SubResource("SpriteFrames_sjc03")
+frame = 1
+
+[node name="Berry" type="AnimatedSprite2D" parent="BerryVine"]
+sprite_frames = SubResource("SpriteFrames_nfhed")
