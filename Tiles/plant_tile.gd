@@ -8,17 +8,22 @@ const MAX_FERTILITY = 10
 @export var color_fertile = Color.BROWN
 @export var color_dry = Color.BEIGE
 @export var color_random = 0.05
+@export var ripple_period = 0.25
+@export_range(0.00, 1.0) var ripple_inverse_damping = 0.5
 
 var fertility : int = 10 : set = set_fertile
 var child_plant : BasePlant = null : set = set_child_plant
 
 var _dry_tween
 var _color_tween
+var _base_position
+var _next_height = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_image()
 	_update_color()
+	_base_position = position
 
 func set_fertile(newFertile):
 	var was_fertile = is_fertile()
@@ -54,6 +59,22 @@ func _update_color():
 	var newcolor = Tween.interpolate_value(color_dry, color_fertile - color_dry, frac, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	_color_tween = create_tween()
 	_color_tween.tween_property($Tile, "modulate", newcolor, randf_range(0.8, 1.5)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+
+func ripple(height: float, delay: float):
+	if height < _next_height:
+		return
+	if height < 0.5:
+		position = _base_position
+		_next_height = 0.0
+		return
+	var offset = Vector2(0, height)
+	var new_tween = create_tween()
+	new_tween.tween_property(self, "position", _base_position, delay).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	new_tween.tween_property(self, "position", _base_position + offset, ripple_period / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	new_tween.tween_property(self, "position", _base_position - offset / 2, ripple_period).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	new_tween.tween_property(self, "position", _base_position, ripple_period / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_next_height = height * ripple_inverse_damping
+	new_tween.tween_callback(func(): ripple(_next_height, 0.0))
 
 func set_child_plant(newChildPlant: BasePlant): 
 	if is_instance_valid(child_plant):

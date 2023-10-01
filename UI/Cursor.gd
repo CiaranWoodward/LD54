@@ -1,5 +1,7 @@
 extends Node2D
 
+signal interacted_with_tile(tile : PlantTile)
+
 @export var idle_color : Color = Color.WHITE
 @export var invalid_color : Color = Color.WHITE
 @export var valid_color : Color = Color.WHITE
@@ -102,5 +104,6 @@ func _apply_action():
 			if !_current_plantinstance.can_sow(_current_tile):
 				return
 			_current_plantinstance.sow(_current_tile)
+	interacted_with_tile.emit(_current_tile)
 	Global.action_points -= 1
 	clear_action_func.call()
