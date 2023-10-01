@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c8xwku2rgn7i8"]
+[gd_scene load_steps=42 format=3 uid="uid://c8xwku2rgn7i8"]
 
 [ext_resource type="Script" path="res://Plants/Flower.gd" id="1_3fli0"]
 [ext_resource type="Texture2D" uid="uid://dprp3ofy5yl3d" path="res://Graphics/Plants/Flower/Bud0000.png" id="2_i62ve"]
@@ -133,6 +133,10 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3lp4t"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qiguu"]
 states/Big/node = SubResource("AnimationNodeAnimation_3vuo6")
 states/Big/position = Vector2(697, 172)
@@ -146,7 +150,7 @@ states/Small/position = Vector2(431, 172)
 states/Start/position = Vector2(119, 72)
 states/Withered/node = SubResource("AnimationNodeAnimation_fl7qu")
 states/Withered/position = Vector2(862, 172)
-transitions = ["Small", "Growing", SubResource("AnimationNodeStateMachineTransition_lvatp"), "Big", "Withered", SubResource("AnimationNodeStateMachineTransition_grqh4"), "Growing", "Big", SubResource("AnimationNodeStateMachineTransition_l6gkr"), "Plant", "Small", SubResource("AnimationNodeStateMachineTransition_ts1xp")]
+transitions = ["Small", "Growing", SubResource("AnimationNodeStateMachineTransition_lvatp"), "Big", "Withered", SubResource("AnimationNodeStateMachineTransition_grqh4"), "Growing", "Big", SubResource("AnimationNodeStateMachineTransition_l6gkr"), "Plant", "Small", SubResource("AnimationNodeStateMachineTransition_ts1xp"), "Start", "Plant", SubResource("AnimationNodeStateMachineTransition_3lp4t")]
 
 [sub_resource type="Animation" id="Animation_gh8pu"]
 resource_name = "Big"
@@ -346,7 +350,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -358,7 +362,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -370,7 +374,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -382,7 +386,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_mpmqe"]
@@ -460,11 +464,11 @@ _data = {
 }
 
 [node name="Flower" type="Node2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_3fli0")
 
 [node name="Flower" type="Sprite2D" parent="."]
 position = Vector2(-1, 1)
+scale = Vector2(0.5, 0.5)
 offset = Vector2(1, -143)
 
 [node name="Bud" type="AnimatedSprite2D" parent="Flower"]
