@@ -66,7 +66,7 @@ offset_right = -79.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="GodotFace" type="Sprite2D" parent="NinePatchRect/Pictures"]
+[node name="Officer" type="Sprite2D" parent="NinePatchRect/Pictures"]
 texture = ExtResource("2_es2ro")
 
 [node name="Name" type="Label" parent="NinePatchRect"]

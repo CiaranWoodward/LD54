@@ -1,59 +1,75 @@
 extends Node
 
-var was_punched = false
+var bootlicker = 0
 
-@onready var test_convo = Conversation.new()
-@onready var test_convo_ouch = Conversation.new()
-
-@onready var test_convo2 = Conversation.new()
+@onready var main1 = Conversation.new()
+@onready var main2 = Conversation.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	test_convo.is_triggered = func():
-		return Global.day == 3
-	test_convo.script([
+	main1.is_triggered = func():
+		return Global.day == 0
+	main1.script([
 		{
-			text = "Hi there, I hope you're settling in well.",
-			image = "GodotFace",
-			name = "Mr. Godot",
+			text = "Beautiful view from up here, isn't it.",
+			image = "Officer",
+			name = "???",
 		},
 		{
-			text = "Now get back to work!",
-		}
-	])
-	test_convo.choice_text = "Punch him in the face?"
-	test_convo.choice = func(answer: bool):
-		was_punched = answer
-		Story.active_set.append(test_convo2)
-	test_convo.yes_script([
+			text = "...",
+		},
 		{
-			text = "Ouch, you'll pay for that!",
-			image = "GodotFace",
-			name = "Mr. Godot",
-		}
-	])
-	test_convo.no_script([
+			text = "Sorry, I'm Senior Community Agriculture Officer Stanfield - you can call me Jon.",
+			name = "Jon",
+		},
 		{
-			text = "Thank you.",
-			image = "GodotFace",
-			name = "Mr. Godot",
+			text = "I hope you settle in quickly here in your new home. We're relying on [b]you[/b] to produce supplies for the [i]incredible[/i] people who live in this neighborhood.",
+		},
+		{
+			text = "It's much more efficient to farm up here since the buildings obstruct all of the sunlight down below.",
+		},
+		{
+			text = "I'll check in with you every week. Please prepare 10 flowers and 5 berries for my collection next week.",
+		},
+		{
+			text = "Here are some seeds, Long live the meritocracy!",
+			callback = func():
+				Global.change_seed_count(Global.PlantType.FLOWER, 10)
+				Global.change_seed_count(Global.PlantType.BERRY_VINE, 5)
+				,
+		},
+	])
+	main1.choice_text = "Thank him?"
+	main1.choice = func(answer: bool):
+		if answer:
+			bootlicker += 1
+	main1.yes_script([
+		{
+			text = "[i]He nods with a smile, he appreciates your respect of his position[/i]",
 		}
 	])
 	
-	test_convo2.script([
+	main2.is_triggered = func():
+		return Global.day == 7
+	main2.script([
 		{
-			when = func(): return was_punched,
-			text = "[i]He noticably has a black eye, and looks very angry[/i]",
+			when = func(): return bootlicker > 0,
+			text = "[i]He smiles as he sees you[/i]",
+			image = "Officer",
+		},
+		{
+			when = func(): return bootlicker > 0 && !Global.quota_met(),
+			text = "[i]But his face drops when he sees you haven't met quota.[/i]",
+			image = "Officer",
 		},
 		{
 			text = "Product please.",
-			image = "GodotFace",
-			name = "Mr. Godot",
-			callback = func(): pass
+			name = "Jon",
 		}
 	])
 	
-	Story.active_set.push_back(test_convo)
+	Story.active_set.push_back(main1)
+	Story.active_set.push_back(main2)
 
 func take_quota(convo : Conversation):
 	pass
