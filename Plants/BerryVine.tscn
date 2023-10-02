@@ -188,6 +188,7 @@ _data = {
 
 [node name="BerryVine" type="Node2D"]
 script = ExtResource("1_pts4f")
+spread_percent_fertile = 17
 
 [node name="BerryVine" type="Node2D" parent="."]
 position = Vector2(0, -36)

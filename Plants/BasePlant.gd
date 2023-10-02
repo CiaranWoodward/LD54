@@ -1,7 +1,9 @@
 class_name BasePlant
 extends Node2D
 
-signal ticked;
+signal ticked
+signal harvested
+signal destroyed
 
 enum Status { DEAD, GROWING, HARVESTABLE }
 
@@ -28,11 +30,12 @@ func can_harvest() -> bool:
 
 ## Harvest the fruit (Might also destroy for some plants)
 func harvest():
-	pass
+	harvested.emit()
 
 ## Destroy the plant (Also harvests anything harvestable)
 func destroy():
 	if is_instance_valid(parent_tile):
+		destroyed.emit()
 		parent_tile.child_plant = null
 		parent_tile = null
 
@@ -68,7 +71,7 @@ func plant_type() -> Global.PlantType:
 	return Global.PlantType.WEED
 
 # function to get the tiles to attempt to spread to
-func get_spread_tiles():
+func get_spread_tiles() -> Array:
 	return parent_tile.getAdjacent().filter(func(tile: PlantTile):
 		if tile.is_fertile:
 			return randi_range(0, 100) < spread_percent_fertile
@@ -77,7 +80,7 @@ func get_spread_tiles():
 	)
 
 ## Override this with the spreading logic for the plant
-func spread_impl(tiles):
+func spread_impl(tiles: Array):
 	assert(false, "ERROR: Spreding logic not implemented!")
 
 # function to spread the plant to the candidate tiles

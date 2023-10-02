@@ -25,9 +25,10 @@ func plant_type():
 	return Global.PlantType.FLOWER
 
 func harvest():
+	super()
 	if status == Status.HARVESTABLE:
 		Global.change_produce_count(Global.ProduceType.FLOWER, 1)
-	destroy()
+		destroy()
 
 func destroy():
 	super()

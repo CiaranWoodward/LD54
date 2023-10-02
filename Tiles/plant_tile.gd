@@ -96,8 +96,10 @@ func getAdjacent() -> Array:
 	var parent = (self.get_parent() as GardenTiles)
 	return parent.get_surrounding_cells(parent.local_to_map(position)).map(func(pos: Vector2i):
 		return parent.get_plant_tile(pos)
-	).filter(func(tile): 
+	).filter(func(tile: PlantTile): 
 		return is_instance_valid(tile)
+	).map(func(tile):
+		return tile as PlantTile
 	)
 
 func has_adjacent(type = null) -> bool:

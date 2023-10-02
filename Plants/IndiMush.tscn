@@ -320,6 +320,7 @@ script = ExtResource("1_5x3g2")
 [node name="Leggy" type="AnimatedSprite2D" parent="IndiMush"]
 position = Vector2(0, -117)
 sprite_frames = SubResource("SpriteFrames_c8y0c")
+frame_progress = 0.778346
 
 [node name="Stumpy" type="AnimatedSprite2D" parent="IndiMush"]
 visible = false
