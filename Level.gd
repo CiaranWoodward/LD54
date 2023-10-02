@@ -46,7 +46,7 @@ func _reset_day():
 	$DayCycle.seek(0)
 
 func _update_sky_from_ap(ap):
-	var t = Tween.interpolate_value(0.2, 0.8, float(AP_per_day-ap)/float(AP_per_day), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	var t = Tween.interpolate_value(0.2, 0.7, float(AP_per_day-ap)/float(AP_per_day), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	await _update_sky(t)
 
 func _update_sky(time : float):

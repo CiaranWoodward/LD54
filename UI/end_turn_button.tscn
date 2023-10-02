@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwa26aog7olj5"]
+[gd_scene load_steps=7 format=3 uid="uid://dwa26aog7olj5"]
 
 [ext_resource type="Script" path="res://UI/action_button.gd" id="1_0qajt"]
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_06gra"]
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_idpv2"]
+[ext_resource type="Texture2D" uid="uid://dnmdkrtpwc5d2" path="res://Graphics/Icons/Next0000.png" id="3_0knpw"]
+[ext_resource type="Texture2D" uid="uid://co81cpqqskkku" path="res://Graphics/Icons/NextDarker0000.png" id="5_8bbfk"]
+[ext_resource type="Texture2D" uid="uid://be47rp2jk1x15" path="res://Graphics/Icons/NextBlack0000.png" id="6_ch4ud"]
 
 [node name="EndTurnButton" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 70.0
+theme = ExtResource("1_idpv2")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -16,10 +19,21 @@ theme_override_constants/margin_bottom = 10
 script = ExtResource("1_0qajt")
 action_type = 4
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 tooltip_text = "End your turn, discarding any unused actions."
 toggle_mode = true
 button_group = ExtResource("1_06gra")
-text = "End Turn"
+texture_normal = ExtResource("3_0knpw")
+texture_pressed = ExtResource("6_ch4ud")
+texture_hover = ExtResource("5_8bbfk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Next Day"
+horizontal_alignment = 1
+vertical_alignment = 1

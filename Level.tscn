@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=36 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c6n8fbdm800f" path="res://Graphics/Background/Surface0000.png" id="7_rqtcc"]
 [ext_resource type="PackedScene" uid="uid://b3qtnf3cihei4" path="res://UI/Conversations/Stories/Stories.tscn" id="8_0o1h3"]
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
+[ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="16_f17ko"]
+[ext_resource type="FontFile" uid="uid://da5mqruadxpgh" path="res://UI/Fonts/Ubuntu-Medium.ttf" id="17_es3rc"]
 
 [sub_resource type="Gradient" id="Gradient_v60wk"]
 offsets = PackedFloat32Array(1)
@@ -27,9 +29,9 @@ gradient = SubResource("Gradient_v60wk")
 
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -664, 1582, 0, 0, 0, 0, -376, 263, 0, 0, 0, 0, -50, -170, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2876, 266, 0, 0, 0, 0, 3024, 794, 0, 0, 0, 0, 3133, 1812)
+"points": PackedVector2Array(0, 0, 0, 0, -431, 1502, 0, 0, 0, 0, -223, 551, 0, 0, 0, 0, 71, -106, 0, 0, 0, 0, 638, -472, 0, 0, 0, 0, 1265, -627, 0, 0, 0, 0, 1952, -431, 0, 0, 0, 0, 2367, -155, 0, 0, 0, 0, 2677, 491, 0, 0, 0, 0, 2877, 1502)
 }
-point_count = 11
+point_count = 9
 
 [sub_resource type="Gradient" id="Gradient_36jqf"]
 colors = PackedColorArray(0.800491, 0.800491, 0.800491, 0.454902, 0.784314, 0.784314, 0.784314, 0.741176)
@@ -113,6 +115,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_qj57s"]
 resource_name = "DayCycle"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,8 +135,8 @@ tracks/1/path = NodePath("Sky/SunPath/PathFollow2D/Sun:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(2, 1, 0.482968, 1),
 "update": 0,
 "values": [Color(1, 0.533333, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.533333, 0, 1)]
 }
@@ -360,6 +363,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 texture = SubResource("GradientTexture1D_1aqi2")
+metadata/_edit_use_anchors_ = true
 
 [node name="Buildings" type="Node2D" parent="Sky"]
 position = Vector2(0, -373)
@@ -422,8 +426,9 @@ position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
-position = Vector2(-664, 1582)
+position = Vector2(2761.07, 915.964)
 rotation = 1.46413
+progress = 5376.54
 rotates = false
 
 [node name="Sun" type="Sprite2D" parent="Sky/SunPath/PathFollow2D"]
@@ -478,6 +483,7 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("GradientTexture2D_5mf5x")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pillar" type="Node2D" parent="."]
 z_index = -20
@@ -528,36 +534,64 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HUD/DayIndicator"]
-self_modulate = Color(1, 0, 1, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -195.0
 offset_top = -150.0
-offset_right = 195.0
-offset_bottom = -13.0001
+offset_right = 150.0
+offset_bottom = 3.05176e-05
 grow_horizontal = 2
-texture = ExtResource("7_rqtcc")
-region_rect = Rect2(136.322, 118.087, 187.671, 78.529)
-patch_margin_left = 45
-patch_margin_top = 58
-patch_margin_right = 45
-patch_margin_bottom = 71
+texture = ExtResource("16_f17ko")
+region_rect = Rect2(151.834, 73.4352, 314.121, 403.206)
+patch_margin_left = 26
+patch_margin_top = 21
+patch_margin_right = 25
+patch_margin_bottom = 24
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="HUD/DayIndicator/NinePatchRect"]
+[node name="Week" type="Label" parent="HUD/DayIndicator/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 74.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "Week 1
-Monday"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_es3rc")
+theme_override_font_sizes/font_size = 40
+text = "Week 1"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day" type="Label" parent="HUD/DayIndicator/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -79.0
+offset_right = 119.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_es3rc")
+theme_override_font_sizes/font_size = 40
+text = "Monday"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Cursor" parent="." instance=ExtResource("6_ec5jv")]
 
