@@ -22,6 +22,8 @@ func kill():
 	if (status != Status.DEAD):
 		super()
 		status = Status.DEAD
+		$AnimationPlayer.queue("Dying")
+		$AnimationPlayer.queue("Withered")
 	
 func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_fertile && super(tile, use_seed)
@@ -29,6 +31,7 @@ func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 func tick():
 	super()
 	if (status != Status.DEAD):
+		parent_tile.fertility -= 1
 		if (!parent_tile.is_fertile): 
 			kill()
 		elif age > time_to_grow:
