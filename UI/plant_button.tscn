@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ivh3v87hka2i"]
+[gd_scene load_steps=12 format=3 uid="uid://ivh3v87hka2i"]
 
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_13m46"]
 [ext_resource type="Script" path="res://UI/plant_button.gd" id="1_bqnd4"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dj6s3wwu8lk1s" path="res://Graphics/Background/OpenJar0000.png" id="6_vtorv"]
 [ext_resource type="Texture2D" uid="uid://brk133p7qgyc" path="res://Graphics/Background/AjarJar0000.png" id="7_2jmdk"]
 [ext_resource type="Texture2D" uid="uid://b1ea3b82nsw37" path="res://Graphics/Icons/SpikyPlant0000.png" id="7_lkrqo"]
+[ext_resource type="Texture2D" uid="uid://bbeobjnto24k8" path="res://Graphics/Icons/BerryVine0000.png" id="7_ridv6"]
 [ext_resource type="Texture2D" uid="uid://c4v3h76qrgj06" path="res://Graphics/Icons/Succulent0000.png" id="8_grsws"]
+[ext_resource type="Texture2D" uid="uid://ttdf3si03313" path="res://Graphics/Icons/OrangeTree0000.png" id="10_ckode"]
+[ext_resource type="Texture2D" uid="uid://duo0leoj0jp5r" path="res://Graphics/Icons/Mushroom0000.png" id="11_ypu72"]
 
 [node name="PlantButton" type="MarginContainer"]
 custom_minimum_size = Vector2(10, 10)
@@ -43,7 +46,7 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="Flower" type="TextureRect" parent="Button/Control"]
+[node name="FLOWER" type="TextureRect" parent="Button/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -60,7 +63,7 @@ grow_vertical = 2
 texture = ExtResource("6_fbtnv")
 expand_mode = 1
 
-[node name="BerryVine" type="TextureRect" parent="Button/Control"]
+[node name="BERRY_VINE" type="TextureRect" parent="Button/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -74,10 +77,11 @@ offset_right = 19.0
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fbtnv")
+texture = ExtResource("7_ridv6")
 expand_mode = 1
 
-[node name="SpikyPlant" type="TextureRect" parent="Button/Control"]
+[node name="SPIKY_PLANT" type="TextureRect" parent="Button/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,7 +97,7 @@ grow_vertical = 2
 texture = ExtResource("7_lkrqo")
 expand_mode = 1
 
-[node name="Succulent" type="TextureRect" parent="Button/Control"]
+[node name="SUCCULENT" type="TextureRect" parent="Button/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -110,8 +114,7 @@ grow_vertical = 2
 texture = ExtResource("8_grsws")
 expand_mode = 1
 
-[node name="OrangeTree" type="TextureRect" parent="Button/Control"]
-visible = false
+[node name="ORANGE_TREE" type="TextureRect" parent="Button/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,10 +127,10 @@ offset_right = 19.0
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fbtnv")
+texture = ExtResource("10_ckode")
 expand_mode = 1
 
-[node name="Mushroom" type="TextureRect" parent="Button/Control"]
+[node name="MUSHROOM" type="TextureRect" parent="Button/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -141,7 +144,7 @@ offset_right = 19.0
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_fbtnv")
+texture = ExtResource("11_ypu72")
 expand_mode = 1
 
 [node name="Count" type="Label" parent="."]

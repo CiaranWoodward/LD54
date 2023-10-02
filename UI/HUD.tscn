@@ -25,6 +25,7 @@ theme = ExtResource("1_bdcb7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ActionPanel"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 

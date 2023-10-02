@@ -19,6 +19,7 @@ func _ready():
 	scale.x = 1 if randi_range(0, 1) else -1
 	scale *= randf_range(0.9, 1.1)
 	$Flower/Bud.modulate = colors[randi_range(0, colors.size()-1)]
+	$PetalFall.modulate = $Flower/Bud.modulate
 
 func plant_type():
 	return Global.PlantType.FLOWER

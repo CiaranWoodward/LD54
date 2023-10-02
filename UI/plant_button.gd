@@ -12,6 +12,9 @@ func _ready():
 	Global.action_points_changed.connect(_ap_changed)
 	Global.inventory_updated.connect(update_count)
 	update_count()
+	var typename = Global.PlantType.keys()[plant_type]
+	for child in $Button/Control.get_children():
+		child.visible = child.name == typename
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
