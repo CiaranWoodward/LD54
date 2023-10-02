@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cvly3s1h4xk6r"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cvly3s1h4xk6r"]
 
 [ext_resource type="FontFile" uid="uid://biop3j758m626" path="res://UI/Fonts/Ubuntu-Light.ttf" id="1_ldo4u"]
 
@@ -20,6 +20,14 @@ bg_color = Color(0.52549, 0.541176, 0.992157, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aq15"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q52sv"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.859375, 0.84375, 0.808594, 1)
+
 [resource]
 default_font = ExtResource("1_ldo4u")
 AcceptDialog/constants/buttons_separation = 0
@@ -39,3 +47,12 @@ Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_ldo4u")
 Label/styles/normal = null
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_8aq15")
+TooltipLabel/colors/font_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+TooltipLabel/constants/outline_size = 0
+TooltipLabel/constants/shadow_offset_x = 0
+TooltipLabel/constants/shadow_offset_y = 0
+TooltipLabel/font_sizes/font_size = 16
+TooltipLabel/fonts/font = ExtResource("1_ldo4u")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_q52sv")
