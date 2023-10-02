@@ -95,8 +95,8 @@ func take_quota():
 	for key in _produceQuota.keys():
 		var q = _produceQuota[key]
 		var diff =  _produceInventory[key] - q
-		var leftover = -max(0, diff)
-		_produceInventory[key] = min(0, diff)
+		var leftover = -min(0, diff)
+		_produceInventory[key] = max(0, diff)
 		_produceQuota[key] = leftover
 	inventory_updated.emit()
 
