@@ -8,7 +8,7 @@ signal day_changed(day: int)
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
 
 # enum for all produce types
-enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM}
+enum ProduceType {FLOWER, BERRY, ORANGE, SUCCULENT, MUSHROOM, SPIKE_BALL}
 
 enum ActionType {NONE, HARVEST, DESTROY, PLANT, END_TURN}
 
@@ -82,6 +82,7 @@ func get_produce_name(type : ProduceType):
 		ProduceType.ORANGE: return "Orange"
 		ProduceType.SUCCULENT: return "Succulent"
 		ProduceType.MUSHROOM: return "Mushroom"
+		ProduceType.SPIKE_BALL: return "Spike Ball"
 	return null
 
 func is_quota_met():

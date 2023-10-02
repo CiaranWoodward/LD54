@@ -11,6 +11,12 @@ static func plant_name():
 static func plant_description():
 	return "Thrives on dead plant life."
 	
+func harvest_description() -> Dictionary:
+	return {
+		"name": plant_name(),
+		"amount": str(cluster_count)
+	}
+	
 var cluster_count = 0: set = set_cluster_count
 var cluster_varient = randi_range(0, 1)
 
@@ -36,6 +42,7 @@ func _ready():
 	super()
 	reset()
 	$Cluster.get_children().pick_random().visible = true
+	cluster_count += 1
 	_random_wave()
 
 func plant_type():
@@ -80,7 +87,7 @@ func spread_impl(tiles):
 			mushroom.sow(tile, false)
 			
 func can_harvest() -> bool:
-	return age < 0 && true
+	return age > 0 && cluster_count > 0
 
 func harvest():
 	Global.change_produce_count(Global.ProduceType.MUSHROOM, cluster_count)

@@ -12,6 +12,12 @@ static func plant_name():
 
 static func plant_description():
 	return "Will die if overwatered."
+	
+func harvest_description() -> Dictionary:
+	return {
+		"name": plant_name(),
+		"amount": "1"
+	}
 
 func _ready():
 	super()

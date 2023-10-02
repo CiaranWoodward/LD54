@@ -15,6 +15,17 @@ static func plant_name():
 static func plant_description():
 	return "Improves soil moisture for later planting."
 
+func harvest_description() -> Dictionary:
+	if (status == Status.DEAD):
+		return {
+			"name": "Flower Seed",
+			"amount": "1-2"
+		}
+	return {
+			"name": plant_name(),
+			"amount": "1"
+		}
+
 func _ready():
 	super()
 	$Flower/Bud.modulate = colors[randi_range(0, colors.size()-1)]
@@ -22,11 +33,17 @@ func _ready():
 
 func plant_type():
 	return Global.PlantType.FLOWER
+	
+func can_harvest() -> bool:
+	return status == Status.DEAD || super()
 
 func harvest():
 	super()
 	if status == Status.HARVESTABLE:
 		Global.change_produce_count(Global.ProduceType.FLOWER, 1)
+		destroy()
+	if status == Status.DEAD:
+		Global.change_seed_count(Global.PlantType.FLOWER, randi_range(1, 2))
 		destroy()
 
 func destroy():

@@ -44,7 +44,7 @@ func spread_impl(tiles):
 		weed.sow(tile, false)
 
 func can_sow(tile : PlantTile, use_seed: bool = false) -> bool:
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) || !tile.child_plant.plant_type() == Global.PlantType.SPIKY_PLANT
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) || (is_instance_valid(tile.child_plant) && !tile.child_plant.plant_type() == Global.PlantType.SPIKY_PLANT)
 
 func sow(tile : PlantTile, use_seed: bool = false) -> bool:
 	if(!can_sow(tile, false)):
