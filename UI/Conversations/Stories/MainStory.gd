@@ -187,10 +187,10 @@ func _ready():
 			callback = func(): Story.failure += 1
 		},
 		{
-			text = "Next week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
+			text = "This week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
 		},
 		{
-			text = "Here are your quotas and seeds for next week.",
+			text = "Here are your quotas and seeds for the next week.",
 		},
 	])
 	main2.no_script([
@@ -203,10 +203,10 @@ func _ready():
 			text = "The former tenant had some [i]issues[/i] remembering where his priorities lie.",
 		},
 		{
-			text = "Next week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
+			text = "This week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
 		},
 		{
-			text = "Here are your quotas for next week.",
+			text = "Here are your quotas for the next week.",
 		},
 	])
 	main2.callback = func():
