@@ -35,8 +35,7 @@ func reset():
 		child.get_node("IndiMush/Stumpy").frame = randi_range(0, 2)
 
 func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+	super()
 	reset()
 	$Cluster.get_children().pick_random().visible = true
 	_random_wave()
