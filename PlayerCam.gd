@@ -5,7 +5,7 @@ extends Camera2D
 @export var STOP_TIME = 0.2
 @export var ZOOM_AMOUNT = 0.2
 @export var ZOOM_TIME = 0.15
-@export var ZOOM_MIN = 0.4
+@export var ZOOM_MIN = 0.6
 @export var ZOOM_MAX = 2
 
 var zoom_tween
