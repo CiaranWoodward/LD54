@@ -18,6 +18,8 @@ var dialogue_pages_choice_no : Array[Dictionary] = []
 var dialogue_pages_choice_yes : Array[Dictionary] = []
 ## Run another conversation immediately after
 var next : Conversation = null
+## Callback after the conversation is complete
+var callback : Callable = func(): pass
 
 # Each dialogue page is a dict structured like:
 # text: The text to show. Can include bbcode
@@ -26,11 +28,14 @@ var next : Conversation = null
 # callback: Callable to be called when the dialogue page is fully shown
 # when: Callable which returns boolean. This page will only be shown if it returns true.
 
-func script(dialogue_pages : Array[Dictionary]):
-	self.dialogue_pages.assign(dialogue_pages)
+func script(pages : Array[Dictionary]):
+	assert(self.dialogue_pages.is_empty())
+	self.dialogue_pages.assign(pages)
 
-func yes_script(dialogue_pages : Array[Dictionary]):
-	self.dialogue_pages_choice_yes.assign(dialogue_pages)
+func yes_script(pages : Array[Dictionary]):
+	assert(self.dialogue_pages_choice_yes.is_empty())
+	self.dialogue_pages_choice_yes.assign(pages)
 
-func no_script(dialogue_pages : Array[Dictionary]):
-	self.dialogue_pages_choice_no.assign(dialogue_pages)
+func no_script(pages : Array[Dictionary]):
+	assert(self.dialogue_pages_choice_no.is_empty())
+	self.dialogue_pages_choice_no.assign(pages)

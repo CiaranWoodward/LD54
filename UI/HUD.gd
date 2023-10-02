@@ -11,9 +11,9 @@ func _ready():
 	for child in _buttons.get_children():
 		child.connect("toggled", _button_toggled)
 
-func set_show_action_panel(show : bool):
-	$ActionPanel.visible = show
-	$ActionCounter.visible = show
+func set_show_action_panel(show_panel : bool):
+	$ActionPanel.visible = show_panel
+	$ActionCounter.visible = show_panel
 
 func clear_action():
 	var bg = load("res://UI/ActionButtonGroup.tres")

@@ -5,6 +5,8 @@ extends BasePlant
 @export var time_to_grow: int = 2
 @export var time_to_dead: int = 5
 
+@export var colors : Array[Color] = [Color.WHITE, Color.PINK, Color.LIGHT_YELLOW]
+
 @onready var stateMachine = $AnimationTree["parameters/playback"]
 
 static func plant_name():
@@ -16,6 +18,7 @@ static func plant_description():
 func _ready():
 	scale.x = 1 if randi_range(0, 1) else -1
 	scale *= randf_range(0.9, 1.1)
+	$Flower/Bud.modulate = colors[randi_range(0, colors.size()-1)]
 
 func plant_type():
 	return Global.PlantType.FLOWER

@@ -6,7 +6,7 @@ signal interacted_with_tile(tile : PlantTile)
 @export var invalid_color : Color = Color.WHITE
 @export var valid_color : Color = Color.WHITE
 
-var _current_action
+var _current_action = Global.ActionType.NONE
 var _current_plant
 var _current_plantinstance
 var _current_tile
@@ -104,6 +104,6 @@ func _apply_action():
 			if !_current_plantinstance.can_sow(_current_tile):
 				return
 			_current_plantinstance.sow(_current_tile)
+			clear_action_func.call()
 	interacted_with_tile.emit(_current_tile)
 	Global.action_points -= 1
-	clear_action_func.call()

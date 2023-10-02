@@ -84,6 +84,28 @@ func get_produce_name(type : ProduceType):
 		ProduceType.MUSHROOM: return "Mushroom"
 	return null
 
+func is_quota_met():
+	return _produceQuota.keys().all(
+		func(key):
+			return _produceInventory.get(key, 0) >= _produceQuota[key]
+	)
+
+## Take as much as possible towards the quota, leaving the remainder
+func take_quota():
+	for key in _produceQuota.keys():
+		var q = _produceQuota[key]
+		var diff =  _produceInventory[key] - q
+		var leftover = -max(0, diff)
+		_produceInventory[key] = min(0, diff)
+		_produceQuota[key] = leftover
+	inventory_updated.emit()
+
+## Clear the quota to all zero
+func clear_quota():
+	for key in _produceQuota.keys():
+		_produceQuota[key] = 0
+	inventory_updated.emit()
+
 func get_produce_count(type : ProduceType):
 	return _produceInventory[type]
 func get_seed_count(type : PlantType):

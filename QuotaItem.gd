@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 	
-func update(name: String, actual: int, required: int): 
+func update(name_: String, actual: int, required: int):
+	visible = !(required == 0)
 	$Count.text = "{actual}/{required}".format({"actual": actual, "required": required})
-	$Name.text = name
+	$Name.text = name_
