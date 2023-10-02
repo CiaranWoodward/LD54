@@ -6,6 +6,8 @@ extends BasePlant
 var bush_varient = randi_range(0, 1)
 var berry_varient = randi_range(0, 2)
 
+var _berry_tween
+
 static func plant_name():
 	return "Berry Vine"
 
@@ -17,6 +19,7 @@ func plant_type():
 	
 func _ready():
 	super()
+	$BerryVine/Centre/Berry.modulate = Color.TRANSPARENT
 	
 func kill():
 	if (status != Status.DEAD):
@@ -37,6 +40,8 @@ func tick():
 		elif age > time_to_grow:
 			spread()
 			if (status != Status.HARVESTABLE):
+				_berry_tween = create_tween()
+				_berry_tween.tween_property($BerryVine/Centre/Berry, "modulate", Color.WHITE, 0.5)
 				status = Status.HARVESTABLE
 		elif age < time_to_grow:
 			if (status != Status.GROWING):
@@ -46,6 +51,8 @@ func harvest():
 	super()
 	if (status == Status.HARVESTABLE):
 		status = Status.GROWING
+		_berry_tween = create_tween()
+		_berry_tween.tween_property($BerryVine/Centre/Berry, "modulate", Color.TRANSPARENT, 0.5)
 		Global.change_produce_count(Global.ProduceType.BERRY, 5)
 		age = 0
 		
