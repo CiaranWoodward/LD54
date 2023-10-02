@@ -357,7 +357,7 @@ libraries = {
 }
 
 [node name="DayCycle" type="AnimationPlayer" parent="."]
-speed_scale = 0.2
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_ibd4w")
 }
