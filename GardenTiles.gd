@@ -18,6 +18,7 @@ func _add_tile_to_set(x: int, y: int, tileScene: Resource):
 	var newTile = tileScene.instantiate()
 	var pos = Vector2i(x, y)
 	newTile.position = self.map_to_local(pos)
+	newTile.coords = pos
 	add_child(newTile)
 	_tile_map[pos] = newTile
 
@@ -42,6 +43,7 @@ func get_plant_tile_at_pos(pos : Vector2):
 	return get_plant_tile(local_to_map(pos))
 
 func ripple_from(pos : Vector2i):
+	print("pos: " + str(pos))
 	var posf = Vector2(pos)
 	_tile_map[pos].run_poof_effect()
 	for coord in _tile_map.keys():

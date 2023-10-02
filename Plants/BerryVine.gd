@@ -51,8 +51,22 @@ func spread_impl(tiles: Array):
 		if (!tile.is_occupied() && tile.is_fertile):
 			var berryVine = load("res://Plants/BerryVine.tscn").instantiate()
 			berryVine.sow(tile, false)
-	
+			show_connector(berryVine)
+
+func show_connector(new_vine : BerryVine, recurse = true):
+	var diff = new_vine.parent_tile.coords - parent_tile.coords
+	match diff:
+		Vector2i(-1, 1):
+			if scale.x > 0: $AnimationPlayer.queue("SpreadLeft")
+			else: $AnimationPlayer.queue("SpreadRight")
+		Vector2i(0, 1):
+			$AnimationPlayer.queue("SpreadCentre")
+		Vector2i(1, 0):
+			if scale.x > 0: $AnimationPlayer.queue("SpreadRight")
+			else: $AnimationPlayer.queue("SpreadLeft")
+		_:
+			if recurse:
+				new_vine.show_connector(self, false)
+
 func destroy():
 	super()
-	
-		
