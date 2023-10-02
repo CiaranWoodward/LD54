@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=25 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -13,12 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://b3qtnf3cihei4" path="res://UI/Conversations/Stories/Stories.tscn" id="8_0o1h3"]
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
 
+[sub_resource type="Gradient" id="Gradient_v60wk"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1aqi2"]
+gradient = SubResource("Gradient_v60wk")
+
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
-bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -111, 609, 0, 0, 0, 0, 201, -98, 0, 0, 0, 0, 433, -324, 0, 0, 0, 0, 987, -567, 0, 0, 0, 0, 1570, -561, 0, 0, 0, 0, 2053, -307, 0, 0, 0, 0, 2447, 86, 0, 0, 0, 0, 2693, 610)
+"points": PackedVector2Array(0, 0, 0, 0, -509, 1136, 0, 0, 0, 0, -414, 598, 0, 0, 0, 0, -257, 123, 0, 0, 0, 0, 0, -253, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2787, 42, 0, 0, 0, 0, 2935, 461, 0, 0, 0, 0, 3011, 1117)
 }
-point_count = 8
+point_count = 12
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
 texture = ExtResource("1_k5ldj")
@@ -33,31 +39,150 @@ tile_offset_axis = 1
 tile_size = Vector2i(163, 104)
 sources/0 = SubResource("TileSetAtlasSource_golho")
 
+[sub_resource type="Animation" id="Animation_ndp5c"]
+resource_name = "In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/DayIndicator/NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1.27456, 0.659754, 1),
+"update": 0,
+"values": [Vector2(-195, -150), Vector2(-195, 120), Vector2(-195, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_g33v1"]
+resource_name = "Out"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/DayIndicator/NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8),
+"transitions": PackedFloat32Array(0.482968, 2, 2.21914),
+"update": 0,
+"values": [Vector2(-195, 100), Vector2(-195, 120), Vector2(-195, -150)]
+}
+
+[sub_resource type="Animation" id="Animation_b8sgm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/DayIndicator/NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-195, -150)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpl72"]
+_data = {
+"In": SubResource("Animation_ndp5c"),
+"Out": SubResource("Animation_g33v1"),
+"RESET": SubResource("Animation_b8sgm")
+}
+
+[sub_resource type="Animation" id="Animation_qj57s"]
+resource_name = "DayCycle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky/SunPath/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sky/SunPath/PathFollow2D/Sun:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.921569, 0.843137, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.533333, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oeqfv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sky/SunPath/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sky/SunPath/PathFollow2D/Sun:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.921569, 0.843137, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibd4w"]
+_data = {
+"DayCycle": SubResource("Animation_qj57s"),
+"RESET": SubResource("Animation_oeqfv")
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_k876p")
 
-[node name="SunPath" type="Path2D" parent="."]
-position = Vector2(-1267, -330)
+[node name="Sky" type="TextureRect" parent="."]
+self_modulate = Color(0.270588, 0.756863, 1, 1)
+custom_minimum_size = Vector2(4000, 3000)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -3000.0
+offset_top = -1325.0
+offset_right = 3000.0
+offset_bottom = 1675.0
+grow_horizontal = 2
+texture = SubResource("GradientTexture1D_1aqi2")
+
+[node name="Clouds" type="CPUParticles2D" parent="Sky"]
+
+[node name="SunPath" type="Path2D" parent="Sky"]
+position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="SunPath"]
-position = Vector2(-111, 609)
+[node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
+position = Vector2(-509, 1136)
 rotation = -1.1552
 rotates = false
 
-[node name="Sun" type="Sprite2D" parent="SunPath/PathFollow2D"]
-position = Vector2(142.074, -180.597)
-rotation = 1.1552
+[node name="Sun" type="Sprite2D" parent="Sky/SunPath/PathFollow2D"]
+self_modulate = Color(0.921569, 0.843137, 0, 1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_rqtcc")
-
-[node name="Sunlight" type="PointLight2D" parent="SunPath/PathFollow2D"]
-position = Vector2(485.389, 753.142)
-rotation = 1.1552
-color = Color(0.905882, 0.768627, 0.517647, 1)
-energy = 1.15
-blend_mode = 2
-texture = ExtResource("7_rqtcc")
-texture_scale = 1.45
 
 [node name="Pillar" type="Node2D" parent="."]
 position = Vector2(-13, 23)
@@ -101,8 +226,55 @@ MaxPos = Vector2(400, 400)
 [node name="Dialogue" parent="HUD" instance=ExtResource("6_5r73e")]
 visible = false
 
+[node name="DayIndicator" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/DayIndicator"]
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.0
+offset_top = -150.0
+offset_right = 195.0
+offset_bottom = -13.0001
+grow_horizontal = 2
+texture = ExtResource("7_rqtcc")
+region_rect = Rect2(136.322, 118.087, 187.671, 78.529)
+patch_margin_left = 45
+patch_margin_top = 58
+patch_margin_right = 45
+patch_margin_bottom = 71
+
+[node name="Label" type="Label" parent="HUD/DayIndicator/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Week 1
+Monday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Cursor" parent="." instance=ExtResource("6_ec5jv")]
 
 [node name="Stories" parent="." instance=ExtResource("8_0o1h3")]
+
+[node name="NewDay" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wpl72")
+}
+
+[node name="DayCycle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ibd4w")
+}
 
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]

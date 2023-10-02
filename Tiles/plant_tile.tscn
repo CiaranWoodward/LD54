@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pu847djr5b2l"]
+[gd_scene load_steps=16 format=3 uid="uid://pu847djr5b2l"]
 
 [ext_resource type="Script" path="res://Tiles/plant_tile.gd" id="1_de4tv"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_sn4ht"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwfq2hlxbkmee" path="res://Graphics/Tile/Wet10000.png" id="7_m3aqs"]
 [ext_resource type="Texture2D" uid="uid://dvittnpx2of7y" path="res://Graphics/Tile/Wet20000.png" id="8_6fmo7"]
 [ext_resource type="Texture2D" uid="uid://cokn7hd10gce2" path="res://Graphics/Tile/Wet30000.png" id="9_kian4"]
+[ext_resource type="Texture2D" uid="uid://cayb2il4kvn8j" path="res://Graphics/Particles/Soil0000.png" id="10_ys7ux"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_alfh7"]
 animations = [{
@@ -44,6 +45,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_oadpc"]
+_data = [Vector2(0, 0.884211), 0.0, 0.0, 0, 0, Vector2(0.686813, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.905263), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_eq4ia"]
+offsets = PackedFloat32Array(0, 0.13245, 0.556291, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_j85dy"]
+offsets = PackedFloat32Array(0, 0.668874)
+colors = PackedColorArray(1, 1, 1, 1, 0.847474, 0.847474, 0.847474, 1)
+
 [node name="PlantTile" type="Node2D"]
 script = ExtResource("1_de4tv")
 color_fertile = Color(0.341176, 0.203922, 0.0901961, 1)
@@ -69,3 +82,26 @@ frame = 2
 [node name="Dry" type="AnimatedSprite2D" parent="Tile"]
 position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_rwj4h")
+
+[node name="SowPoof" type="CPUParticles2D" parent="Tile"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+lifetime_randomness = 0.3
+texture = ExtResource("10_ys7ux")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 60)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_oadpc")
+color_ramp = SubResource("Gradient_eq4ia")
+color_initial_ramp = SubResource("Gradient_j85dy")
+hue_variation_min = 1.0
+hue_variation_max = 1.0

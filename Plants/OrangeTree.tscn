@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://2lp2voawn2f" path="res://Graphics/Plants/OrangeTree/Orange10000.png" id="14_tnms8"]
 [ext_resource type="Texture2D" uid="uid://bb2kknfik1mql" path="res://Graphics/Plants/OrangeTree/Orange20000.png" id="15_xgibi"]
 [ext_resource type="Texture2D" uid="uid://cenyb51tsxjpd" path="res://Graphics/Plants/OrangeTree/Orange30000.png" id="16_deyjk"]
-[ext_resource type="Texture2D" uid="uid://b12vy3lcl7xu" path="res://Graphics/Plants/Particles/WhiteLeaf0000.png" id="17_7q2d3"]
+[ext_resource type="Texture2D" uid="uid://b12vy3lcl7xu" path="res://Graphics/Particles/WhiteLeaf0000.png" id="17_7q2d3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iexjp"]
 animations = [{
@@ -1074,6 +1074,7 @@ spread_percent_fertile = null
 spread_percent_infertile = null
 
 [node name="Tree" type="Node2D" parent="."]
+position = Vector2(0, 1)
 
 [node name="DeadLeaves" type="Sprite2D" parent="Tree"]
 visible = false
