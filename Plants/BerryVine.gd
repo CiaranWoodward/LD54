@@ -16,8 +16,7 @@ func plant_type():
 	return Global.PlantType.BERRY_VINE
 	
 func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+	super()
 	
 func kill():
 	if (status != Status.DEAD):
@@ -43,6 +42,7 @@ func tick():
 func harvest():
 	super()
 	if (status == Status.HARVESTABLE):
+		status = Status.GROWING
 		Global.change_produce_count(Global.ProduceType.BERRY, 5)
 		age = 0
 		

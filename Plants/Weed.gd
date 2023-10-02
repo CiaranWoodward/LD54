@@ -8,8 +8,7 @@ static func plant_description():
 	return "Why won't it die?!"
 	
 func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+	super()
 	$Weed/AnimatedSprite2D.frame = randi_range(0, 1)
 
 func plant_type():

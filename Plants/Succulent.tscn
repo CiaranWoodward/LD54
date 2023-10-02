@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvvjcadholer7"]
+[gd_scene load_steps=20 format=3 uid="uid://bvvjcadholer7"]
 
 [ext_resource type="Script" path="res://Plants/Succulent.gd" id="1_msnik"]
 [ext_resource type="Texture2D" uid="uid://bia0chdt6cje0" path="res://Graphics/Plants/Succulent/Succulent0000.png" id="2_qsf6e"]
@@ -292,6 +292,9 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rhy0p"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f6dci"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2av8v"]
 states/Big/node = SubResource("AnimationNodeAnimation_8b3n7")
 states/Big/position = Vector2(584, 100)
@@ -301,7 +304,7 @@ states/Idle/node = SubResource("AnimationNodeAnimation_mf8mj")
 states/Idle/position = Vector2(476, 193)
 states/Small/node = SubResource("AnimationNodeAnimation_fjjit")
 states/Small/position = Vector2(350, 100)
-transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p")]
+transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_f6dci")]
 
 [sub_resource type="Animation" id="Animation_ohfo7"]
 resource_name = "Idle"
