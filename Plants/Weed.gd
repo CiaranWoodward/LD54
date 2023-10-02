@@ -1,6 +1,12 @@
 class_name Weed
 extends BasePlant
 
+var killable_plants: Array[Global.PlantType] = [
+	Global.PlantType.BERRY_VINE,
+	Global.PlantType.SUCCULENT,
+	Global.PlantType.FLOWER
+]
+
 static func plant_name():
 	return "Weed"
 
@@ -34,7 +40,7 @@ func spread_impl(tiles):
 	)
 	# Create a new weed on the tiles which it is spreading to
 	for tile in toSpread:
-		if (tile.is_occupied() && tile.child_plant.status != Status.DEAD):
+		if (tile.is_occupied() && tile.child_plant.status != Status.DEAD && killable_plants.has(tile.child_plant)):
 			tile.child_plant.kill()
 		else:
 			var weed = load("res://Plants/Weed.tscn").instantiate()
