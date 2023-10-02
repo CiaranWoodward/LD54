@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=40 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="16_f17ko"]
 [ext_resource type="FontFile" uid="uid://da5mqruadxpgh" path="res://UI/Fonts/Ubuntu-Medium.ttf" id="17_es3rc"]
+[ext_resource type="Texture2D" uid="uid://wjev7gc5a043" path="res://Graphics/Background/Title0000.png" id="18_h1h5c"]
 [ext_resource type="Script" path="res://Week.gd" id="18_bt0qg"]
 [ext_resource type="Script" path="res://Day.gd" id="19_mqjg0"]
 
@@ -344,6 +345,43 @@ _data = {
 "RESET": SubResource("Animation_oeqfv")
 }
 
+[sub_resource type="Animation" id="Animation_metxc"]
+resource_name = "Start"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Title/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.7, 2.5),
+"transitions": PackedFloat32Array(0.615572, 0.615572, 1.93187, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 70), Vector2(0, -700)]
+}
+
+[sub_resource type="Animation" id="Animation_eibo6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Title/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqoww"]
+_data = {
+"RESET": SubResource("Animation_eibo6"),
+"Start": SubResource("Animation_metxc")
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_k876p")
 
@@ -595,11 +633,27 @@ vertical_alignment = 1
 script = ExtResource("19_mqjg0")
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="HUD"]
+[node name="Title" type="Control" parent="HUD"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 392.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 432.0
+grow_horizontal = 2
+
+[node name="Title" type="Node2D" parent="HUD/Title"]
+
+[node name="Shadow" type="Sprite2D" parent="HUD/Title/Title"]
+self_modulate = Color(1, 1, 1, 0.239216)
+position = Vector2(3, 5)
+scale = Vector2(2, 2)
+texture = ExtResource("18_h1h5c")
+
+[node name="Sowscraper" type="Sprite2D" parent="HUD/Title/Title"]
+scale = Vector2(2, 2)
+texture = ExtResource("18_h1h5c")
 
 [node name="Cursor" parent="." instance=ExtResource("6_ec5jv")]
 
@@ -617,5 +671,9 @@ libraries = {
 }
 
 [node name="GameStart" type="AnimationPlayer" parent="."]
+autoplay = "Start"
+libraries = {
+"": SubResource("AnimationLibrary_lqoww")
+}
 
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]

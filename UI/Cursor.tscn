@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4j0a6xqs4pqq"]
+[gd_scene load_steps=13 format=3 uid="uid://d4j0a6xqs4pqq"]
 
 [ext_resource type="Script" path="res://UI/Cursor.gd" id="1_t3c3b"]
 [ext_resource type="Texture2D" uid="uid://byuq4wutnm8d4" path="res://Graphics/Icons/DestroyDarker0000.png" id="2_fwoep"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="2_h1yyv"]
 [ext_resource type="Texture2D" uid="uid://dfmffsktx788q" path="res://Graphics/Icons/Harvest0000.png" id="3_nctlu"]
 [ext_resource type="Texture2D" uid="uid://du50r5ps5k2il" path="res://Graphics/Icons/Flower0000.png" id="3_x7t2e"]
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="4_3ijfq"]
 [ext_resource type="Texture2D" uid="uid://b1ea3b82nsw37" path="res://Graphics/Icons/SpikyPlant0000.png" id="4_3srsg"]
+[ext_resource type="Texture2D" uid="uid://cslkthbm2fpeu" path="res://Graphics/Background/Frame0000.png" id="4_xnrd4"]
 [ext_resource type="Texture2D" uid="uid://bbeobjnto24k8" path="res://Graphics/Icons/BerryVine0000.png" id="5_g3gct"]
 [ext_resource type="Texture2D" uid="uid://c4v3h76qrgj06" path="res://Graphics/Icons/Succulent0000.png" id="5_gkas6"]
 [ext_resource type="Texture2D" uid="uid://ttdf3si03313" path="res://Graphics/Icons/OrangeTree0000.png" id="7_65mx4"]
@@ -37,10 +39,22 @@ texture = ExtResource("3_nctlu")
 
 [node name="PanelContainer" type="PanelContainer" parent="Harvest"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
 offset_left = 32.0
 offset_top = -74.0
-offset_right = 150.0
+offset_right = 179.0
 offset_bottom = -1.0
+theme = ExtResource("4_3ijfq")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Harvest/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_xnrd4")
+region_rect = Rect2(183, 55, 312, 392)
+patch_margin_left = 20
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 20
 
 [node name="MarginContainer" type="MarginContainer" parent="Harvest/PanelContainer"]
 layout_mode = 2
@@ -55,6 +69,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Harvest/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Will Harvest:"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ToHarvest" type="Label" parent="Harvest/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,8 +86,8 @@ texture = ExtResource("2_h1yyv")
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Flower"]
-position = Vector2(0, -57)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -36)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_x7t2e")
 
 [node name="SpikyPlant" type="Node2D" parent="."]

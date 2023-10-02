@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c8xwku2rgn7i8"]
+[gd_scene load_steps=47 format=3 uid="uid://c8xwku2rgn7i8"]
 
 [ext_resource type="Script" path="res://Plants/Flower.gd" id="1_3fli0"]
 [ext_resource type="Texture2D" uid="uid://dprp3ofy5yl3d" path="res://Graphics/Plants/Flower/Bud0000.png" id="2_i62ve"]
@@ -530,6 +530,68 @@ _data = {
 "Withered": SubResource("Animation_mpmqe")
 }
 
+[sub_resource type="Animation" id="Animation_00gvs"]
+resource_name = "Idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flower:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(0.757858, 1.68179, 0.63728, 1.7411, 1),
+"update": 0,
+"values": [0.0, -0.0698132, 0.0, 0.0698132, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flower/Leaf:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(0.378929, 2.54912, 0.34151, 2.14355, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.0, 0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a3wej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flower:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flower/Leaf:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riofv"]
+_data = {
+"Idle": SubResource("Animation_00gvs"),
+"RESET": SubResource("Animation_a3wej")
+}
+
 [node name="Flower" type="Node2D"]
 script = ExtResource("1_3fli0")
 colors = Array[Color]([Color(0.92469, 0.449716, 0, 1), Color(0.98, 0.245, 0.7105, 1), Color(0.729412, 0.313726, 0.901961, 1), Color(0.933333, 1, 0, 1), Color(1, 0, 0.0166664, 1), Color(0, 0.7, 1, 1)])
@@ -544,8 +606,10 @@ position = Vector2(1, -141)
 sprite_frames = SubResource("SpriteFrames_ny1ek")
 
 [node name="Leaf" type="AnimatedSprite2D" parent="Flower"]
-position = Vector2(1, -141)
+position = Vector2(2.38419e-07, 0)
+skew = 0.190241
 sprite_frames = SubResource("SpriteFrames_nbara")
+offset = Vector2(1, -141)
 
 [node name="Shadow" type="AnimatedSprite2D" parent="Flower"]
 position = Vector2(1, -141)
@@ -587,4 +651,11 @@ active = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
 libraries = {
 "": SubResource("AnimationLibrary_6i8pg")
+}
+
+[node name="Idle" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_riofv")
 }
