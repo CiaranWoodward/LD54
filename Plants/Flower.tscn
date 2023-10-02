@@ -532,10 +532,11 @@ _data = {
 
 [node name="Flower" type="Node2D"]
 script = ExtResource("1_3fli0")
+colors = Array[Color]([Color(0.92469, 0.449716, 0, 1), Color(0.98, 0.245, 0.7105, 1), Color(0.729412, 0.313726, 0.901961, 1), Color(0.933333, 1, 0, 1), Color(1, 0, 0.0166664, 1), Color(0, 0.7, 1, 1)])
 
 [node name="Flower" type="Sprite2D" parent="."]
 position = Vector2(-1, 15)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 offset = Vector2(1, -143)
 
 [node name="Bud" type="AnimatedSprite2D" parent="Flower"]

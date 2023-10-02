@@ -592,6 +592,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Cursor" parent="." instance=ExtResource("6_ec5jv")]
 
 [node name="Stories" parent="." instance=ExtResource("8_0o1h3")]
@@ -606,5 +612,7 @@ speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_ibd4w")
 }
+
+[node name="GameStart" type="AnimationPlayer" parent="."]
 
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]
