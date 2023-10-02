@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ftuxuub5spex"]
+[gd_scene load_steps=11 format=3 uid="uid://ftuxuub5spex"]
 
 [ext_resource type="Script" path="res://Plants/Weed.gd" id="1_uuff7"]
 [ext_resource type="Texture2D" uid="uid://ccygdj8x5o272" path="res://Graphics/Plants/Weed/Weed10000.png" id="2_k3w0j"]
 [ext_resource type="Texture2D" uid="uid://11jc1s35xh1m" path="res://Graphics/Plants/Weed/Weed20000.png" id="3_j1es1"]
+[ext_resource type="Texture2D" uid="uid://cayb2il4kvn8j" path="res://Graphics/Particles/Soil0000.png" id="4_pynhm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8v5m6"]
 animations = [{
@@ -18,6 +19,124 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_vyk2g"]
+offsets = PackedFloat32Array(0, 0.147601, 0.822878, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_lfyju"]
+offsets = PackedFloat32Array(0, 0.745387)
+colors = PackedColorArray(0, 0, 0, 0.8, 0, 0.192157, 0.0392157, 0.847059)
+
+[sub_resource type="Animation" id="Animation_ise16"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weed:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weed:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.52), Vector2(0.5, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weed:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_t6ags"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weed:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weed:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weed:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_133r6"]
+_data = {
+"Idle": SubResource("Animation_ise16"),
+"RESET": SubResource("Animation_t6ags")
+}
+
 [node name="Weed" type="Node2D"]
 script = ExtResource("1_uuff7")
 spread_percent_fertile = 5
@@ -29,3 +148,22 @@ scale = Vector2(0.5, 0.5)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weed"]
 position = Vector2(0, -88)
 sprite_frames = SubResource("SpriteFrames_8v5m6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Weed"]
+position = Vector2(0, -68)
+texture = ExtResource("4_pynhm")
+emission_shape = 3
+emission_rect_extents = Vector2(100, 100)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_vyk2g")
+color_initial_ramp = SubResource("Gradient_lfyju")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_133r6")
+}

@@ -83,6 +83,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_h1yyv")
 
 [node name="Flower" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Flower"]
 position = Vector2(0, -36)

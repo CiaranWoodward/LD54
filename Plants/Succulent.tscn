@@ -471,6 +471,7 @@ transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_b
 
 [sub_resource type="Animation" id="Animation_ohfo7"]
 resource_name = "Idle"
+length = 1.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -529,6 +530,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="Squidge" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_jg0q3")
 }
