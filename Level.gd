@@ -39,9 +39,7 @@ func _on_hud_action_changed(newAction, plantType):
 		_on_turn_end()
 
 func _tick_story():
-	$HUD.set_show_action_panel(false)
 	await Story.tick_story($HUD/Dialogue)
-	$HUD.set_show_action_panel(true)
 
 func _reset_day():
 	await _update_sky(1.0)
@@ -67,8 +65,10 @@ func _on_turn_end():
 	$HUD.clear_action()
 	$GardenTiles.tick()
 	Global.action_points = 0
+	$HUD.set_show_action_panel(false)
 	if !developer_mode: await _tick_story()
 	await _reset_day()
 	Global.day += 1
 	Global.action_points = AP_per_day
 	await _update_sky_from_ap(AP_per_day)
+	$HUD.set_show_action_panel(true)
