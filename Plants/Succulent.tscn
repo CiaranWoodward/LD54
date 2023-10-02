@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bvvjcadholer7"]
+[gd_scene load_steps=23 format=3 uid="uid://bvvjcadholer7"]
 
 [ext_resource type="Script" path="res://Plants/Succulent.gd" id="1_msnik"]
 [ext_resource type="Texture2D" uid="uid://bia0chdt6cje0" path="res://Graphics/Plants/Succulent/Succulent0000.png" id="2_qsf6e"]
@@ -20,7 +20,6 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_d6owu"]
 resource_name = "Big"
-length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -41,7 +40,7 @@ tracks/1/path = NodePath("Succulent/Succulent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 26), Vector2(0, 26)]
@@ -53,7 +52,7 @@ tracks/2/path = NodePath("Succulent/Succulent:skew")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.0]
@@ -65,7 +64,7 @@ tracks/3/path = NodePath("Succulent/Succulent:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.0]
@@ -276,7 +275,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_n7kp5"]
 resource_name = "Small"
-length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -403,18 +401,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [1]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Succulent/Succulent:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(2.14355, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aehvu"]
 _data = {
@@ -469,43 +455,6 @@ states/Withered/node = SubResource("AnimationNodeAnimation_yewr1")
 states/Withered/position = Vector2(729, 100)
 transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_f6dci"), "Big", "Dying", SubResource("AnimationNodeStateMachineTransition_jbo5q"), "Dying", "Withered", SubResource("AnimationNodeStateMachineTransition_8j3f6")]
 
-[sub_resource type="Animation" id="Animation_ohfo7"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Succulent/Succulent:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1.2, 1.4),
-"transitions": PackedFloat32Array(0.732043, 1.93187, 0.406126, 1.41421, 0.707107, 1),
-"update": 0,
-"values": [0.0, -0.0349066, 0.0, 0.0349066, -0.0174533, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_4ybc5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Succulent/Succulent:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jg0q3"]
-_data = {
-"Idle": SubResource("Animation_ohfo7"),
-"RESET": SubResource("Animation_4ybc5")
-}
-
 [node name="Succulent" type="Node2D"]
 script = ExtResource("1_msnik")
 
@@ -518,7 +467,6 @@ sprite_frames = SubResource("SpriteFrames_pn2pd")
 offset = Vector2(0, -138)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Small"
 libraries = {
 "": SubResource("AnimationLibrary_aehvu")
 }
@@ -527,8 +475,3 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_2av8v")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-
-[node name="Squidge" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jg0q3")
-}
