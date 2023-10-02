@@ -33,7 +33,7 @@ func _ready():
 func harvest():
 	super()
 	if status == Status.HARVESTABLE:
-		Global.change_produce_count(Global.ProduceType.ORANGE, 10)
+		Global.change_produce_count(Global.ProduceType.ORANGE, harvest_amount)
 		age = time_to_grow
 		_orange_tween = create_tween()
 		_orange_tween.tween_property($Tree/Leaves/Orange, "modulate", Color.TRANSPARENT, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
