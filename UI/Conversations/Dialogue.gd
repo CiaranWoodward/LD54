@@ -9,7 +9,6 @@ signal _choice_confirmed(answer : bool)
 @export var characters_per_second = 50.0
 
 var _character_tween : Tween
-var _current_conversation : Conversation
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,9 +24,9 @@ func _process(delta):
 		else:
 			_dialogue_next.emit()
 
-func _show_picture(name : String):
+func _show_picture(name_ : String):
 	for child in $NinePatchRect/Pictures.get_children():
-		child.visible = child.name == name
+		child.visible = child.name == name_
 
 ## Run a conversation to completion
 func run_conversation(convo : Conversation):
@@ -75,11 +74,11 @@ func _run_dialogue_pages(pages : Array[Dictionary]):
 	var name = ""
 	var image = ""
 	for page in pages:
+		name = page.get("name", name)
+		image = page.get("image", image)
 		if page.has("when"):
 			if !page["when"].call():
 				continue
-		name = page.get("name", name)
-		image = page.get("image", image)
 		_show_picture(image)
 		$NinePatchRect/Name.text = name
 		$NinePatchRect/Text.text = page["text"]
@@ -89,7 +88,7 @@ func _run_dialogue_pages(pages : Array[Dictionary]):
 		_character_tween.tween_property($NinePatchRect/Text, "visible_characters", num_characters, num_characters / characters_per_second)
 		await _character_tween.finished
 		_character_tween = null
-		if is_instance_valid(page.get("callback")):
+		if page.has("callback"):
 			page["callback"].call()
 		await _dialogue_next
 

@@ -69,6 +69,9 @@ grow_vertical = 2
 [node name="Officer" type="Sprite2D" parent="NinePatchRect/Pictures"]
 texture = ExtResource("2_es2ro")
 
+[node name="Daniel" type="Sprite2D" parent="NinePatchRect/Pictures"]
+texture = ExtResource("2_es2ro")
+
 [node name="Name" type="Label" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 21.0
