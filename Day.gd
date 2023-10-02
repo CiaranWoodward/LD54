@@ -1,6 +1,6 @@
 extends Label
 
-var Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Saturday"]
+var Days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

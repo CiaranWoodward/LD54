@@ -1178,6 +1178,7 @@ _data = {
 
 [node name="OrangeTree" type="Node2D"]
 script = ExtResource("1_runvr")
+time_to_grow = 3
 
 [node name="Tree" type="Node2D" parent="."]
 position = Vector2(0, 1)
