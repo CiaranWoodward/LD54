@@ -8,7 +8,7 @@ static func plant_name():
 static func plant_description():
 	return "Thrives on dead plant life."
 	
-var cluster_count = 1: set = set_cluster_count
+var cluster_count = 0: set = set_cluster_count
 var cluster_varient = randi_range(0, 1)
 
 func set_cluster_count(newCount):
@@ -22,13 +22,19 @@ func set_cluster_count(newCount):
 	
 var host: BasePlant;
 
-func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+func reset():
+	cluster_count = 0
 	for child in $Cluster.get_children():
 		child.visible = false;
 		child.get_node("IndiMush/Leggy").visible = cluster_varient == 0
 		child.get_node("IndiMush/Stumpy").visible = cluster_varient == 1
+		child.get_node("IndiMush/Leggy").frame = randi_range(0, 2)
+		child.get_node("IndiMush/Stumpy").frame = randi_range(0, 2)
+
+func _ready():
+	scale.x = 1 if randi_range(0, 1) else -1
+	scale *= randf_range(0.9, 1.1)
+	reset()
 	$Cluster.get_children().pick_random().visible = true
 
 func plant_type():
@@ -46,6 +52,8 @@ func sow(tile: PlantTile, use_seed: bool = true):
 		Global.change_seed_count(plant_type(), -1)
 	host = tile.child_plant
 	host.ticked.connect(tick)
+	host.harvested.connect(harvest)
+	host.destroyed.connect(destroy)
 	parent_tile = tile
 	host.add_child(self)
 	host.hosted_plant = self
@@ -69,3 +77,7 @@ func spread_impl(tiles):
 			var mushroom = load("res://Plants/Mushroom.tscn").instantiate()
 			mushroom.cluster_varient = cluster_varient
 			mushroom.sow(tile, false)
+
+func harvest():
+	Global.change_produce_count(Global.ProduceType.MUSHROOM, cluster_count)
+	reset()
