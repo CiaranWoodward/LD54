@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bljefgflbomjq"]
+[gd_scene load_steps=10 format=3 uid="uid://bljefgflbomjq"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_i4xnl"]
 [ext_resource type="Script" path="res://UI/Conversations/Dialogue.gd" id="1_kgon7"]
-[ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="2_es2ro"]
 [ext_resource type="Texture2D" uid="uid://cslkthbm2fpeu" path="res://Graphics/Background/Frame0000.png" id="2_ogijw"]
 [ext_resource type="FontFile" uid="uid://biop3j758m626" path="res://UI/Fonts/Ubuntu-Light.ttf" id="4_pm31x"]
+[ext_resource type="Texture2D" uid="uid://pfg0f0if0ny7" path="res://Graphics/People/Frame0000.png" id="5_obxux"]
+[ext_resource type="Texture2D" uid="uid://casjcwdvjeud5" path="res://Graphics/People/Scary0000.png" id="6_7dhnj"]
+[ext_resource type="Texture2D" uid="uid://bpmbaev8al76s" path="res://Graphics/People/Godot0000.png" id="7_vgyx2"]
+[ext_resource type="Texture2D" uid="uid://dkf1x3xtmmxqp" path="res://Graphics/People/Daniel0000.png" id="8_1ybxk"]
+[ext_resource type="Texture2D" uid="uid://py32dkj27p8o" path="res://Graphics/People/Jon0000.png" id="9_63kng"]
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -65,14 +69,14 @@ patch_margin_right = 290
 patch_margin_bottom = 25
 
 [node name="Text" type="RichTextLabel" parent="Speech"]
-custom_minimum_size = Vector2(500, 80)
+custom_minimum_size = Vector2(523, 109)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 19.0
 offset_top = 17.0
-offset_right = -149.0
+offset_right = -193.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -102,18 +106,44 @@ offset_right = -79.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Officer" type="Sprite2D" parent="Speech/Pictures"]
-texture = ExtResource("2_es2ro")
+[node name="Frame" type="Sprite2D" parent="Speech/Pictures"]
+self_modulate = Color(0.859375, 0.84375, 0.808594, 1)
+position = Vector2(-19, -26)
+scale = Vector2(0.4575, 0.4575)
+texture = ExtResource("5_obxux")
 
-[node name="Daniel" type="Sprite2D" parent="Speech/Pictures"]
-texture = ExtResource("2_es2ro")
+[node name="Shadow" type="Sprite2D" parent="Speech/Pictures/Frame"]
+self_modulate = Color(0, 0, 0, 0.262745)
+show_behind_parent = true
+position = Vector2(6.55737, 6.55737)
+scale = Vector2(1, 1)
+texture = ExtResource("5_obxux")
+
+[node name="Scary" type="Sprite2D" parent="Speech/Pictures/Frame"]
+show_behind_parent = true
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("6_7dhnj")
+
+[node name="Godot" type="Sprite2D" parent="Speech/Pictures/Frame"]
+show_behind_parent = true
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("7_vgyx2")
+
+[node name="Daniel" type="Sprite2D" parent="Speech/Pictures/Frame"]
+show_behind_parent = true
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("8_1ybxk")
+
+[node name="Jon" type="Sprite2D" parent="Speech/Pictures/Frame"]
+show_behind_parent = true
+scale = Vector2(0.98, 0.98)
+texture = ExtResource("9_63kng")
 
 [node name="QuestionDialog" type="ConfirmationDialog" parent="."]
 gui_embed_subwindows = true
 title = ""
 initial_position = 2
 size = Vector2i(300, 100)
-visible = true
 exclusive = false
 unresizable = true
 borderless = true
