@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ck0d5qfohal"]
+[gd_scene load_steps=17 format=3 uid="uid://3ck0d5qfohal"]
 
 [ext_resource type="Script" path="res://Plants/SpikyPlant.gd" id="1_28k8o"]
+[ext_resource type="Texture2D" uid="uid://c3dmx73gcw3kn" path="res://Graphics/Plants/SpikyPlant/BaldPlant0000.png" id="2_1601c"]
 [ext_resource type="Texture2D" uid="uid://c1sum1gn6wydn" path="res://Graphics/Plants/SpikyPlant/Spiky0000.png" id="2_eesy3"]
+[ext_resource type="Texture2D" uid="uid://dq5ypij6gae33" path="res://Graphics/Plants/SpikyPlant/SpikyNotPlant0000.png" id="3_h8lxs"]
 [ext_resource type="Texture2D" uid="uid://8s52vy14g442" path="res://Graphics/Plants/SpikyPlant/Spike0000.png" id="3_ha4ft"]
 
 [sub_resource type="Gradient" id="Gradient_ngbme"]
@@ -13,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Spiky:scale")
+tracks/0/path = NodePath("BaldPlant:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,8 +26,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Spiky/Shoot:emitting")
+tracks/1/enabled = false
+tracks/1/path = NodePath("BaldPlant/Shoot:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,6 +35,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaldPlant:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BaldPlant/Spikes:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_aemxw"]
@@ -42,7 +68,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Spiky:scale")
+tracks/0/path = NodePath("BaldPlant:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Spiky/Shoot:emitting")
+tracks/1/path = NodePath("BaldPlant/Shoot:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -63,28 +89,110 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaldPlant/Spikes:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1id31"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("BaldPlant:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.8),
+"transitions": PackedFloat32Array(2.82843, 2.82843, 0.466517, 2.82843),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.945433, 0.945433), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("BaldPlant/Shoot:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BaldPlant:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.554785, 1.56917, 0.482968, 1.86607, 1),
+"update": 0,
+"values": [0.0, -0.0523599, 0.0, 0.0523599, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1k1cq"]
 _data = {
+"Idle": SubResource("Animation_1id31"),
 "RESET": SubResource("Animation_mge5r"),
 "Shoot": SubResource("Animation_aemxw")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d0kno"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ss4n"]
+animation = &"Shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t8u4b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ls2i7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6s858"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2qutw"]
+states/Idle/node = SubResource("AnimationNodeAnimation_d0kno")
+states/Idle/position = Vector2(397, 100)
+states/Shoot/node = SubResource("AnimationNodeAnimation_8ss4n")
+states/Shoot/position = Vector2(397, 18)
+transitions = ["Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_t8u4b"), "Shoot", "Idle", SubResource("AnimationNodeStateMachineTransition_ls2i7"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6s858")]
 
 [node name="SpikyPlant" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_28k8o")
 
-[node name="Spiky" type="Sprite2D" parent="."]
-position = Vector2(-1, 40)
-texture = ExtResource("2_eesy3")
-offset = Vector2(-6, -135)
+[node name="BaldPlant" type="Sprite2D" parent="."]
+position = Vector2(-2, 28)
+texture = ExtResource("2_1601c")
+offset = Vector2(-6, -122)
 
-[node name="Shoot" type="CPUParticles2D" parent="Spiky"]
-position = Vector2(-3, -112)
-scale = Vector2(1, 0.5)
+[node name="Spikes" type="Sprite2D" parent="BaldPlant"]
+position = Vector2(-6, -122)
+texture = ExtResource("3_h8lxs")
+
+[node name="Shoot" type="CPUParticles2D" parent="BaldPlant"]
+z_index = 1
+position = Vector2(0, -34)
+scale = Vector2(1, 0.7)
 emitting = false
 amount = 20
-lifetime = 0.6
+lifetime = 0.4
 one_shot = true
 explosiveness = 0.8
 texture = ExtResource("3_ha4ft")
@@ -92,13 +200,28 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 900.0
 initial_velocity_max = 1300.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
 angle_min = -720.0
 angle_max = 720.0
-scale_amount_min = 0.5
+scale_amount_min = 0.3
+scale_amount_max = 0.6
 color = Color(0.90625, 0.9375, 0.101563, 1)
 color_ramp = SubResource("Gradient_ngbme")
 
+[node name="Spiky" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 40)
+texture = ExtResource("2_eesy3")
+offset = Vector2(-6, -135)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_1k1cq")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_2qutw")
+anim_player = NodePath("../AnimationPlayer")
+active = true
