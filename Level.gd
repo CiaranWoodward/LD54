@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var AP_per_day = 5
+@export var developer_mode = false
 
 var _sky_tween
 
@@ -13,9 +14,13 @@ func _ready():
 	Global.action_points_changed.connect(_update_sky_from_ap)
 	Global.action_points = AP_per_day
 	Global.day = 0
-	Global.change_produce_count(Global.ProduceType.MUSHROOM, 1)
 	# This should trigger only the start dialogue.
-	_tick_story()
+	if !developer_mode: _tick_story()
+	# Developer only stuff:
+	if developer_mode:
+		Global.change_produce_count(Global.ProduceType.MUSHROOM, 1)
+		for seedtype in Global._seedInventory.keys():
+			Global.change_seed_count(seedtype, 10)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -62,7 +67,7 @@ func _on_turn_end():
 	$HUD.clear_action()
 	$GardenTiles.tick()
 	Global.action_points = 0
-	await _tick_story()
+	if !developer_mode: await _tick_story()
 	await _reset_day()
 	Global.day += 1
 	Global.action_points = AP_per_day
