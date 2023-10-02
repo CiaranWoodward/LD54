@@ -117,10 +117,10 @@ visible = false
 position = Vector2(10, -4)
 
 [node name="IndiMush4" parent="Cluster" instance=ExtResource("2_wvmaw")]
-visible = false
 position = Vector2(-70, 18)
 
 [node name="IndiMush5" parent="Cluster" instance=ExtResource("2_wvmaw")]
+visible = false
 position = Vector2(-22, 74)
 
 [node name="IndiMush6" parent="Cluster" instance=ExtResource("2_wvmaw")]
