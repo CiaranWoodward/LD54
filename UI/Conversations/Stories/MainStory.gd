@@ -3,6 +3,7 @@ extends Node
 var dan_visited = false
 var gave_to_dan = false
 var dan_got_beat = false
+var jon_survived = true
 
 @onready var main1 = Conversation.new()
 @onready var sidedan1 = Conversation.new()
@@ -11,6 +12,8 @@ var dan_got_beat = false
 @onready var main3 = Conversation.new()
 @onready var main4 = Conversation.new()
 @onready var main5 = Conversation.new()
+@onready var final = Conversation.new()
+@onready var post_final = Conversation.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -296,13 +299,204 @@ func _ready():
 	main4.is_triggered = func():
 		return Global.day == 21
 	main4.script([
-		
+		{
+			text = "Hello again",
+			image = "Officer",
+			name = "Jon"
+		},
+		{
+			when = func(): return Story.failure == 0,
+			text = "I like my trips here.",
+		},
+		{
+			when = func(): return Global.is_quota_met(),
+			text = "Great job!",
+			callback = func(): Story.success += 1,
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "Looks like you fall short this time.",
+			callback = func(): Story.failure += 1,
+		},
+		{
+			when = func(): return !Global.is_quota_met() && Story.failure == 1,
+			text = "Disappointing. I expect you to [u]make that up on next collection[/u]. If it happens again, I'll have to write you up.",
+		},
+		{
+			when = func(): return !Global.is_quota_met() && Story.failure > 1,
+			text = "This has happened too many times. I'm going to have to write you up. Also, make up the difference next week.",
+			callback = func(): Story.written_up += 1
+		},
+		{
+			text = "There's a forecast for more [i]bindweed[/i] than usual blowing in from the east, which will get past even your industrial pesticides.",
+		},
+		{
+			text = "I can give you a few of these military-grade biological [u]Spike Shooters[/u]. These almost-indestructable plants will kill any adjacent plants.",
+		},
+		{
+			text = "Make sure you harvest them once the spikes are gone, their cores have incredible industrial use.",
+		},
+		{
+			text = "Here is the quota. I'll be back in [u]2 weeks[/u] this time, since it's a larger order.",
+			callback = func():
+				Global.take_quota()
+				Global.change_quota_count(Global.ProduceType.FLOWER, 20)
+				Global.change_quota_count(Global.ProduceType.BERRY, 80)
+				Global.change_quota_count(Global.ProduceType.SUCCULENT, 5)
+				Global.change_quota_count(Global.ProduceType.ORANGE, 20)
+				# TODO: Spike ball quota
+				Global.change_seed_count(Global.PlantType.FLOWER, 10)
+				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
+				Global.change_seed_count(Global.PlantType.SUCCULENT, 8)
+				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1)
+				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
+				Global.weed_percent = 4
+				,
+		},
+	])
+	
+	main5.is_triggered = func():
+		return Global.day == 35
+	main5.script([
+		{
+			text = "[i]Jon's missing a leg, and looks very tired and beaten up.[/i]",
+			image = "Officer",
+		},
+		{
+			text = "Some terrorists have been disrupting our great country. I would sacrifice a lot more than this leg for our society.",
+			name = "Jon"
+		},
+		{
+			when = func(): return Story.failure < 1,
+			text = "It's shameful that not everyone can pull their weight like you do.",
+		},
+		{
+			when = func(): return Story.failure == 1,
+			text = "One mistake doesn't make a bad person, but we need your help.",
+		},
+		{
+			when = func(): return Story.failure > 1,
+			text = "People like you need to do more if we are to succeed.",
+		},
+		{
+			when = func(): return Global.is_quota_met(),
+			text = "These supplies will be very useful to help the effort. Thank you. Sincerely.",
+			callback = func(): Story.success += 1,
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "I'll take what you've got, but you need to do better. We need you now more than ever.",
+			callback = func(): Story.failure += 1,
+		},
+		{
+			text = "We need medicinal supplies. These [u]mushrooms[/u] thrive off dead plant matter, and will spread to other dead things. [u]succulents[/u] need dry conditions."
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "Forget about the other items from the missed quota."
+		},
+		{
+			text = "Here is the list & seeds, I'll be back in 2 weeks.",
+			callback = func():
+				Global.take_quota()
+				Global.clear_quota()
+				Global.change_quota_count(Global.ProduceType.BERRY, 40)
+				Global.change_quota_count(Global.ProduceType.SUCCULENT, 20)
+				Global.change_quota_count(Global.ProduceType.ORANGE, 20)
+				Global.change_quota_count(Global.ProduceType.MUSHROOM, 100)
+				Global.change_seed_count(Global.PlantType.FLOWER, 10)
+				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
+				Global.change_seed_count(Global.PlantType.SUCCULENT, 30)
+				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
+				Global.change_seed_count(Global.PlantType.MUSHROOM, 7)
+				Global.weed_percent = 1
+				,
+		}
+	])
+	
+	final.is_triggered = func():
+		return Global.day == 49
+	final.script([
+		{
+			text = "[i]Jon is looking even worse than last time.[/i]",
+			image = "Officer",
+		},
+		{
+			when = func(): return Global.is_quota_met(),
+			text = "[i]But his eyes light up when he sees your supplies[/i]",
+			callback = func(): Story.success += 1
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "[i]And he is struggling to hold back his tears when he sees you have failed...[/i]",
+			callback = func(): Story.failure += 1
+		},
+		{
+			when = func(): return !Global.is_quota_met() && Story.failure > 3,
+			text = "[i]...Again.[/i]",
+		},
+		{
+			when = func(): return Global.is_quota_met(),
+			name = "Jon",
+			text = "This is so very helpful, thank you!",
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "We're so fucked.",
+			callback = func(): jon_survived = false
+		},
+	])
+	final.callback = func():
+		Global.take_quota()
+		Global.clear_quota()
+		Story.complete = true
+		Story.active_set.push_back(post_final)
+	
+	post_final.script([
+		{
+			text = "Thank you for playing!",
+			image = "Devs",
+			name = "Developers"
+		},
+		{
+			text = "Here is what happened thanks to your actions...",
+		},
+		{
+			when = func(): return jon_survived,
+			text = "Unfortunately Jon died a few days later, due to a severe infection in his leg.",
+		},
+		{
+			when = func(): return !jon_survived,
+			text = "Jon pulled through and made a full recovery, eventually being promoted to District manager of the agriculture program.",
+		},
+		{
+			when = func(): return Story.failure == 0,
+			text = "After your exemplary performance, you are promoted to Jon's old role.",
+		},
+		{
+			when = func(): return Story.failure > 0 && Story.failure < 3,
+			text = "You are allowed to keep your farm and residence.",
+		},
+		{
+			when = func(): return dan_got_beat,
+			text = "Daniel lead a squad of rebels to break open and free many unjustly imprisoned people. He forgave you.",
+		},
+		{
+			when = func(): return gave_to_dan,
+			text = "Daniel & his wife had a long and happy marriage, with a child on the way.",
+		},
+		{
+			text = "We hope you enjoyed your playthrough! Thanks for playing!",
+		},
 	])
 	
 	Story.active_set.push_back(main1)
 	Story.active_set.push_back(sidedan1)
 	Story.active_set.push_back(main2)
 	Story.active_set.push_back(main3)
+	Story.active_set.push_back(main4)
+	Story.active_set.push_back(main5)
+	Story.active_set.push_back(final)
 
 func take_quota(convo : Conversation):
 	pass

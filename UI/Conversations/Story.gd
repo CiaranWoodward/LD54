@@ -9,6 +9,8 @@ var snitch = 0
 var subtle = 0
 var good_neighbor = 0
 var fool = 0
+var written_up = 0
+var complete = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

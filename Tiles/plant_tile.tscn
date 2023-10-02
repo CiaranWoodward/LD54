@@ -102,3 +102,5 @@ color_ramp = SubResource("Gradient_eq4ia")
 color_initial_ramp = SubResource("Gradient_j85dy")
 hue_variation_min = 1.0
 hue_variation_max = 1.0
+
+[node name="PopupPanel" type="PopupPanel" parent="."]

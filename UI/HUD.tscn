@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ivh3v87hka2i" path="res://UI/plant_button.tscn" id="2_b4o4e"]
 [ext_resource type="PackedScene" uid="uid://0qqdaelxnqdg" path="res://UI/destroy_button.tscn" id="4_u8uef"]
 [ext_resource type="PackedScene" uid="uid://dwa26aog7olj5" path="res://UI/end_turn_button.tscn" id="5_uy6yv"]
-[ext_resource type="Script" path="res://UI/ActionPointLabel.gd" id="7_5ec4i"]
 [ext_resource type="Script" path="res://UI/Quotas.gd" id="8_dhiuq"]
 [ext_resource type="Texture2D" uid="uid://cqecmla6hhtr2" path="res://Graphics/Icons/AP0000.png" id="8_phdsi"]
+[ext_resource type="Script" path="res://UI/APbox.gd" id="8_r08wt"]
 [ext_resource type="Script" path="res://UI/Title.gd" id="8_v41g0"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="10_xmqyb"]
 
@@ -83,45 +83,39 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_bdcb7")
 
-[node name="ActionPointLabel" type="Label" parent="ActionCounter"]
+[node name="APbox" type="HBoxContainer" parent="ActionCounter"]
 layout_mode = 2
-horizontal_alignment = 1
-script = ExtResource("7_5ec4i")
+script = ExtResource("8_r08wt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ActionCounter"]
-layout_mode = 2
-
-[node name="AP1" type="TextureRect" parent="ActionCounter/HBoxContainer"]
-self_modulate = Color(0.368627, 1, 0, 1)
+[node name="AP1" type="TextureRect" parent="ActionCounter/APbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("8_phdsi")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AP2" type="TextureRect" parent="ActionCounter/HBoxContainer"]
-self_modulate = Color(0.32549, 0.32549, 0.32549, 1)
+[node name="AP2" type="TextureRect" parent="ActionCounter/APbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("8_phdsi")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AP3" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+[node name="AP3" type="TextureRect" parent="ActionCounter/APbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("8_phdsi")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AP4" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+[node name="AP4" type="TextureRect" parent="ActionCounter/APbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("8_phdsi")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AP5" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+[node name="AP5" type="TextureRect" parent="ActionCounter/APbox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("8_phdsi")

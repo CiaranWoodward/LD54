@@ -25,6 +25,7 @@ var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 var _produceQuota: Dictionary = {}
 
 var action_points: int = 0: set = set_action_points
+var weed_percent = 1
 
 func set_action_points(new_action_points):
 	action_points = new_action_points
