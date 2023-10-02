@@ -10,6 +10,7 @@ const MAX_FERTILITY = 10
 @export var color_random = 0.05
 @export var ripple_period = 0.25
 @export_range(0.00, 1.0) var ripple_inverse_damping = 0.5
+@export var weed_percent = 1
 
 var fertility : int = randi_range(4, 7) : set = set_fertile
 var is_fertile: bool = fertility > 5
@@ -118,6 +119,13 @@ func tick():
 		child_plant.tick()
 	if randi_range(0, 100) < decay_percent:
 		self.fertility -= 1
+		
+	# if edge tile have a chance to sow a weed
+	if (randi_range(0, 100) < weed_percent && getAdjacent().size() < 6):
+		if (is_occupied()): 
+			child_plant.destroy()
+		var weed = load("res://Plants/Weed.tscn").instantiate()
+		weed.sow(self, false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
