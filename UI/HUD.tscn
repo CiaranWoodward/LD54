@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=13 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_xlc34"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwa26aog7olj5" path="res://UI/end_turn_button.tscn" id="5_uy6yv"]
 [ext_resource type="Script" path="res://UI/ActionPointLabel.gd" id="7_5ec4i"]
 [ext_resource type="Script" path="res://UI/Quotas.gd" id="8_dhiuq"]
+[ext_resource type="Texture2D" uid="uid://cqecmla6hhtr2" path="res://Graphics/Icons/AP0000.png" id="8_phdsi"]
 [ext_resource type="Script" path="res://UI/Title.gd" id="8_v41g0"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="10_xmqyb"]
 [ext_resource type="PackedScene" uid="uid://d3fk3e8hi32jv" path="res://UI/quota_item.tscn" id="11_40ugx"]
@@ -69,6 +70,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ActionCounter" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -80,11 +82,52 @@ offset_right = 50.0
 offset_bottom = -127.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("1_bdcb7")
 
 [node name="ActionPointLabel" type="Label" parent="ActionCounter"]
 layout_mode = 2
 horizontal_alignment = 1
 script = ExtResource("7_5ec4i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionCounter"]
+layout_mode = 2
+
+[node name="AP1" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+self_modulate = Color(0.368627, 1, 0, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_phdsi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AP2" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+self_modulate = Color(0.32549, 0.32549, 0.32549, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_phdsi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AP3" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_phdsi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AP4" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_phdsi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AP5" type="TextureRect" parent="ActionCounter/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_phdsi")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
