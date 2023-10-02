@@ -15,6 +15,7 @@ const MAX_FERTILITY = 10
 var fertility : int = randi_range(4, 7) : set = set_fertile
 var is_fertile: bool = fertility > 5
 var child_plant : BasePlant = null : set = set_child_plant
+var coords : Vector2i = Vector2i.ZERO
 
 var _dry_tween
 var _color_tween
