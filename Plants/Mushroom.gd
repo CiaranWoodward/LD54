@@ -78,6 +78,9 @@ func spread_impl(tiles):
 			var mushroom = load("res://Plants/Mushroom.tscn").instantiate()
 			mushroom.cluster_varient = cluster_varient
 			mushroom.sow(tile, false)
+			
+func can_harvest() -> bool:
+	return age < 0 && true
 
 func harvest():
 	Global.change_produce_count(Global.ProduceType.MUSHROOM, cluster_count)

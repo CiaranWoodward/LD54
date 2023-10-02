@@ -27,7 +27,7 @@ func _process(delta):
 
 ## Can the fruit be harvested?
 func can_harvest() -> bool:
-	return false
+	return status == Status.HARVESTABLE
 
 ## Harvest the fruit (Might also destroy for some plants)
 func harvest():
