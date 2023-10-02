@@ -1,6 +1,16 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cvly3s1h4xk6r"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cvly3s1h4xk6r"]
 
 [ext_resource type="FontFile" uid="uid://biop3j758m626" path="res://UI/Fonts/Ubuntu-Light.ttf" id="1_ldo4u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_playx"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.859375, 0.84375, 0.808594, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4uf24"]
 
@@ -12,6 +22,8 @@ bg_color = Color(1, 1, 1, 1)
 
 [resource]
 default_font = ExtResource("1_ldo4u")
+AcceptDialog/constants/buttons_separation = 0
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_playx")
 Button/constants/h_separation = 12
 Button/styles/focus = SubResource("StyleBoxEmpty_4uf24")
 Button/styles/hover = SubResource("StyleBoxFlat_36w7s")
