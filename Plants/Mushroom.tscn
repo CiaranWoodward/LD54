@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="Mushroom" type="Node2D"]
-scale = Vector2(1.3274, 1.52759)
+scale = Vector2(1.43535, 1.65182)
 script = ExtResource("1_3e0xn")
 spread_percent_fertile = 2
 spread_percent_infertile = 1
