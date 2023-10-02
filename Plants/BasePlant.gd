@@ -33,12 +33,19 @@ func can_harvest() -> bool:
 func harvest():
 	harvested.emit()
 
-## Destroy the plant (Also harvests anything harvestable)
+## Destroy the hosted plant first then destroy ther plant  (Also harvests anything harvestable)
 func destroy():
-	if is_instance_valid(parent_tile):
+	if is_instance_valid(hosted_plant):
+		hosted_plant.destroyed.emit()
+		remove_child(hosted_plant)
+		hosted_plant.queue_free()
+		hosted_plant = null
+	else:
 		destroyed.emit()
-		parent_tile.child_plant = null
-		parent_tile = null
+		if is_instance_valid(parent_tile):
+			parent_tile.child_plant = null
+			parent_tile = null
+		queue_free()
 
 ## Make the plant dead
 func kill():

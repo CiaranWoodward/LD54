@@ -22,8 +22,6 @@ func set_cluster_count(newCount):
 		cluster_count = 0
 	else:
 		cluster_count = newCount
-	
-var host: BasePlant;
 
 func reset():
 	cluster_count = 0
@@ -46,14 +44,14 @@ func plant_type():
 func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	if use_seed && Global.get_seed_count(plant_type()) <= 0:
 		return false
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD && !is_instance_valid(tile.child_plant.hosted_plant)
 	
 func sow(tile: PlantTile, use_seed: bool = true):
 	if !can_sow(tile, use_seed):
 		return false
 	if use_seed:
 		Global.change_seed_count(plant_type(), -1)
-	host = tile.child_plant
+	var host = tile.child_plant
 	host.ticked.connect(tick)
 	host.harvested.connect(harvest)
 	host.destroyed.connect(destroy)

@@ -123,8 +123,6 @@ func tick():
 		
 	# if edge tile have a chance to sow a weed
 	if (randi_range(0, 100) < weed_percent && getAdjacent().size() < 6):
-		if (is_occupied()): 
-			child_plant.destroy()
 		var weed = load("res://Plants/Weed.tscn").instantiate()
 		weed.sow(self, false)
 
