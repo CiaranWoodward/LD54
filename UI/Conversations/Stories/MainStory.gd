@@ -61,6 +61,7 @@ func _ready():
 			Story.bootlicker += 1
 	main1.yes_script([
 		{
+			image = "Officer",
 			text = "[i]He nods with a smile, he appreciates your respect[/i]",
 		}
 	])
@@ -288,7 +289,7 @@ func _ready():
 			callback = func():
 				Global.take_quota()
 				Global.change_quota_count(Global.ProduceType.FLOWER, 10)
-				Global.change_quota_count(Global.ProduceType.BERRY, 40)
+				Global.change_quota_count(Global.ProduceType.BERRY, 20)
 				Global.change_quota_count(Global.ProduceType.SUCCULENT, 4)
 				Global.change_quota_count(Global.ProduceType.ORANGE, 5)
 				Global.change_seed_count(Global.PlantType.FLOWER, 10)
@@ -343,17 +344,17 @@ func _ready():
 			text = "Here is the quota. I'll be back in [u]2 weeks[/u] this time, since it's a larger order.",
 			callback = func():
 				Global.take_quota()
-				Global.change_quota_count(Global.ProduceType.FLOWER, 20)
-				Global.change_quota_count(Global.ProduceType.BERRY, 80)
+				Global.change_quota_count(Global.ProduceType.FLOWER, 15)
+				Global.change_quota_count(Global.ProduceType.BERRY, 40)
 				Global.change_quota_count(Global.ProduceType.SUCCULENT, 5)
-				Global.change_quota_count(Global.ProduceType.ORANGE, 20)
-				# TODO: Spike ball quota
+				Global.change_quota_count(Global.ProduceType.ORANGE, 30)
+				Global.change_quota_count(Global.ProduceType.SPIKE_BALL, 1)
 				Global.change_seed_count(Global.PlantType.FLOWER, 10)
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
 				Global.change_seed_count(Global.PlantType.SUCCULENT, 8)
 				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1)
 				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
-				Global.weed_percent = 4
+				Global.weed_percent = 3
 				Global.next_quota_day = 35,
 		},
 	])
@@ -403,13 +404,13 @@ func _ready():
 			callback = func():
 				Global.take_quota()
 				Global.clear_quota()
-				Global.change_quota_count(Global.ProduceType.BERRY, 40)
-				Global.change_quota_count(Global.ProduceType.SUCCULENT, 20)
+				Global.change_quota_count(Global.ProduceType.BERRY, 5)
+				Global.change_quota_count(Global.ProduceType.SUCCULENT, 10)
 				Global.change_quota_count(Global.ProduceType.ORANGE, 20)
-				Global.change_quota_count(Global.ProduceType.MUSHROOM, 100)
+				Global.change_quota_count(Global.ProduceType.MUSHROOM, 20)
 				Global.change_seed_count(Global.PlantType.FLOWER, 10)
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
-				Global.change_seed_count(Global.PlantType.SUCCULENT, 30)
+				Global.change_seed_count(Global.PlantType.SUCCULENT, 20)
 				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
 				Global.change_seed_count(Global.PlantType.MUSHROOM, 7)
 				Global.weed_percent = 1
@@ -455,23 +456,24 @@ func _ready():
 		Global.clear_quota()
 		Global.next_quota_day = 999
 		Story.complete = true
-		Story.active_set.push_back(post_final)
 	
+	post_final.priority = 99
+	post_final.is_triggered = func(): return Story.complete
 	post_final.script([
 		{
 			text = "Thank you for playing!",
-			image = "Devs",
+			image = "Dev",
 			name = "Developers"
 		},
 		{
 			text = "Here is what happened thanks to your actions...",
 		},
 		{
-			when = func(): return jon_survived,
+			when = func(): return !jon_survived,
 			text = "Unfortunately Jon died a few days later, due to a severe infection in his leg.",
 		},
 		{
-			when = func(): return !jon_survived,
+			when = func(): return jon_survived,
 			text = "Jon pulled through and made a full recovery, eventually being promoted to District manager of the agriculture program.",
 		},
 		{
@@ -493,6 +495,17 @@ func _ready():
 		{
 			text = "We hope you enjoyed your playthrough! Thanks for playing!",
 		},
+		{
+			text = "Feel free to play around with the farm now",
+			callback = func():
+				Global.change_seed_count(Global.PlantType.FLOWER, 100)
+				Global.change_seed_count(Global.PlantType.BERRY_VINE, 100)
+				Global.change_seed_count(Global.PlantType.SUCCULENT, 100)
+				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 100)
+				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 100)
+				Global.change_seed_count(Global.PlantType.MUSHROOM, 100)
+				,
+		},
 	])
 	
 	Story.active_set.push_back(main1)
@@ -502,6 +515,7 @@ func _ready():
 	Story.active_set.push_back(main4)
 	Story.active_set.push_back(main5)
 	Story.active_set.push_back(final)
+	Story.active_set.push_back(post_final)
 
 func take_quota(convo : Conversation):
 	pass
