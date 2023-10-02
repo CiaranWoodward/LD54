@@ -51,8 +51,15 @@ func sow(tile : PlantTile, use_seed: bool = false) -> bool:
 		return false
 	
 	if tile.is_occupied():
+		var plant: BasePlant = tile.child_plant
+		if (is_instance_valid(plant.hosted_plant)):
+			var hosted_plant: BasePlant = plant.hosted_plant
+			hosted_plant.destroyed.emit()
+			remove_child(hosted_plant)
+			hosted_plant.queue_free()
+			hosted_plant = null
 		var host = tile.child_plant
-		if killable_plants.has(tile.child_plant.plant_type()):
+		if killable_plants.has(plant.plant_type()):
 			host.kill()
 		host.ticked.connect(tick)
 		host.harvested.connect(harvest)

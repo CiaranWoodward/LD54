@@ -44,7 +44,7 @@ func plant_type():
 func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	if use_seed && Global.get_seed_count(plant_type()) <= 0:
 		return false
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) && tile.is_occupied() && tile.child_plant.status == Status.DEAD && !is_instance_valid(tile.child_plant.hosted_plant)
 	
 func sow(tile: PlantTile, use_seed: bool = true):
 	if !can_sow(tile, use_seed):
