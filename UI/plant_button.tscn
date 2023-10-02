@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ivh3v87hka2i"]
+[gd_scene load_steps=13 format=3 uid="uid://ivh3v87hka2i"]
 
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_13m46"]
 [ext_resource type="Script" path="res://UI/plant_button.gd" id="1_bqnd4"]
 [ext_resource type="Texture2D" uid="uid://bbebnlpbj1o77" path="res://Graphics/Background/AJar0000.png" id="5_m23gh"]
+[ext_resource type="Texture2D" uid="uid://cyfwmp2y7utxe" path="res://Graphics/Background/AGreyJar0000.png" id="6_diu4w"]
 [ext_resource type="Texture2D" uid="uid://du50r5ps5k2il" path="res://Graphics/Icons/Flower0000.png" id="6_fbtnv"]
 [ext_resource type="Texture2D" uid="uid://dj6s3wwu8lk1s" path="res://Graphics/Background/OpenJar0000.png" id="6_vtorv"]
 [ext_resource type="Texture2D" uid="uid://brk133p7qgyc" path="res://Graphics/Background/AjarJar0000.png" id="7_2jmdk"]
@@ -33,6 +34,7 @@ button_group = ExtResource("1_13m46")
 texture_normal = ExtResource("5_m23gh")
 texture_pressed = ExtResource("6_vtorv")
 texture_hover = ExtResource("7_2jmdk")
+texture_disabled = ExtResource("6_diu4w")
 ignore_texture_size = true
 stretch_mode = 4
 

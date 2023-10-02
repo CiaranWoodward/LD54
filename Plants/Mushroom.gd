@@ -2,6 +2,9 @@
 class_name Mushroom
 extends BasePlant
 
+@export var random_wave_min = 3.0
+@export var random_wave_max = 8.0
+
 static func plant_name():
 	return "Mushroom"
 
@@ -32,10 +35,10 @@ func reset():
 		child.get_node("IndiMush/Stumpy").frame = randi_range(0, 2)
 
 func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+	super()
 	reset()
 	$Cluster.get_children().pick_random().visible = true
+	_random_wave()
 
 func plant_type():
 	return Global.PlantType.MUSHROOM
@@ -81,3 +84,11 @@ func spread_impl(tiles):
 func harvest():
 	Global.change_produce_count(Global.ProduceType.MUSHROOM, cluster_count)
 	reset()
+
+func _random_wave():
+	while true:
+		var tween = create_tween()
+		tween.tween_interval(randf_range(random_wave_min, random_wave_max))
+		await tween.finished
+		$AnimationPlayer.play("Wave")
+		await $AnimationPlayer.animation_finished

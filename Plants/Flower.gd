@@ -16,8 +16,7 @@ static func plant_description():
 	return "Improves soil moisture for later planting."
 
 func _ready():
-	scale.x = 1 if randi_range(0, 1) else -1
-	scale *= randf_range(0.9, 1.1)
+	super()
 	$Flower/Bud.modulate = colors[randi_range(0, colors.size()-1)]
 	$PetalFall.modulate = $Flower/Bud.modulate
 
@@ -49,8 +48,7 @@ func tick():
 			tile.fertility += 1
 	if age > time_to_dead:
 		if status != Status.DEAD:
-			stateMachine.travel("Withered")
-		status = Status.DEAD
+			kill()
 	elif age > time_to_grow:
 		if status != Status.HARVESTABLE:
 			stateMachine.travel("Big")

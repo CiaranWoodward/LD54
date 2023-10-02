@@ -9,6 +9,9 @@ static func plant_description():
 
 func plant_type():
 	return Global.PlantType.ORANGE_TREE
+
+func _ready():
+	super()
 	
 func kill():
 	super()
