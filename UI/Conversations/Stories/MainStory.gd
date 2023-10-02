@@ -45,13 +45,13 @@ func _ready():
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 2),
 		},
 	])
-	main1.choice_text = "Thank him, Sir?"
+	main1.choice_text = "Respond with the response: \"Prosperity for all!\"?"
 	main1.choice = func(answer: bool):
 		if answer:
 			Story.bootlicker += 1
 	main1.yes_script([
 		{
-			text = "[i]He nods with a smile, he appreciates your respect of his position[/i]",
+			text = "[i]He nods with a smile, he appreciates your respect[/i]",
 		}
 	])
 	

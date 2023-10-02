@@ -104,6 +104,6 @@ func _apply_action():
 			if !_current_plantinstance.can_sow(_current_tile):
 				return
 			_current_plantinstance.sow(_current_tile)
+			clear_action_func.call()
 	interacted_with_tile.emit(_current_tile)
 	Global.action_points -= 1
-	clear_action_func.call()
