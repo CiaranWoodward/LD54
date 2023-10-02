@@ -113,7 +113,6 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_qj57s"]
 resource_name = "DayCycle"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -516,7 +515,7 @@ radius = 4
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 script = ExtResource("2_hoiau")
-MaxPos = Vector2(400, 400)
+MaxPos = Vector2(400, 200)
 
 [node name="HUD" parent="." instance=ExtResource("4_mp570")]
 
