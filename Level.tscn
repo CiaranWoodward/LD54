@@ -94,7 +94,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_qj57s"]
 resource_name = "DayCycle"
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -357,7 +357,7 @@ libraries = {
 }
 
 [node name="DayCycle" type="AnimationPlayer" parent="."]
-speed_scale = 0.1
+speed_scale = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_ibd4w")
 }
