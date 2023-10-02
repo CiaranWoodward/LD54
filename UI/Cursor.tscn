@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4j0a6xqs4pqq"]
+[gd_scene load_steps=15 format=3 uid="uid://d4j0a6xqs4pqq"]
 
 [ext_resource type="Script" path="res://UI/Cursor.gd" id="1_t3c3b"]
 [ext_resource type="Texture2D" uid="uid://byuq4wutnm8d4" path="res://Graphics/Icons/DestroyDarker0000.png" id="2_fwoep"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c4v3h76qrgj06" path="res://Graphics/Icons/Succulent0000.png" id="5_gkas6"]
 [ext_resource type="Texture2D" uid="uid://ttdf3si03313" path="res://Graphics/Icons/OrangeTree0000.png" id="7_65mx4"]
 [ext_resource type="Texture2D" uid="uid://duo0leoj0jp5r" path="res://Graphics/Icons/Mushroom0000.png" id="8_b6uvd"]
+[ext_resource type="PackedScene" uid="uid://dnxss8v3eyq1a" path="res://Sound/AudioRandom.tscn" id="11_rljd4"]
+[ext_resource type="AudioStream" uid="uid://dn05f4eijn746" path="res://Sound/Created/Destroy.wav" id="12_f35jq"]
+[ext_resource type="AudioStream" uid="uid://dihbqekcsubc1" path="res://Sound/Created/Plant1.wav" id="13_qcm8p"]
+[ext_resource type="AudioStream" uid="uid://qbspap02fq5a" path="res://Sound/Created/Plant2.wav" id="14_f5a6w"]
 
 [node name="Cursor" type="Node2D"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -129,3 +133,14 @@ visible = false
 position = Vector2(0, -31)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_b6uvd")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Destroy" parent="Sounds" instance=ExtResource("11_rljd4")]
+stream = ExtResource("12_f35jq")
+
+[node name="Plant1" parent="Sounds" instance=ExtResource("11_rljd4")]
+stream = ExtResource("13_qcm8p")
+
+[node name="Plant2" parent="Sounds" instance=ExtResource("11_rljd4")]
+stream = ExtResource("14_f5a6w")

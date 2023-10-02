@@ -22,6 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://wjev7gc5a043" path="res://Graphics/Background/Title0000.png" id="18_h1h5c"]
 [ext_resource type="Script" path="res://Week.gd" id="18_bt0qg"]
 [ext_resource type="Script" path="res://Day.gd" id="19_mqjg0"]
+[ext_resource type="AudioStream" uid="uid://cax103prsngqi" path="res://Sound/Music/lo_fi_game_sound.wav" id="20_tdbb4"]
+[ext_resource type="PackedScene" uid="uid://dnxss8v3eyq1a" path="res://Sound/AudioRandom.tscn" id="21_6n0lr"]
+[ext_resource type="AudioStream" uid="uid://n53je1b1b45l" path="res://Sound/Created/NextLevel.wav" id="22_eqv86"]
+[ext_resource type="AudioStream" uid="uid://b3oxn3mx46vn0" path="res://Sound/Created/NewQuota.wav" id="23_lxswk"]
 
 [sub_resource type="Gradient" id="Gradient_v60wk"]
 offsets = PackedFloat32Array(1)
@@ -676,4 +680,14 @@ libraries = {
 "": SubResource("AnimationLibrary_lqoww")
 }
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_tdbb4")
+
+[node name="NextLevelSound" parent="." instance=ExtResource("21_6n0lr")]
+stream = ExtResource("22_eqv86")
+
+[node name="NewQuota" parent="." instance=ExtResource("21_6n0lr")]
+stream = ExtResource("23_lxswk")
+
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

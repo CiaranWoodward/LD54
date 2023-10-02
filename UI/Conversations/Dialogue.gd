@@ -85,10 +85,12 @@ func _run_dialogue_pages(pages : Array[Dictionary]):
 		$Name/Name.text = name
 		$Speech/Text.text = page["text"]
 		$Speech/Text.visible_characters = 0
+		$Talkingsound.play()
 		_character_tween = create_tween()
 		var num_characters = $Speech/Text.get_total_character_count()
 		_character_tween.tween_property($Speech/Text, "visible_characters", num_characters, num_characters / characters_per_second)
 		await _character_tween.finished
+		$Talkingsound.stop()
 		_character_tween = null
 		if page.has("callback"):
 			page["callback"].call()
@@ -98,3 +100,7 @@ func _on_question_dialog_confirmed():
 	_choice_confirmed.emit(true)
 func _on_question_dialog_denied():
 	_choice_confirmed.emit(false)
+
+
+func _on_talkingsound_finished():
+	$Talkingsound.play()

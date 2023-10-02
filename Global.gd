@@ -3,6 +3,7 @@ extends Node
 signal inventory_updated
 signal action_points_changed(points: int)
 signal day_changed(day: int)
+signal new_quota
 
 # enum for all plant types
 enum PlantType {WEED, FLOWER, BERRY_VINE, SPIKY_PLANT, SUCCULENT, ORANGE_TREE, MUSHROOM}
@@ -23,6 +24,7 @@ var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 	return accum, {})
 
 var _produceQuota: Dictionary = {}
+var next_quota_day = 0: set = set_next_quota_day
 
 var action_points: int = 0: set = set_action_points
 var weed_percent = 1
@@ -108,6 +110,9 @@ func clear_quota():
 		_produceQuota[key] = 0
 	inventory_updated.emit()
 
+func set_next_quota_day(newDay : int):
+	next_quota_day = newDay
+	new_quota.emit()
 func get_produce_count(type : ProduceType):
 	return _produceInventory[type]
 func get_seed_count(type : PlantType):

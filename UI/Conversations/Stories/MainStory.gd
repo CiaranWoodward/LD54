@@ -42,7 +42,8 @@ func _ready():
 			text = "I'll check in with you every week. Please prepare 10 flowers and 5 berries for my collection next week.",
 			callback = func():
 				Global.set_quota_count(Global.ProduceType.FLOWER, 10)
-				Global.set_quota_count(Global.ProduceType.BERRY, 5),
+				Global.set_quota_count(Global.ProduceType.BERRY, 5)
+				Global.next_quota_day = 7,
 		},
 		{
 			text = "[u]Berries[/u] will only grow in fertile soil, and [u]flowers[/u] will fertilise all of the soil around them. Unused soil will become less fertile over time.",
@@ -220,6 +221,7 @@ func _ready():
 		Global.change_seed_count(Global.PlantType.FLOWER, 20)
 		Global.change_seed_count(Global.PlantType.BERRY_VINE, 2)
 		Global.change_seed_count(Global.PlantType.SUCCULENT, 4)
+		Global.next_quota_day = 14
 	
 	sidedan2.is_triggered = func():
 		return Global.day == 8
@@ -292,7 +294,8 @@ func _ready():
 				Global.change_seed_count(Global.PlantType.FLOWER, 10)
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
 				Global.change_seed_count(Global.PlantType.SUCCULENT, 4)
-				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1),
+				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1)
+				Global.next_quota_day = 21,
 		},
 	])
 	
@@ -351,7 +354,7 @@ func _ready():
 				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1)
 				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
 				Global.weed_percent = 4
-				,
+				Global.next_quota_day = 35,
 		},
 	])
 	
@@ -410,6 +413,7 @@ func _ready():
 				Global.change_seed_count(Global.PlantType.SPIKY_PLANT, 5)
 				Global.change_seed_count(Global.PlantType.MUSHROOM, 7)
 				Global.weed_percent = 1
+				Global.next_quota_day = 49
 				,
 		}
 	])
@@ -449,6 +453,7 @@ func _ready():
 	final.callback = func():
 		Global.take_quota()
 		Global.clear_quota()
+		Global.next_quota_day = 999
 		Story.complete = true
 		Story.active_set.push_back(post_final)
 	
