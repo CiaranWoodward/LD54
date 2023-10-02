@@ -1,7 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvvjcadholer7"]
+[gd_scene load_steps=26 format=3 uid="uid://bvvjcadholer7"]
 
 [ext_resource type="Script" path="res://Plants/Succulent.gd" id="1_msnik"]
 [ext_resource type="Texture2D" uid="uid://bia0chdt6cje0" path="res://Graphics/Plants/Succulent/Succulent0000.png" id="2_qsf6e"]
+[ext_resource type="Texture2D" uid="uid://k5p2jwwwspnu" path="res://Graphics/Plants/Succulent/Dead0000.png" id="3_1jnwq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pn2pd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qsf6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1jnwq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_d6owu"]
 resource_name = "Big"
@@ -108,59 +123,6 @@ tracks/3/keys = {
 "values": [0.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_v2yd4"]
-resource_name = "Idle"
-length = 12.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Succulent:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 1.1),
-"transitions": PackedFloat32Array(0.574349, 1.86607, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Succulent:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 26), Vector2(0, 26)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Succulent:skew")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Succulent:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_geb1f"]
 length = 0.001
 tracks/0/type = "value"
@@ -210,6 +172,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Succulent:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Succulent:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_n7kp5"]
@@ -264,27 +250,196 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Succulent:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rkhec"]
+resource_name = "Dying"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Succulent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(2.21914, 0.574349, 0.574349),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Succulent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 26), Vector2(0, 26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Succulent:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Succulent:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Succulent:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Succulent:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(2.14355, 0.594604, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_afrwe"]
+resource_name = "Withered"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Succulent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.574349, 0.574349),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Succulent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 26), Vector2(0, 26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Succulent:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Succulent:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Succulent:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Succulent:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aehvu"]
 _data = {
 "Big": SubResource("Animation_d6owu"),
+"Dying": SubResource("Animation_rkhec"),
 "Grow": SubResource("Animation_305br"),
-"Idle": SubResource("Animation_v2yd4"),
 "RESET": SubResource("Animation_geb1f"),
-"Small": SubResource("Animation_n7kp5")
+"Small": SubResource("Animation_n7kp5"),
+"Withered": SubResource("Animation_afrwe")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8b3n7"]
 animation = &"Big"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eilyt"]
+animation = &"Dying"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vy005"]
 animation = &"Grow"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mf8mj"]
-animation = &"Idle"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fjjit"]
 animation = &"Small"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yewr1"]
+animation = &"Withered"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bc3t7"]
 switch_mode = 2
@@ -295,16 +450,24 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f6dci"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jbo5q"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8j3f6"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2av8v"]
 states/Big/node = SubResource("AnimationNodeAnimation_8b3n7")
-states/Big/position = Vector2(584, 100)
+states/Big/position = Vector2(534, 100)
+states/Dying/node = SubResource("AnimationNodeAnimation_eilyt")
+states/Dying/position = Vector2(619, 181)
 states/Grow/node = SubResource("AnimationNodeAnimation_vy005")
-states/Grow/position = Vector2(476, 100)
-states/Idle/node = SubResource("AnimationNodeAnimation_mf8mj")
-states/Idle/position = Vector2(476, 193)
+states/Grow/position = Vector2(437, 181)
 states/Small/node = SubResource("AnimationNodeAnimation_fjjit")
-states/Small/position = Vector2(350, 100)
-transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_f6dci")]
+states/Small/position = Vector2(351, 100)
+states/Withered/node = SubResource("AnimationNodeAnimation_yewr1")
+states/Withered/position = Vector2(729, 100)
+transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_f6dci"), "Big", "Dying", SubResource("AnimationNodeStateMachineTransition_jbo5q"), "Dying", "Withered", SubResource("AnimationNodeStateMachineTransition_8j3f6")]
 
 [sub_resource type="Animation" id="Animation_ohfo7"]
 resource_name = "Idle"
@@ -347,9 +510,9 @@ _data = {
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_msnik")
 
-[node name="Succulent" type="Sprite2D" parent="."]
+[node name="Succulent" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 26)
-texture = ExtResource("2_qsf6e")
+sprite_frames = SubResource("SpriteFrames_pn2pd")
 offset = Vector2(0, -138)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -364,7 +527,6 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="Squidge" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_jg0q3")
 }

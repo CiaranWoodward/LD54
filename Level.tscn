@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=31 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -8,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cav6eqaldotxf" path="res://Graphics/Background/LeftPillar0000.png" id="3_47has"]
 [ext_resource type="Texture2D" uid="uid://caji54tu2rk60" path="res://Graphics/Background/Lights0000.png" id="3_agx13"]
 [ext_resource type="Texture2D" uid="uid://c7bxvv2nnio4s" path="res://Graphics/Background/RightPillar0000.png" id="4_bn3l5"]
+[ext_resource type="Texture2D" uid="uid://snjiqner0chk" path="res://Graphics/Background/Sun0000.png" id="4_m4jxg"]
 [ext_resource type="PackedScene" uid="uid://0aejnixhhw7h" path="res://UI/HUD.tscn" id="4_mp570"]
+[ext_resource type="Texture2D" uid="uid://bkkagltgxfphm" path="res://Graphics/Background/Cloud0000.png" id="5_jlk0o"]
+[ext_resource type="Texture2D" uid="uid://id2y515a202e" path="res://Graphics/Background/Cloud10000.png" id="6_0eb5p"]
 [ext_resource type="PackedScene" uid="uid://bljefgflbomjq" path="res://UI/Conversations/Dialogue.tscn" id="6_5r73e"]
 [ext_resource type="PackedScene" uid="uid://d4j0a6xqs4pqq" path="res://UI/Cursor.tscn" id="6_ec5jv"]
 [ext_resource type="Texture2D" uid="uid://c6n8fbdm800f" path="res://Graphics/Background/Surface0000.png" id="7_rqtcc"]
@@ -27,6 +30,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -606, 1755, 0, 0, 0, 0, -487, 746, 0, 0, 0, 0, -339, 161, 0, 0, 0, 0, 0, -253, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2876, 266, 0, 0, 0, 0, 3024, 794, 0, 0, 0, 0, 3133, 1812)
 }
 point_count = 12
+
+[sub_resource type="Gradient" id="Gradient_70mnh"]
+colors = PackedColorArray(1, 1, 1, 0.894118, 0.783523, 0.783523, 0.783523, 0.937255)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
 texture = ExtResource("1_k5ldj")
@@ -119,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.921569, 0.843137, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.533333, 0, 1)]
+"values": [Color(1, 0.533333, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.533333, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -298,71 +304,60 @@ size_flags_vertical = 4
 texture = SubResource("GradientTexture1D_1aqi2")
 
 [node name="Buildings" type="Node2D" parent="Sky"]
+position = Vector2(0, -373)
 
 [node name="BackLeft" type="Sprite2D" parent="Sky/Buildings"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 z_index = 1
-position = Vector2(1277, 2080)
+position = Vector2(1160, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="BackRight" type="Sprite2D" parent="Sky/Buildings"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 z_index = 1
-position = Vector2(4579, 2080)
+position = Vector2(4768, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="FrontLeft" type="Sprite2D" parent="Sky/Buildings"]
 z_index = 5
-position = Vector2(1802, 2422)
+position = Vector2(1353, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="FrontRight" type="Sprite2D" parent="Sky/Buildings"]
 z_index = 5
-position = Vector2(4420, 2422)
+position = Vector2(4609, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="Lights" type="Node2D" parent="Sky"]
+position = Vector2(0, -373)
 
 [node name="BackLeft" type="Sprite2D" parent="Sky/Lights"]
 z_index = 1
-position = Vector2(1277, 2080)
+position = Vector2(1160, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="BackRight" type="Sprite2D" parent="Sky/Lights"]
 z_index = 1
-position = Vector2(4579, 2080)
+position = Vector2(4768, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="FrontLeft" type="Sprite2D" parent="Sky/Lights"]
 z_index = 6
-position = Vector2(1802, 2422)
+position = Vector2(1353, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="FrontRight" type="Sprite2D" parent="Sky/Lights"]
 z_index = 6
-position = Vector2(4420, 2422)
+position = Vector2(4609, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("3_agx13")
-
-[node name="Clouds" type="CPUParticles2D" parent="Sky"]
-position = Vector2(0, 949)
-lifetime = 22.0
-texture = ExtResource("7_rqtcc")
-emission_shape = 3
-emission_rect_extents = Vector2(1, 1000)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 200.0
-initial_velocity_max = 400.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
 
 [node name="SunPath" type="Path2D" parent="Sky"]
 position = Vector2(1738, 823)
@@ -370,13 +365,42 @@ curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
 position = Vector2(-606, 1755)
-rotation = -1.1552
+rotation = 1.46413
 rotates = false
 
 [node name="Sun" type="Sprite2D" parent="Sky/SunPath/PathFollow2D"]
 self_modulate = Color(0.921569, 0.843137, 0, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_rqtcc")
+rotation = 0.960403
+scale = Vector2(5, 5)
+texture = ExtResource("4_m4jxg")
+
+[node name="Clouds" type="CPUParticles2D" parent="Sky"]
+position = Vector2(0, 530)
+lifetime = 22.0
+texture = ExtResource("5_jlk0o")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 500)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.8
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_70mnh")
+
+[node name="Clouds2" type="CPUParticles2D" parent="Sky"]
+position = Vector2(0, 803)
+lifetime = 22.0
+texture = ExtResource("6_0eb5p")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 500)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.8
+scale_amount_max = 2.0
+color_initial_ramp = SubResource("Gradient_70mnh")
 
 [node name="Pillar" type="Node2D" parent="."]
 z_index = -20
