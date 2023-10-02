@@ -2,6 +2,7 @@ class_name BerryVine
 extends BasePlant
 
 @export var time_to_grow: int = 4
+@export var harvest_amount: int = 5
 
 var bush_varient = randi_range(0, 1)
 var berry_varient = randi_range(0, 2)
@@ -13,6 +14,12 @@ static func plant_name():
 
 static func plant_description():
 	return "Spreads and fruits with delicious berries! Will die if land becomes infertile."
+
+func harvest_description() -> Dictionary:
+	return {
+		"name": "Berry",
+		"amount": str(harvest_amount)
+	}
 
 func plant_type():
 	return Global.PlantType.BERRY_VINE
@@ -53,7 +60,7 @@ func harvest():
 		status = Status.GROWING
 		_berry_tween = create_tween()
 		_berry_tween.tween_property($BerryVine/Centre/Berry, "modulate", Color.TRANSPARENT, 0.5)
-		Global.change_produce_count(Global.ProduceType.BERRY, 5)
+		Global.change_produce_count(Global.ProduceType.BERRY, harvest_amount)
 		age = 0
 		
 func spread_impl(tiles: Array):

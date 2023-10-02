@@ -4,6 +4,7 @@ extends BasePlant
 ## How long until the plant is fully grown
 @export var time_to_grow: int = 4
 @export var time_to_fruit: int = 2
+@export var harvest_amount: int = 10
 
 @onready var stateMachine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
 
@@ -14,6 +15,12 @@ static func plant_name():
 
 static func plant_description():
 	return "Draws in moisture from a wide area. Dies if infertile."
+	
+func harvest_description() -> Dictionary:
+	return {
+		"name": "Orange",
+		"amount": str(harvest_amount)
+	}
 
 func plant_type():
 	return Global.PlantType.ORANGE_TREE

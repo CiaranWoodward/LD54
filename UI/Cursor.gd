@@ -52,6 +52,27 @@ func set_current_tile(currentTile : PlantTile):
 			modulate = valid_color
 		else:
 			modulate = invalid_color
+	elif _current_action == Global.ActionType.HARVEST:
+		var plant: BasePlant = _current_tile.child_plant
+		if is_instance_valid(plant):
+			if is_instance_valid(plant.hosted_plant):
+				plant = plant.hosted_plant
+			if (plant.can_harvest()):
+				modulate = valid_color
+				var to_harvest = plant.harvest_description()
+				$Harvest/PanelContainer/MarginContainer/VBoxContainer/ToHarvest.text = "{name}: {amount}".format(to_harvest)
+				$Harvest/PanelContainer.visible = true
+			else:
+				modulate = invalid_color
+				$Harvest/PanelContainer.visible = false
+		else:
+			modulate = invalid_color
+			$Harvest/PanelContainer.visible = false
+	elif _current_action == Global.ActionType.DESTROY:
+		if is_instance_valid(_current_tile.child_plant):
+			modulate = valid_color
+		else:
+			modulate = invalid_color
 	else:
 		modulate = idle_color
 
@@ -94,12 +115,32 @@ func _apply_action():
 			if !is_instance_valid(_current_tile.child_plant):
 				return
 			_current_tile.child_plant.destroy()
+			if is_instance_valid(_current_tile.child_plant) && _current_tile.child_plant.can_harvest():
+				modulate = valid_color
+			else:
+				modulate = invalid_color
 		Global.ActionType.HARVEST:
 			if !is_instance_valid(_current_tile.child_plant):
 				return
 			if !_current_tile.child_plant.can_harvest():
 				return
 			_current_tile.child_plant.harvest()
+			modulate = invalid_color
+			var plant: BasePlant = _current_tile.child_plant
+			if is_instance_valid(plant):
+				if is_instance_valid(plant.hosted_plant):
+					plant = plant.hosted_plant
+				if (plant.can_harvest()):
+					modulate = valid_color
+					var to_harvest = plant.harvest_description()
+					$Harvest/PanelContainer/MarginContainer/VBoxContainer/ToHarvest.text = "{name}: {amount}".format(to_harvest)
+					$Harvest/PanelContainer.visible = true
+				else:
+					modulate = invalid_color
+					$Harvest/PanelContainer.visible = false
+			else:
+				modulate = invalid_color
+				$Harvest/PanelContainer.visible = false
 		Global.ActionType.PLANT:
 			if !_current_plantinstance.can_sow(_current_tile):
 				return

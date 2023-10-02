@@ -27,7 +27,7 @@ func _process(delta):
 
 ## Can the fruit be harvested?
 func can_harvest() -> bool:
-	return status == Status.HARVESTABLE
+	return status == Status.HARVESTABLE || (is_instance_valid(hosted_plant) && hosted_plant.can_harvest())
 
 ## Harvest the fruit (Might also destroy for some plants)
 func harvest():
@@ -95,3 +95,5 @@ func spread_impl(tiles: Array):
 func spread():
 	spread_impl(get_spread_tiles())
 	
+func harvest_description() -> Dictionary:
+	return {}
