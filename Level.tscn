@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=27 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
 [ext_resource type="Script" path="res://Level.gd" id="1_k876p"]
 [ext_resource type="Script" path="res://PlayerCam.gd" id="2_hoiau"]
+[ext_resource type="Texture2D" uid="uid://cqbfbxp57e0n1" path="res://Graphics/Background/Buildings0000.png" id="2_hutii"]
 [ext_resource type="Texture2D" uid="uid://cav6eqaldotxf" path="res://Graphics/Background/LeftPillar0000.png" id="3_47has"]
+[ext_resource type="Texture2D" uid="uid://caji54tu2rk60" path="res://Graphics/Background/Lights0000.png" id="3_agx13"]
 [ext_resource type="Texture2D" uid="uid://c7bxvv2nnio4s" path="res://Graphics/Background/RightPillar0000.png" id="4_bn3l5"]
 [ext_resource type="PackedScene" uid="uid://0aejnixhhw7h" path="res://UI/HUD.tscn" id="4_mp570"]
 [ext_resource type="PackedScene" uid="uid://bljefgflbomjq" path="res://UI/Conversations/Dialogue.tscn" id="6_5r73e"]
@@ -22,7 +24,7 @@ gradient = SubResource("Gradient_v60wk")
 
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -509, 1136, 0, 0, 0, 0, -414, 598, 0, 0, 0, 0, -257, 123, 0, 0, 0, 0, 0, -253, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2787, 42, 0, 0, 0, 0, 2935, 461, 0, 0, 0, 0, 3011, 1117)
+"points": PackedVector2Array(0, 0, 0, 0, -606, 1755, 0, 0, 0, 0, -487, 746, 0, 0, 0, 0, -339, 161, 0, 0, 0, 0, 0, -253, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2876, 266, 0, 0, 0, 0, 3024, 794, 0, 0, 0, 0, 3133, 1812)
 }
 point_count = 12
 
@@ -155,6 +157,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.627451), Color(0, 0, 0, 0.627451), Color(0, 0, 0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sky/Buildings:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.294118, 0.294118, 0.294118, 1), Color(0.717647, 0.717647, 0.717647, 1), Color(0.717647, 0.717647, 0.717647, 1), Color(0.294118, 0.294118, 0.294118, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sky/Lights:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.94902, 0.745098, 0, 1), Color(0.298039, 0.227451, 0, 1), Color(0.298039, 0.227451, 0, 1), Color(0.94902, 0.745098, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_oeqfv"]
 length = 0.001
@@ -218,6 +244,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0.627451)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sky/Buildings:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sky/Lights:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ibd4w"]
 _data = {
@@ -231,15 +281,73 @@ script = ExtResource("1_k876p")
 [node name="Sky" type="TextureRect" parent="."]
 self_modulate = Color(0, 0.109804, 0.168627, 1)
 custom_minimum_size = Vector2(4000, 3000)
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -3000.0
-offset_top = -1325.0
+offset_top = -1500.0
 offset_right = 3000.0
-offset_bottom = 1675.0
+offset_bottom = 1500.0
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
 texture = SubResource("GradientTexture1D_1aqi2")
+
+[node name="Buildings" type="Node2D" parent="Sky"]
+
+[node name="BackLeft" type="Sprite2D" parent="Sky/Buildings"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+z_index = 1
+position = Vector2(1277, 2080)
+scale = Vector2(5, 5)
+texture = ExtResource("2_hutii")
+
+[node name="BackRight" type="Sprite2D" parent="Sky/Buildings"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+z_index = 1
+position = Vector2(4579, 2080)
+scale = Vector2(5, 5)
+texture = ExtResource("2_hutii")
+
+[node name="FrontLeft" type="Sprite2D" parent="Sky/Buildings"]
+z_index = 5
+position = Vector2(1802, 2422)
+scale = Vector2(-5, 5)
+texture = ExtResource("2_hutii")
+
+[node name="FrontRight" type="Sprite2D" parent="Sky/Buildings"]
+z_index = 5
+position = Vector2(4420, 2422)
+scale = Vector2(-5, 5)
+texture = ExtResource("2_hutii")
+
+[node name="Lights" type="Node2D" parent="Sky"]
+
+[node name="BackLeft" type="Sprite2D" parent="Sky/Lights"]
+z_index = 1
+position = Vector2(1277, 2080)
+scale = Vector2(5, 5)
+texture = ExtResource("3_agx13")
+
+[node name="BackRight" type="Sprite2D" parent="Sky/Lights"]
+z_index = 1
+position = Vector2(4579, 2080)
+scale = Vector2(5, 5)
+texture = ExtResource("3_agx13")
+
+[node name="FrontLeft" type="Sprite2D" parent="Sky/Lights"]
+z_index = 6
+position = Vector2(1802, 2422)
+scale = Vector2(-5, 5)
+texture = ExtResource("3_agx13")
+
+[node name="FrontRight" type="Sprite2D" parent="Sky/Lights"]
+z_index = 6
+position = Vector2(4420, 2422)
+scale = Vector2(-5, 5)
+texture = ExtResource("3_agx13")
 
 [node name="Clouds" type="CPUParticles2D" parent="Sky"]
 position = Vector2(0, 949)
@@ -259,7 +367,7 @@ position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
-position = Vector2(-509, 1136)
+position = Vector2(-606, 1755)
 rotation = -1.1552
 rotates = false
 
@@ -280,12 +388,14 @@ texture = ExtResource("7_rqtcc")
 [node name="Left" type="Sprite2D" parent="Pillar/Surface"]
 self_modulate = Color(0.933333, 0.933333, 0.933333, 1)
 show_behind_parent = true
+z_index = 10
 position = Vector2(0, 384.135)
 texture = ExtResource("3_47has")
 
 [node name="Right" type="Sprite2D" parent="Pillar/Surface"]
 self_modulate = Color(0.87451, 0.87451, 0.87451, 1)
 show_behind_parent = true
+z_index = 10
 position = Vector2(0, 384.135)
 texture = ExtResource("4_bn3l5")
 
