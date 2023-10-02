@@ -10,6 +10,14 @@ var _current_plant = Global.PlantType.WEED
 func _ready():
 	for child in _buttons.get_children():
 		child.connect("toggled", _button_toggled)
+		if child.name.contains("Plant"):
+			child.connect("mouse_entered", func():
+				if randi() % 2: $Sound/Tap1.play_rand()
+				else: $Sound/Tap2.play_rand())
+			child.connect("toggled", func(on):
+				if !on: return
+				if randi() % 2: $Sound/Tap1.play_rand()
+				else: $Sound/Tap2.play_rand())
 
 func set_show_action_panel(show_panel : bool):
 	$ActionPanel.visible = show_panel

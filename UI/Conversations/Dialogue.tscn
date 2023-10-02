@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bljefgflbomjq"]
+[gd_scene load_steps=11 format=3 uid="uid://bljefgflbomjq"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_i4xnl"]
 [ext_resource type="Script" path="res://UI/Conversations/Dialogue.gd" id="1_kgon7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpmbaev8al76s" path="res://Graphics/People/Godot0000.png" id="7_vgyx2"]
 [ext_resource type="Texture2D" uid="uid://dkf1x3xtmmxqp" path="res://Graphics/People/Daniel0000.png" id="8_1ybxk"]
 [ext_resource type="Texture2D" uid="uid://py32dkj27p8o" path="res://Graphics/People/Jon0000.png" id="9_63kng"]
+[ext_resource type="AudioStream" uid="uid://b2dlcuhjvy78t" path="res://Sound/Created/Talking1.wav" id="10_uorko"]
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -156,5 +157,10 @@ dialog_close_on_escape = false
 dialog_autowrap = true
 cancel_button_text = "No"
 
+[node name="Talkingsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_uorko")
+volume_db = -4.825
+
 [connection signal="canceled" from="QuestionDialog" to="." method="_on_question_dialog_denied"]
 [connection signal="confirmed" from="QuestionDialog" to="." method="_on_question_dialog_confirmed"]
+[connection signal="finished" from="Talkingsound" to="." method="_on_talkingsound_finished"]

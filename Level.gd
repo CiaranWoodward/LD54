@@ -7,15 +7,20 @@ var _sky_tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Music.play()
 	$Cursor.clear_action_func = $HUD.clear_action
 	$Cursor.connect("interacted_with_tile", func(tile): $GardenTiles.ripple_from($GardenTiles.local_to_map(tile.position)))
+	Global.new_quota.connect(func():$NewQuota.play_rand())
 	$DayCycle.assigned_animation = "DayCycle"
 	_update_sky_from_ap(AP_per_day)
 	Global.action_points_changed.connect(_update_sky_from_ap)
 	Global.action_points = AP_per_day
 	Global.day = 0
 	# This should trigger only the start dialogue.
-	if !developer_mode: _tick_story()
+	if !developer_mode:
+		$HUD.set_show_action_panel(false)
+		_tick_story()
+		$HUD.set_show_action_panel(true)
 	# Developer only stuff:
 	if developer_mode:
 		Global.change_produce_count(Global.ProduceType.MUSHROOM, 1)
@@ -61,7 +66,8 @@ func _update_sky(time : float):
 	_sky_tween = null
 	$DayCycle.pause()
 
-func _on_turn_end(): 
+func _on_turn_end():
+	$NextLevelSound.play_rand()
 	$HUD.clear_action()
 	$GardenTiles.tick()
 	Global.action_points = 0
@@ -72,3 +78,8 @@ func _on_turn_end():
 	Global.action_points = AP_per_day
 	await _update_sky_from_ap(AP_per_day)
 	$HUD.set_show_action_panel(true)
+
+
+func _on_music_finished():
+	await get_tree().create_timer(randf_range(10, 30)).timeout
+	$Music.play()

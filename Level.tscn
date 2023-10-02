@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=40 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="16_f17ko"]
 [ext_resource type="FontFile" uid="uid://da5mqruadxpgh" path="res://UI/Fonts/Ubuntu-Medium.ttf" id="17_es3rc"]
+[ext_resource type="AudioStream" uid="uid://cax103prsngqi" path="res://Sound/Music/lo_fi_game_sound.wav" id="20_tdbb4"]
+[ext_resource type="PackedScene" uid="uid://dnxss8v3eyq1a" path="res://Sound/AudioRandom.tscn" id="21_6n0lr"]
+[ext_resource type="AudioStream" uid="uid://n53je1b1b45l" path="res://Sound/Created/NextLevel.wav" id="22_eqv86"]
+[ext_resource type="AudioStream" uid="uid://b3oxn3mx46vn0" path="res://Sound/Created/NewQuota.wav" id="23_lxswk"]
 
 [sub_resource type="Gradient" id="Gradient_v60wk"]
 offsets = PackedFloat32Array(1)
@@ -614,4 +618,14 @@ libraries = {
 
 [node name="GameStart" type="AnimationPlayer" parent="."]
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_tdbb4")
+
+[node name="NextLevelSound" parent="." instance=ExtResource("21_6n0lr")]
+stream = ExtResource("22_eqv86")
+
+[node name="NewQuota" parent="." instance=ExtResource("21_6n0lr")]
+stream = ExtResource("23_lxswk")
+
 [connection signal="action_changed" from="HUD" to="." method="_on_hud_action_changed"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

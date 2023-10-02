@@ -115,6 +115,7 @@ func _apply_action():
 			if !is_instance_valid(_current_tile.child_plant):
 				return
 			_current_tile.child_plant.destroy()
+			$Sounds/Destroy.play_rand()
 			if is_instance_valid(_current_tile.child_plant) && _current_tile.child_plant.can_harvest():
 				modulate = valid_color
 			else:
@@ -124,6 +125,8 @@ func _apply_action():
 				return
 			if !_current_tile.child_plant.can_harvest():
 				return
+			if randi() % 2: $Sounds/Plant1.play_rand()
+			else: $Sounds/Plant2.play_rand()
 			_current_tile.child_plant.harvest()
 			modulate = invalid_color
 			var plant: BasePlant = _current_tile.child_plant
@@ -144,6 +147,8 @@ func _apply_action():
 		Global.ActionType.PLANT:
 			if !_current_plantinstance.can_sow(_current_tile):
 				return
+			if randi() % 2: $Sounds/Plant1.play_rand()
+			else: $Sounds/Plant2.play_rand()
 			_current_plantinstance.sow(_current_tile)
 			if Global.get_seed_count(_current_plant) == 0:
 				clear_action_func.call()

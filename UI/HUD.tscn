@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=17 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_xlc34"]
@@ -11,6 +11,11 @@
 [ext_resource type="Script" path="res://UI/APbox.gd" id="8_r08wt"]
 [ext_resource type="Script" path="res://UI/Title.gd" id="8_v41g0"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="10_xmqyb"]
+[ext_resource type="PackedScene" uid="uid://dnxss8v3eyq1a" path="res://Sound/AudioRandom.tscn" id="12_f5jnn"]
+[ext_resource type="AudioStream" uid="uid://dt1xk6u5r42ve" path="res://Sound/Created/PlasticTap.wav" id="13_ppsnh"]
+[ext_resource type="AudioStream" uid="uid://bfxxw762prsqj" path="res://Sound/Created/PlasticTap2.wav" id="14_0p0nl"]
+[ext_resource type="AudioStream" uid="uid://qgl4ugnefqo7" path="res://Sound/Created/PlasticOpen1.wav" id="15_q6kjv"]
+[ext_resource type="AudioStream" uid="uid://dvpv1pyu0gsr2" path="res://Sound/Created/PlasticOpen2.wav" id="16_kg3ql"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xlc34")
@@ -166,3 +171,19 @@ size_flags_vertical = 0
 text = "Quota (placeholder)"
 horizontal_alignment = 1
 script = ExtResource("8_v41g0")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Tap1" parent="Sound" instance=ExtResource("12_f5jnn")]
+stream = ExtResource("13_ppsnh")
+volume_db = -11.258
+
+[node name="Tap2" parent="Sound" instance=ExtResource("12_f5jnn")]
+stream = ExtResource("14_0p0nl")
+volume_db = -9.649
+
+[node name="Open1" parent="Sound" instance=ExtResource("12_f5jnn")]
+stream = ExtResource("15_q6kjv")
+
+[node name="Open2" parent="Sound" instance=ExtResource("12_f5jnn")]
+stream = ExtResource("16_kg3ql")
