@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=12 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_xlc34"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cqecmla6hhtr2" path="res://Graphics/Icons/AP0000.png" id="8_phdsi"]
 [ext_resource type="Script" path="res://UI/Title.gd" id="8_v41g0"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="10_xmqyb"]
-[ext_resource type="PackedScene" uid="uid://d3fk3e8hi32jv" path="res://UI/quota_item.tscn" id="11_40ugx"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xlc34")
@@ -173,12 +172,3 @@ size_flags_vertical = 0
 text = "Quota (placeholder)"
 horizontal_alignment = 1
 script = ExtResource("8_v41g0")
-
-[node name="QuotaItem" parent="PanelContainer/NinePatchRect/MarginContainer/Quotas" instance=ExtResource("11_40ugx")]
-layout_mode = 2
-
-[node name="QuotaItem2" parent="PanelContainer/NinePatchRect/MarginContainer/Quotas" instance=ExtResource("11_40ugx")]
-layout_mode = 2
-
-[node name="QuotaItem3" parent="PanelContainer/NinePatchRect/MarginContainer/Quotas" instance=ExtResource("11_40ugx")]
-layout_mode = 2

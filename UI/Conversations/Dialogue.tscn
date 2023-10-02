@@ -113,7 +113,6 @@ gui_embed_subwindows = true
 title = ""
 initial_position = 2
 size = Vector2i(300, 100)
-visible = true
 exclusive = false
 unresizable = true
 borderless = true
