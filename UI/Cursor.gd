@@ -104,6 +104,11 @@ func _apply_action():
 			if !_current_plantinstance.can_sow(_current_tile):
 				return
 			_current_plantinstance.sow(_current_tile)
-			clear_action_func.call()
+			if Global.get_seed_count(_current_plant) == 0:
+				clear_action_func.call()
+			else:
+				update_action()
 	interacted_with_tile.emit(_current_tile)
 	Global.action_points -= 1
+	if Global.action_points == 0:
+		clear_action_func.call()

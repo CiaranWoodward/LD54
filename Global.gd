@@ -19,7 +19,7 @@ var _produceInventory: Dictionary = ProduceType.values().reduce(func(accum, type
 
 # inventory for seeds
 var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
-	accum[type] = 10
+	accum[type] = 0
 	return accum, {})
 
 var _produceQuota: Dictionary = {}

@@ -13,4 +13,4 @@ func _process(delta):
 	
 func update(day: int):
 	var left: int = 7 - (day % 7)
-	text = template.format({"days": left}) if left > 1 else today
+	text = template.format({"days": left}) if left != 7 else today
