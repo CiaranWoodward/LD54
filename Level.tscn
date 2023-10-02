@@ -94,6 +94,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_qj57s"]
 resource_name = "DayCycle"
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -117,6 +118,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.921569, 0.843137, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0.533333, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sky:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.109804, 0.168627, 1), Color(0, 0.701961, 0.972549, 1), Color(0, 0.699219, 0.96875, 1), Color(0, 0.109804, 0.168627, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pillar/Shadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(-4, 0), Vector2(-12.5, 0), Vector2(-20.5, 0), Vector2(-30, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pillar/Shadow:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.627451), Color(0, 0, 0, 0.627451), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_oeqfv"]
@@ -145,6 +182,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0.921569, 0.843137, 0, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sky:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.109804, 0.168627, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pillar/Shadow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pillar/Shadow:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.627451)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ibd4w"]
 _data = {
@@ -156,7 +229,7 @@ _data = {
 script = ExtResource("1_k876p")
 
 [node name="Sky" type="TextureRect" parent="."]
-self_modulate = Color(0.270588, 0.756863, 1, 1)
+self_modulate = Color(0, 0.109804, 0.168627, 1)
 custom_minimum_size = Vector2(4000, 3000)
 anchors_preset = 5
 anchor_left = 0.5
@@ -169,6 +242,17 @@ grow_horizontal = 2
 texture = SubResource("GradientTexture1D_1aqi2")
 
 [node name="Clouds" type="CPUParticles2D" parent="Sky"]
+position = Vector2(0, 949)
+lifetime = 22.0
+texture = ExtResource("7_rqtcc")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1000)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
 
 [node name="SunPath" type="Path2D" parent="Sky"]
 position = Vector2(1738, 823)
@@ -273,6 +357,7 @@ libraries = {
 }
 
 [node name="DayCycle" type="AnimationPlayer" parent="."]
+speed_scale = 0.1
 libraries = {
 "": SubResource("AnimationLibrary_ibd4w")
 }
