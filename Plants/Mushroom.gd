@@ -91,7 +91,10 @@ func can_harvest() -> bool:
 
 func harvest():
 	Global.change_produce_count(Global.ProduceType.MUSHROOM, cluster_count)
-	reset()
+	destroyed.emit()
+	parent_tile.child_plant.hosted_plant = null
+	parent_tile.remove_child(hosted_plant)
+	queue_free()
 
 func _random_wave():
 	while true:

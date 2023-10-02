@@ -38,21 +38,20 @@ func kill():
 	super()
 	age += time_to_dead
 	status = Status.DEAD
-	modulate = Color.SADDLE_BROWN
-	#stateMachine.travel("Withered")
+	stateMachine.travel("Withered")
 
 func tick():
 	super()
-	if parent_tile.is_fertile:
-		kill()
-	elif age > time_to_dead:
-		if status != Status.DEAD:
+	if status != Status.DEAD:
+		if parent_tile.is_fertile:
 			kill()
-	elif age > time_to_grow:
-		if status != Status.HARVESTABLE:
-			spread()
-			status = Status.HARVESTABLE
-			stateMachine.travel("Big")
+		elif age > time_to_dead:
+			kill()
+		elif age > time_to_grow:
+			if status != Status.HARVESTABLE:
+				spread()
+				status = Status.HARVESTABLE
+				stateMachine.travel("Big")
 
 func spread_impl(tiles):
 	for tile in tiles:

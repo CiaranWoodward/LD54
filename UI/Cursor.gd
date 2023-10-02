@@ -9,7 +9,7 @@ signal interacted_with_tile(tile : PlantTile)
 var _current_action = Global.ActionType.NONE
 var _current_plant
 var _current_plantinstance
-var _current_tile
+var _current_tile: PlantTile
 var _mouse_pressed = false
 var _move_tween
 
@@ -124,8 +124,10 @@ func _apply_action():
 				return
 			if !_current_tile.child_plant.can_harvest():
 				return
-			_current_tile.child_plant.harvest()
-			modulate = invalid_color
+			if is_instance_valid(_current_tile.child_plant.hosted_plant):
+				_current_tile.child_plant.hosted_plant.harvest()
+			else:
+				_current_tile.child_plant.harvest()
 			var plant: BasePlant = _current_tile.child_plant
 			if is_instance_valid(plant):
 				if is_instance_valid(plant.hosted_plant):
