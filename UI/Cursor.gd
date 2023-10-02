@@ -97,7 +97,7 @@ func _apply_action():
 		Global.ActionType.HARVEST:
 			if !is_instance_valid(_current_tile.child_plant):
 				return
-			if !_current_tile.child_plant.can_harvest:
+			if !_current_tile.child_plant.can_harvest():
 				return
 			_current_tile.child_plant.harvest()
 		Global.ActionType.PLANT:
