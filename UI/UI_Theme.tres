@@ -1,11 +1,29 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cvly3s1h4xk6r"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cvly3s1h4xk6r"]
+
+[ext_resource type="FontFile" uid="uid://biop3j758m626" path="res://UI/Fonts/Ubuntu-Light.ttf" id="1_ldo4u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4uf24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36w7s"]
 bg_color = Color(0.52549, 0.541176, 0.992157, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aq15"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
+default_font = ExtResource("1_ldo4u")
 Button/constants/h_separation = 12
 Button/styles/focus = SubResource("StyleBoxEmpty_4uf24")
 Button/styles/hover = SubResource("StyleBoxFlat_36w7s")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 1
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_ldo4u")
+Label/styles/normal = null
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_8aq15")

@@ -1,24 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://0qqdaelxnqdg"]
+[gd_scene load_steps=7 format=3 uid="uid://0qqdaelxnqdg"]
 
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_708o3"]
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_adt00"]
 [ext_resource type="Script" path="res://UI/action_button.gd" id="1_g550u"]
+[ext_resource type="Texture2D" uid="uid://bfnv2nttw26gl" path="res://Graphics/Icons/Destroy0000.png" id="3_h371e"]
+[ext_resource type="Texture2D" uid="uid://bkcate8hgkubd" path="res://Graphics/Icons/DestroyRed0000.png" id="4_gim8p"]
+[ext_resource type="Texture2D" uid="uid://d10tvdyo15dmt" path="res://Graphics/Icons/DestroyBlack0000.png" id="5_b3m6n"]
 
 [node name="DestroyButton" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 70.0
+theme = ExtResource("1_708o3")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_g550u")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 tooltip_text = "Destroy the plant, removing it from the farm."
 toggle_mode = true
 button_group = ExtResource("1_adt00")
-text = "Destroy"
+texture_normal = ExtResource("3_h371e")
+texture_pressed = ExtResource("4_gim8p")
+texture_hover = ExtResource("5_b3m6n")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Destroy
+"
+horizontal_alignment = 1

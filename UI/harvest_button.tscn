@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxvpigtmbhrv2"]
+[gd_scene load_steps=7 format=3 uid="uid://dxvpigtmbhrv2"]
 
 [ext_resource type="Script" path="res://UI/action_button.gd" id="1_1nl4f"]
+[ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_24f5p"]
 [ext_resource type="ButtonGroup" uid="uid://d1hcomes8o235" path="res://UI/ActionButtonGroup.tres" id="1_slhqa"]
+[ext_resource type="Texture2D" uid="uid://dfmffsktx788q" path="res://Graphics/Icons/Harvest0000.png" id="4_u65s2"]
+[ext_resource type="Texture2D" uid="uid://dlwoqvttdl5o7" path="res://Graphics/Icons/HarvestRed0000.png" id="5_gkux3"]
+[ext_resource type="Texture2D" uid="uid://c5ryapesx1r5n" path="res://Graphics/Icons/HarvestBlack0000.png" id="6_ptmmr"]
 
 [node name="HarvestButton" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+theme = ExtResource("1_24f5p")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -16,10 +19,21 @@ theme_override_constants/margin_bottom = 10
 script = ExtResource("1_1nl4f")
 action_type = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 tooltip_text = "Harvest the plant (some plants can only be harvested once)"
 toggle_mode = true
 button_group = ExtResource("1_slhqa")
-text = "Harvest"
+texture_normal = ExtResource("4_u65s2")
+texture_pressed = ExtResource("5_gkux3")
+texture_hover = ExtResource("6_ptmmr")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Harvest
+"
+horizontal_alignment = 1

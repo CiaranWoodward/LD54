@@ -1,4 +1,93 @@
-[gd_scene format=3 uid="uid://dj6pwf4pbg3ar"]
+[gd_scene load_steps=16 format=3 uid="uid://dj6pwf4pbg3ar"]
+
+[ext_resource type="Texture2D" uid="uid://bjufao3kl0xpj" path="res://Graphics/Icons/Tick0000.png" id="1_bnpe6"]
+[ext_resource type="Texture2D" uid="uid://oi66d81nyxpu" path="res://Graphics/Icons/Tick0001.png" id="2_3tlxw"]
+[ext_resource type="Texture2D" uid="uid://c7ldv8hfrcdf8" path="res://Graphics/Icons/Tick0002.png" id="3_u8fw4"]
+[ext_resource type="Texture2D" uid="uid://pxaobfwl63xp" path="res://Graphics/Icons/Tick0003.png" id="4_jhm37"]
+[ext_resource type="Texture2D" uid="uid://buejconpfk8ti" path="res://Graphics/Icons/Tick0004.png" id="5_cph8k"]
+[ext_resource type="Texture2D" uid="uid://bqntquc0x3a2v" path="res://Graphics/Icons/Tick0005.png" id="6_e27hs"]
+[ext_resource type="Texture2D" uid="uid://bmvn81vvf68of" path="res://Graphics/Icons/Tick0006.png" id="7_let8e"]
+[ext_resource type="Texture2D" uid="uid://dbhc5mtfjt2hr" path="res://Graphics/Icons/Tick0007.png" id="8_cun66"]
+[ext_resource type="Texture2D" uid="uid://dbc0ethx1ibfe" path="res://Graphics/Icons/Tick0008.png" id="9_k2x73"]
+[ext_resource type="Texture2D" uid="uid://cu10sgcou52hn" path="res://Graphics/Icons/Tick0009.png" id="10_853ld"]
+[ext_resource type="Texture2D" uid="uid://dru0ei3qa6xiy" path="res://Graphics/Icons/Tick0010.png" id="11_7fehk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpbtj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bnpe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3tlxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u8fw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jhm37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cph8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e27hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_let8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cun66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k2x73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_853ld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7fehk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_tx1pl"]
+resource_name = "Tick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tickbox:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_0p6r4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tickbox:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1c67k"]
+_data = {
+"RESET": SubResource("Animation_0p6r4"),
+"Tick": SubResource("Animation_tx1pl")
+}
 
 [node name="Checkbox" type="TextureRect"]
 custom_minimum_size = Vector2(23, 23)
@@ -9,3 +98,14 @@ offset_right = -0.0400009
 offset_bottom = 0.32
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Tickbox" type="AnimatedSprite2D" parent="."]
+position = Vector2(14, 14)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jpbtj")
+
+[node name="Tick" type="AnimationPlayer" parent="."]
+speed_scale = 5.0
+libraries = {
+"": SubResource("AnimationLibrary_1c67k")
+}
