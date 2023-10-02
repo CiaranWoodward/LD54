@@ -29,6 +29,7 @@ func _ready():
 	super()
 	$Tree/Leaves/Orange.visible = true
 	$Tree/Leaves/Orange.modulate = Color.TRANSPARENT
+	_ruffle()
 	
 func harvest():
 	super()
@@ -78,3 +79,8 @@ func can_sow(tile : PlantTile, use_seed: bool = true) -> bool:
 
 func sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	return super(tile, use_seed)
+
+func _ruffle():
+	await get_tree().create_timer(randf_range(3, 10)).timeout
+	$Ruffle.play()
+	await $Ruffle.animation_finished

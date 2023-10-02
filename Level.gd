@@ -73,10 +73,13 @@ func _on_turn_end():
 	Global.action_points = 0
 	$HUD.set_show_action_panel(false)
 	if !developer_mode: await _tick_story()
-	await _reset_day()
 	Global.day += 1
+	await _reset_day()
 	Global.action_points = AP_per_day
+	$NewDay.play("In")
+	await $NewDay.animation_finished
 	await _update_sky_from_ap(AP_per_day)
+	$NewDay.play("Out")
 	$HUD.set_show_action_panel(true)
 
 

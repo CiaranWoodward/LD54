@@ -54,6 +54,7 @@ func kill():
 	age += time_to_dead
 	status = Status.DEAD
 	stateMachine.travel("Withered")
+	$Idle.stop()
 
 func tick():
 	super()

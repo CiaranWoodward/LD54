@@ -96,7 +96,7 @@ _data = {
 }
 
 [node name="Mushroom" type="Node2D"]
-scale = Vector2(-1.51972, 1.7489)
+scale = Vector2(-1.48363, 1.70737)
 script = ExtResource("1_3e0xn")
 spread_percent_fertile = 2
 spread_percent_infertile = 1
@@ -105,7 +105,6 @@ spread_percent_infertile = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="IndiMush" parent="Cluster" instance=ExtResource("2_wvmaw")]
-visible = false
 position = Vector2(-16, -56)
 
 [node name="IndiMush2" parent="Cluster" instance=ExtResource("2_wvmaw")]
@@ -121,6 +120,7 @@ visible = false
 position = Vector2(-70, 18)
 
 [node name="IndiMush5" parent="Cluster" instance=ExtResource("2_wvmaw")]
+visible = false
 position = Vector2(-22, 74)
 
 [node name="IndiMush6" parent="Cluster" instance=ExtResource("2_wvmaw")]

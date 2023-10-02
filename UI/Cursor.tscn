@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4j0a6xqs4pqq"]
+[gd_scene load_steps=17 format=3 uid="uid://d4j0a6xqs4pqq"]
 
 [ext_resource type="Script" path="res://UI/Cursor.gd" id="1_t3c3b"]
 [ext_resource type="Texture2D" uid="uid://byuq4wutnm8d4" path="res://Graphics/Icons/DestroyDarker0000.png" id="2_fwoep"]

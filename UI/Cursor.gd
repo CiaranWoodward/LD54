@@ -32,6 +32,10 @@ func _unhandled_input(event):
 			if _mouse_pressed:
 				_apply_action()
 			_mouse_pressed = false
+	if event is InputEventMouseButton && (event.button_index == MOUSE_BUTTON_RIGHT):
+		var e = event as InputEventMouseButton
+		if e.is_pressed():
+			clear_action_func.call()
 
 func set_current_tile(currentTile : PlantTile):
 	if _current_tile == currentTile:
