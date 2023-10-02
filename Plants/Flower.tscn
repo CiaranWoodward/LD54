@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8xwku2rgn7i8"]
+[gd_scene load_steps=44 format=3 uid="uid://c8xwku2rgn7i8"]
 
 [ext_resource type="Script" path="res://Plants/Flower.gd" id="1_3fli0"]
 [ext_resource type="Texture2D" uid="uid://dprp3ofy5yl3d" path="res://Graphics/Plants/Flower/Bud0000.png" id="2_i62ve"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bfaajnx1rpyfh" path="res://Graphics/Plants/Flower/Stem0001.png" id="15_wd6xi"]
 [ext_resource type="Texture2D" uid="uid://cergjjiq8et7b" path="res://Graphics/Plants/Flower/Stem0002.png" id="16_ci1nl"]
 [ext_resource type="Texture2D" uid="uid://dfd3owgc4hmrx" path="res://Graphics/Plants/Flower/Stem0003.png" id="17_caq5p"]
+[ext_resource type="Texture2D" uid="uid://3x5nfa8navkv" path="res://Graphics/Particles/Petal0000.png" id="18_t03hn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ny1ek"]
 animations = [{
@@ -98,22 +99,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve" id="Curve_8qymi"]
-_data = [Vector2(0, 0.747368), 0.0, 0.0, 0, 0, Vector2(0.346154, 1), -0.196491, -0.196491, 0, 0, Vector2(1, 0.252632), -2.82807, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Gradient" id="Gradient_a157p"]
+offsets = PackedFloat32Array(0.264901, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.54902, 0.32549, 0.0980392, 0)
 
-[sub_resource type="Gradient" id="Gradient_scvix"]
-offsets = PackedFloat32Array(0, 0.0728477, 0.701987, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_gh8wn"]
+offsets = PackedFloat32Array(0.708609, 1)
+colors = PackedColorArray(1, 1, 1, 0.756863, 1, 1, 1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3vuo6"]
 animation = &"Big"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgcp1"]
+animation = &"Dying"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3bhwy"]
 animation = &"Growing"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rghe8"]
-animation = &"Plant"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_737jh"]
 animation = &"Small"
@@ -123,34 +124,33 @@ animation = &"Withered"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvatp"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_grqh4"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l6gkr"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ts1xp"]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v3klg"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3lp4t"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_crv4s"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sq2s5"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qiguu"]
 states/Big/node = SubResource("AnimationNodeAnimation_3vuo6")
-states/Big/position = Vector2(697, 172)
+states/Big/position = Vector2(542, 108)
+states/Dying/node = SubResource("AnimationNodeAnimation_fgcp1")
+states/Dying/position = Vector2(635, 192)
 states/End/position = Vector2(997, 108)
 states/Growing/node = SubResource("AnimationNodeAnimation_3bhwy")
-states/Growing/position = Vector2(564, 108)
-states/Plant/node = SubResource("AnimationNodeAnimation_rghe8")
-states/Plant/position = Vector2(295, 172)
+states/Growing/position = Vector2(458, 192)
 states/Small/node = SubResource("AnimationNodeAnimation_737jh")
-states/Small/position = Vector2(431, 172)
-states/Start/position = Vector2(119, 72)
+states/Small/position = Vector2(357, 108)
+states/Start/position = Vector2(247, 108)
 states/Withered/node = SubResource("AnimationNodeAnimation_fl7qu")
-states/Withered/position = Vector2(862, 172)
-transitions = ["Small", "Growing", SubResource("AnimationNodeStateMachineTransition_lvatp"), "Big", "Withered", SubResource("AnimationNodeStateMachineTransition_grqh4"), "Growing", "Big", SubResource("AnimationNodeStateMachineTransition_l6gkr"), "Plant", "Small", SubResource("AnimationNodeStateMachineTransition_ts1xp"), "Start", "Plant", SubResource("AnimationNodeStateMachineTransition_3lp4t")]
+states/Withered/position = Vector2(738, 108)
+transitions = ["Small", "Growing", SubResource("AnimationNodeStateMachineTransition_lvatp"), "Growing", "Big", SubResource("AnimationNodeStateMachineTransition_l6gkr"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_v3klg"), "Big", "Dying", SubResource("AnimationNodeStateMachineTransition_crv4s"), "Dying", "Withered", SubResource("AnimationNodeStateMachineTransition_sq2s5")]
 
 [sub_resource type="Animation" id="Animation_gh8pu"]
 resource_name = "Big"
@@ -260,18 +260,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_ihcq5"]
 resource_name = "Plant"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Flower/Poof:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_sab88"]
 length = 0.001
@@ -326,7 +314,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Flower/Poof:emitting")
+tracks/4/path = NodePath("../PetalFall:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -334,6 +322,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Flower:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vbthf"]
@@ -391,7 +391,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_mpmqe"]
 resource_name = "Withered"
-length = 0.2
+length = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -440,10 +441,63 @@ tracks/3/keys = {
 "update": 1,
 "values": [3]
 }
+
+[sub_resource type="Animation" id="Animation_d28p1"]
+resource_name = "Dying"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Flower/Bud:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Flower/Leaf:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Flower/Shadow:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Flower/Stem:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Flower/Poof:emitting")
+tracks/4/path = NodePath("../PetalFall:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -452,10 +506,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Flower:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35),
+"transitions": PackedFloat32Array(0.659754, 1.51572, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6i8pg"]
 _data = {
 "Big": SubResource("Animation_gh8pu"),
+"Dying": SubResource("Animation_d28p1"),
 "Growing": SubResource("Animation_kb83s"),
 "Plant": SubResource("Animation_ihcq5"),
 "RESET": SubResource("Animation_sab88"),
@@ -488,24 +555,28 @@ sprite_frames = SubResource("SpriteFrames_rqlqp")
 position = Vector2(1, -141)
 sprite_frames = SubResource("SpriteFrames_0jh6y")
 
-[node name="Poof" type="CPUParticles2D" parent="Flower"]
-position = Vector2(1, -141)
+[node name="PetalFall" type="CPUParticles2D" parent="."]
+position = Vector2(-22, -128)
+scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 20
-lifetime = 0.8
+lifetime = 0.6
 one_shot = true
-explosiveness = 0.9
-lifetime_randomness = 0.3
+explosiveness = 0.8
+texture = ExtResource("18_t03hn")
 emission_shape = 3
-emission_rect_extents = Vector2(100, 150)
-spread = 180.0
-gravity = Vector2(0, 0)
-angular_velocity_min = -100.0
-angular_velocity_max = 100.0
-scale_amount_min = 50.0
-scale_amount_max = 100.0
-scale_amount_curve = SubResource("Curve_8qymi")
-color_ramp = SubResource("Gradient_scvix")
+emission_rect_extents = Vector2(40, 30)
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 600)
+initial_velocity_max = 300.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.6
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_a157p")
+color_initial_ramp = SubResource("Gradient_gh8wn")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_qiguu")
