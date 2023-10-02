@@ -122,6 +122,7 @@ func _ready():
 		{
 			when = func(): return !Global.is_quota_met(),
 			text = "That one was supposed to be easy...\nI'll just take what you've got.",
+			callback = func(): Global.take_quota(),
 		},
 		{
 			when = func(): return !Global.is_quota_met(),
@@ -131,7 +132,9 @@ func _ready():
 		{
 			when = func(): return Global.is_quota_met(),
 			text = "Ah wonderful, you've met quota.",
-			callback = func(): Story.success += 1,
+			callback = func():
+				Story.success += 1
+				Global.take_quota(),
 		},
 		{
 			when = func(): return Global.is_quota_met() && Story.bootlicker > 0,

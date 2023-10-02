@@ -65,7 +65,9 @@ func _run_conversation_meat(convo : Conversation):
 		convo.choice.call(answer)
 		if answer: await _run_dialogue_pages(convo.dialogue_pages_choice_yes)
 		else: await _run_dialogue_pages(convo.dialogue_pages_choice_no)
-
+	
+	convo.callback.call()
+	
 	# Is there more?
 	if is_instance_valid(convo.next):
 		await _run_conversation_meat(convo.next)
