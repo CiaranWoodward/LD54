@@ -19,22 +19,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("convo_next"):
 		if is_instance_valid(_character_tween):
 			_character_tween.stop()
-			$NinePatchRect/Text.visible_ratio = 1.0
+			$Speech/Text.visible_ratio = 1.0
 			_character_tween.finished.emit() # Sneaky...
 		else:
 			_dialogue_next.emit()
 
 func _show_picture(name_ : String):
-	for child in $NinePatchRect/Pictures.get_children():
-		child.visible = child.name == name_
+	for child in $Speech/Pictures/Frame.get_children():
+		child.visible = (child.name == name_)
 
 ## Run a conversation to completion
 func run_conversation(convo : Conversation):
 	dialogue_started.emit()
 	# Set up
 	_show_picture(convo.dialogue_pages[0].get("image", ""))
-	$NinePatchRect/Name.text = convo.dialogue_pages[0].get("name", "")
-	$NinePatchRect/Text.text = ""
+	$Name/Name.text = convo.dialogue_pages[0].get("name", "")
+	$Speech/Text.text = ""
 	
 	# Fade in
 	var fade_tween = create_tween()
@@ -82,12 +82,12 @@ func _run_dialogue_pages(pages : Array[Dictionary]):
 			if !page["when"].call():
 				continue
 		_show_picture(image)
-		$NinePatchRect/Name.text = name
-		$NinePatchRect/Text.text = page["text"]
-		$NinePatchRect/Text.visible_characters = 0
+		$Name/Name.text = name
+		$Speech/Text.text = page["text"]
+		$Speech/Text.visible_characters = 0
 		_character_tween = create_tween()
-		var num_characters = $NinePatchRect/Text.get_total_character_count()
-		_character_tween.tween_property($NinePatchRect/Text, "visible_characters", num_characters, num_characters / characters_per_second)
+		var num_characters = $Speech/Text.get_total_character_count()
+		_character_tween.tween_property($Speech/Text, "visible_characters", num_characters, num_characters / characters_per_second)
 		await _character_tween.finished
 		_character_tween = null
 		if page.has("callback"):

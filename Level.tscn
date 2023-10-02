@@ -344,7 +344,6 @@ _data = {
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_k876p")
-developer_mode = true
 
 [node name="Sky" type="TextureRect" parent="."]
 self_modulate = Color(0, 0.109804, 0.168627, 1)
