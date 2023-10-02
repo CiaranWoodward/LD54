@@ -32,7 +32,7 @@ _data = {
 point_count = 12
 
 [sub_resource type="Gradient" id="Gradient_70mnh"]
-colors = PackedColorArray(0.804743, 0.804743, 0.804743, 0.741176, 0.894922, 0.894922, 0.894922, 0.937255)
+colors = PackedColorArray(1, 1, 1, 0.894118, 0.783523, 0.783523, 0.783523, 0.937255)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_golho"]
 texture = ExtResource("1_k5ldj")
@@ -303,56 +303,58 @@ size_flags_vertical = 4
 texture = SubResource("GradientTexture1D_1aqi2")
 
 [node name="Buildings" type="Node2D" parent="Sky"]
+position = Vector2(0, -373)
 
 [node name="BackLeft" type="Sprite2D" parent="Sky/Buildings"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 z_index = 1
-position = Vector2(1277, 2080)
+position = Vector2(1160, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="BackRight" type="Sprite2D" parent="Sky/Buildings"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 z_index = 1
-position = Vector2(4579, 2080)
+position = Vector2(4768, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="FrontLeft" type="Sprite2D" parent="Sky/Buildings"]
 z_index = 5
-position = Vector2(1802, 2422)
+position = Vector2(1353, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="FrontRight" type="Sprite2D" parent="Sky/Buildings"]
 z_index = 5
-position = Vector2(4420, 2422)
+position = Vector2(4609, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("2_hutii")
 
 [node name="Lights" type="Node2D" parent="Sky"]
+position = Vector2(0, -373)
 
 [node name="BackLeft" type="Sprite2D" parent="Sky/Lights"]
 z_index = 1
-position = Vector2(1277, 2080)
+position = Vector2(1160, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="BackRight" type="Sprite2D" parent="Sky/Lights"]
 z_index = 1
-position = Vector2(4579, 2080)
+position = Vector2(4768, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="FrontLeft" type="Sprite2D" parent="Sky/Lights"]
 z_index = 6
-position = Vector2(1802, 2422)
+position = Vector2(1353, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("3_agx13")
 
 [node name="FrontRight" type="Sprite2D" parent="Sky/Lights"]
 z_index = 6
-position = Vector2(4420, 2422)
+position = Vector2(4609, 2422)
 scale = Vector2(-5, 5)
 texture = ExtResource("3_agx13")
 
@@ -372,31 +374,31 @@ scale = Vector2(5, 5)
 texture = ExtResource("4_m4jxg")
 
 [node name="Clouds" type="CPUParticles2D" parent="Sky"]
-position = Vector2(0, 1204)
+position = Vector2(0, 530)
 lifetime = 22.0
 texture = ExtResource("5_jlk0o")
 emission_shape = 3
-emission_rect_extents = Vector2(1, 1000)
+emission_rect_extents = Vector2(1, 500)
 spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 200.0
 initial_velocity_max = 400.0
 scale_amount_min = 0.8
-scale_amount_max = 3.0
+scale_amount_max = 2.0
 color_initial_ramp = SubResource("Gradient_70mnh")
 
 [node name="Clouds2" type="CPUParticles2D" parent="Sky"]
-position = Vector2(0, 1204)
+position = Vector2(0, 803)
 lifetime = 22.0
 texture = ExtResource("6_0eb5p")
 emission_shape = 3
-emission_rect_extents = Vector2(1, 1000)
+emission_rect_extents = Vector2(1, 500)
 spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 200.0
 initial_velocity_max = 400.0
 scale_amount_min = 0.8
-scale_amount_max = 3.0
+scale_amount_max = 2.0
 color_initial_ramp = SubResource("Gradient_70mnh")
 
 [node name="Pillar" type="Node2D" parent="."]
