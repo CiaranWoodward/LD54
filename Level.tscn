@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b6y8ec8tar23r"]
+[gd_scene load_steps=46 format=3 uid="uid://b6y8ec8tar23r"]
 
 [ext_resource type="Script" path="res://GardenTiles.gd" id="1_5n8ii"]
 [ext_resource type="Texture2D" uid="uid://bn7nems70jqgr" path="res://icon.svg" id="1_k5ldj"]
@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://5joyo06rt7d8" path="res://Graphics/Background/Shadow0000.png" id="8_r01vt"]
 [ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="16_f17ko"]
 [ext_resource type="FontFile" uid="uid://da5mqruadxpgh" path="res://UI/Fonts/Ubuntu-Medium.ttf" id="17_es3rc"]
-[ext_resource type="Texture2D" uid="uid://wjev7gc5a043" path="res://Graphics/Background/Title0000.png" id="18_h1h5c"]
 [ext_resource type="Script" path="res://Week.gd" id="18_bt0qg"]
+[ext_resource type="Texture2D" uid="uid://wjev7gc5a043" path="res://Graphics/Background/Title0000.png" id="18_h1h5c"]
 [ext_resource type="Script" path="res://Day.gd" id="19_mqjg0"]
 [ext_resource type="AudioStream" uid="uid://cax103prsngqi" path="res://Sound/Music/lo_fi_game_sound.wav" id="20_tdbb4"]
 [ext_resource type="PackedScene" uid="uid://dnxss8v3eyq1a" path="res://Sound/AudioRandom.tscn" id="21_6n0lr"]
@@ -349,6 +349,21 @@ _data = {
 "RESET": SubResource("Animation_oeqfv")
 }
 
+[sub_resource type="Animation" id="Animation_eibo6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/Title/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_metxc"]
 resource_name = "Start"
 length = 2.5
@@ -363,21 +378,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.615572, 0.615572, 1.93187, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 70), Vector2(0, -700)]
-}
-
-[sub_resource type="Animation" id="Animation_eibo6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/Title/Title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqoww"]

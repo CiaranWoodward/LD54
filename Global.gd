@@ -23,7 +23,10 @@ var _seedInventory: Dictionary = PlantType.values().reduce(func(accum, type):
 	accum[type] = 0
 	return accum, {})
 
-var _produceQuota: Dictionary = {}
+var _produceQuota: Dictionary = ProduceType.values().reduce(func(accum, type):
+	accum[type] = 0
+	return accum, {})
+	
 var next_quota_day = 0: set = set_next_quota_day
 
 var action_points: int = 0: set = set_action_points

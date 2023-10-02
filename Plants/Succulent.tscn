@@ -455,7 +455,6 @@ states/Withered/node = SubResource("AnimationNodeAnimation_yewr1")
 states/Withered/position = Vector2(729, 100)
 transitions = ["Grow", "Big", SubResource("AnimationNodeStateMachineTransition_bc3t7"), "Small", "Grow", SubResource("AnimationNodeStateMachineTransition_rhy0p"), "Start", "Small", SubResource("AnimationNodeStateMachineTransition_f6dci"), "Big", "Dying", SubResource("AnimationNodeStateMachineTransition_jbo5q"), "Dying", "Withered", SubResource("AnimationNodeStateMachineTransition_8j3f6")]
 
-length = 1.4
 [node name="Succulent" type="Node2D"]
 script = ExtResource("1_msnik")
 
@@ -476,5 +475,3 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_2av8v")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-
-autoplay = "Idle"
