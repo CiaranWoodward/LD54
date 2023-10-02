@@ -22,8 +22,6 @@ func set_cluster_count(newCount):
 		cluster_count = 0
 	else:
 		cluster_count = newCount
-	
-var host: BasePlant;
 
 func reset():
 	cluster_count = 0
@@ -53,7 +51,7 @@ func sow(tile: PlantTile, use_seed: bool = true):
 		return false
 	if use_seed:
 		Global.change_seed_count(plant_type(), -1)
-	host = tile.child_plant
+	var host = tile.child_plant
 	host.ticked.connect(tick)
 	host.harvested.connect(harvest)
 	host.destroyed.connect(destroy)

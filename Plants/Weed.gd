@@ -40,14 +40,26 @@ func spread_impl(tiles):
 	)
 	# Create a new weed on the tiles which it is spreading to
 	for tile in toSpread:
-		if (tile.is_occupied() && tile.child_plant.status != Status.DEAD && killable_plants.has(tile.child_plant)):
-			tile.child_plant.kill()
-		else:
-			var weed = load("res://Plants/Weed.tscn").instantiate()
-			weed.sow(tile, false)
+		var weed = load("res://Plants/Weed.tscn").instantiate()
+		weed.sow(tile, false)
 
 func can_sow(tile : PlantTile, use_seed: bool = false) -> bool:
-	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT)
+	return !tile.has_adjacent(Global.PlantType.SPIKY_PLANT) || !tile.child_plant.plant_type() == Global.PlantType.SPIKY_PLANT
 
 func sow(tile : PlantTile, use_seed: bool = false) -> bool:
-	return super(tile, use_seed)
+	if(!can_sow(tile, false)):
+		return false
+	
+	if tile.is_occupied():
+		var host = tile.child_plant
+		if killable_plants.has(tile.child_plant.plant_type()):
+			host.kill()
+		host.ticked.connect(tick)
+		host.harvested.connect(harvest)
+		host.destroyed.connect(destroy)
+		parent_tile = tile
+		host.add_child(self)
+		host.hosted_plant = self
+		return true
+	else:
+		return super(tile, false)
