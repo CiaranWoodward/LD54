@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0aejnixhhw7h"]
+[gd_scene load_steps=11 format=3 uid="uid://0aejnixhhw7h"]
 
 [ext_resource type="Theme" uid="uid://cvly3s1h4xk6r" path="res://UI/UI_Theme.tres" id="1_bdcb7"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1_xlc34"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://UI/ActionPointLabel.gd" id="7_5ec4i"]
 [ext_resource type="Script" path="res://UI/Quotas.gd" id="8_dhiuq"]
 [ext_resource type="Script" path="res://UI/Title.gd" id="8_v41g0"]
+[ext_resource type="Texture2D" uid="uid://d4ft2n5exr3f4" path="res://Graphics/Background/Quota0000.png" id="10_xmqyb"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_xlc34")
@@ -84,6 +85,7 @@ horizontal_alignment = 1
 script = ExtResource("7_5ec4i")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -93,6 +95,15 @@ offset_right = -10.0
 offset_bottom = 208.0
 grow_horizontal = 0
 size_flags_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("10_xmqyb")
+region_rect = Rect2(147.358, 69.72, 323.433, 413.941)
+patch_margin_left = 29
+patch_margin_top = 24
+patch_margin_right = 27
+patch_margin_bottom = 30
 
 [node name="Quotas" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2

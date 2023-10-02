@@ -27,9 +27,9 @@ gradient = SubResource("Gradient_v60wk")
 
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -606, 1755, 0, 0, 0, 0, -487, 746, 0, 0, 0, 0, -339, 161, 0, 0, 0, 0, 0, -253, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2876, 266, 0, 0, 0, 0, 3024, 794, 0, 0, 0, 0, 3133, 1812)
+"points": PackedVector2Array(0, 0, 0, 0, -664, 1582, 0, 0, 0, 0, -376, 263, 0, 0, 0, 0, -50, -170, 0, 0, 0, 0, 281, -534, 0, 0, 0, 0, 870, -710, 0, 0, 0, 0, 1432, -733, 0, 0, 0, 0, 2041, -638, 0, 0, 0, 0, 2512, -296, 0, 0, 0, 0, 2876, 266, 0, 0, 0, 0, 3024, 794, 0, 0, 0, 0, 3133, 1812)
 }
-point_count = 12
+point_count = 11
 
 [sub_resource type="Gradient" id="Gradient_70mnh"]
 colors = PackedColorArray(1, 1, 1, 0.894118, 0.783523, 0.783523, 0.783523, 0.937255)
@@ -102,7 +102,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_qj57s"]
 resource_name = "DayCycle"
-step = 0.01
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -187,6 +187,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(0.94902, 0.745098, 0, 1), Color(0.298039, 0.227451, 0, 1), Color(0.298039, 0.227451, 0, 1), Color(0.94902, 0.745098, 0, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pillar/Surface/Right:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.482353, 0.482353, 0.482353, 1), Color(0.435294, 0.435294, 0.435294, 1), Color(0.713726, 0.713726, 0.713726, 1), Color(0.8, 0.8, 0.8, 1), Color(0.482353, 0.482353, 0.482353, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pillar/Surface/Left:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.403922, 0.403922, 0.403922, 1), Color(0.8, 0.8, 0.8, 1), Color(0.690196, 0.690196, 0.690196, 1), Color(0.435294, 0.435294, 0.435294, 1), Color(0.403922, 0.403922, 0.403922, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_oeqfv"]
 length = 0.001
@@ -269,6 +293,30 @@ tracks/6/path = NodePath("Sky/Lights:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pillar/Surface/Right:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pillar/Surface/Left:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -363,7 +411,7 @@ position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
-position = Vector2(-606, 1755)
+position = Vector2(-664, 1582)
 rotation = 1.46413
 rotates = false
 
@@ -411,14 +459,12 @@ scale = Vector2(1.04, 1.04)
 texture = ExtResource("7_rqtcc")
 
 [node name="Left" type="Sprite2D" parent="Pillar/Surface"]
-self_modulate = Color(0.933333, 0.933333, 0.933333, 1)
 show_behind_parent = true
 z_index = 10
 position = Vector2(0, 384.135)
 texture = ExtResource("3_47has")
 
 [node name="Right" type="Sprite2D" parent="Pillar/Surface"]
-self_modulate = Color(0.87451, 0.87451, 0.87451, 1)
 show_behind_parent = true
 z_index = 10
 position = Vector2(0, 384.135)
