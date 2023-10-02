@@ -65,6 +65,9 @@ func _update_color():
 	_color_tween = create_tween()
 	_color_tween.tween_property($Tile, "modulate", newcolor, randf_range(0.8, 1.5)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
+func run_poof_effect():
+	$Tile/SowPoof.emitting = true
+
 func ripple(height: float, delay: float, forced: bool):
 	if !forced && height < _next_height:
 		return

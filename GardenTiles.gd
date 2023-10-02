@@ -43,6 +43,7 @@ func get_plant_tile_at_pos(pos : Vector2):
 
 func ripple_from(pos : Vector2i):
 	var posf = Vector2(pos)
+	_tile_map[pos].run_poof_effect()
 	for coord in _tile_map.keys():
 		var distance = posf.distance_to(Vector2(coord))
 		var delay = distance * ripple_delay

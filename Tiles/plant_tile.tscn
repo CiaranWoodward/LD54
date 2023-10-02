@@ -84,6 +84,7 @@ position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_rwj4h")
 
 [node name="SowPoof" type="CPUParticles2D" parent="Tile"]
+z_index = 1
 emitting = false
 amount = 20
 one_shot = true

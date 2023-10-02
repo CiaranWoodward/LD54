@@ -13,7 +13,7 @@ static func plant_name():
 	return "Flower"
 
 static func plant_description():
-	return "Improves soil mositure for later planting."
+	return "Improves soil moisture for later planting."
 
 func _ready():
 	scale.x = 1 if randi_range(0, 1) else -1
