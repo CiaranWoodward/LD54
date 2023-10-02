@@ -8,6 +8,7 @@ func _ready():
 	$Cursor.connect("interacted_with_tile", func(tile): $GardenTiles.ripple_from($GardenTiles.local_to_map(tile.position)))
 	Global.action_points = AP_per_day
 	Global.day = 0
+	Global.change_produce_count(Global.ProduceType.MUSHROOM, 1)
 	# This should trigger only the start dialogue.
 	_tick_story()
 
