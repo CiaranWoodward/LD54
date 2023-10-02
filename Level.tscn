@@ -426,9 +426,8 @@ position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
-position = Vector2(2761.07, 915.96)
+position = Vector2(-431, 1502)
 rotation = 1.46413
-progress = 5376.54
 rotates = false
 
 [node name="Sun" type="Sprite2D" parent="Sky/SunPath/PathFollow2D"]
