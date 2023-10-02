@@ -8,6 +8,9 @@ var dan_got_beat = false
 @onready var sidedan1 = Conversation.new()
 @onready var main2 = Conversation.new()
 @onready var sidedan2 = Conversation.new()
+@onready var main3 = Conversation.new()
+@onready var main4 = Conversation.new()
+@onready var main5 = Conversation.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,9 +42,12 @@ func _ready():
 				Global.set_quota_count(Global.ProduceType.BERRY, 5),
 		},
 		{
+			text = "[u]Berries[/u] will only grow in fertile soil, and [u]flowers[/u] will fertilise all of the soil around them. Unused soil will become less fertile over time.",
+		},
+		{
 			text = "Here are some seeds, Long live The Meritocracy of Lucido!",
 			callback = func():
-				Global.change_seed_count(Global.PlantType.FLOWER, 12)
+				Global.change_seed_count(Global.PlantType.FLOWER, 15)
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 2),
 		},
 	])
@@ -161,8 +167,7 @@ func _ready():
 			when = func(): return Global.is_quota_met() && gave_to_dan,
 			text = "Seems to have worked out fine this time!",
 			callback = func():
-				Story.good_neighbor += 1
-				Story.success += 1,
+				Story.good_neighbor += 1,
 		},
 		{
 			when = func(): return !Global.is_quota_met() && gave_to_dan,
@@ -182,7 +187,10 @@ func _ready():
 			callback = func(): Story.failure += 1
 		},
 		{
-			text = "Here are your quotas for next week.",
+			text = "Next week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
+		},
+		{
+			text = "Here are your quotas and seeds for next week.",
 		},
 	])
 	main2.no_script([
@@ -195,13 +203,20 @@ func _ready():
 			text = "The former tenant had some [i]issues[/i] remembering where his priorities lie.",
 		},
 		{
+			text = "Next week you'll have to cultivate some medicinal [u]Succulents[/u] too. These will only grow in dry soil - wet soil will kill them.",
+		},
+		{
 			text = "Here are your quotas for next week.",
 		},
 	])
 	main2.callback = func():
+		Global.clear_quota()
 		Global.set_quota_count(Global.ProduceType.FLOWER, 10)
 		Global.set_quota_count(Global.ProduceType.BERRY, 10)
-		Global.set_produce_count(Global.ProduceType.SUCCULENT, 5)
+		Global.set_quota_count(Global.ProduceType.SUCCULENT, 2)
+		Global.change_seed_count(Global.PlantType.FLOWER, 20)
+		Global.change_seed_count(Global.PlantType.BERRY_VINE, 2)
+		Global.change_seed_count(Global.PlantType.SUCCULENT, 4)
 	
 	sidedan2.is_triggered = func():
 		return Global.day == 8
@@ -222,9 +237,72 @@ func _ready():
 		},
 	])
 	
+	main3.is_triggered = func():
+		return Global.day == 14
+	main3.script([
+		{
+			text = "Good evening, I'm back again for the quota.",
+			image = "Officer",
+			name = "Jon"
+		},
+		{
+			when = func(): return dan_got_beat,
+			text = "I hope you learned from your previous mistakes."
+		},
+		{
+			when = func(): return Story.success > 0,
+			text = "Let's see if you've kept up the good performance."
+		},
+		{
+			when = func(): return Story.success == 0,
+			text = "Let's see if you've turned yourself around."
+		},
+		{
+			when = func(): return Global.is_quota_met(),
+			text = "Excellent work.",
+			callback = func(): Story.success += 1,
+		},
+		{
+			when = func(): return !Global.is_quota_met(),
+			text = "Disappointing. I expect you to [u]make that up on next collection[/u]. If it happens again, I'll have to write you up.",
+			callback = func(): Story.failure += 1,
+		},
+		{
+			text = "This week I have something new for you. A very rare [u]Orange Tree[/u]. It's quite slow to grow, and needs a lot of moisture, so plant it quickly and take care of it so that you can meet quota."
+		},
+		{
+			when = func(): return Story.failure > 0,
+			text = "Don't repeat your past mistakes with this one.",
+		},
+		{
+			when = func(): return Story.failure == 0,
+			text = "With your perfect record, I'm sure you'll be fine.",
+		},
+		{
+			text = "Here are the seeds and quota.",
+			callback = func():
+				Global.take_quota()
+				Global.change_quota_count(Global.ProduceType.FLOWER, 10)
+				Global.change_quota_count(Global.ProduceType.BERRY, 40)
+				Global.change_quota_count(Global.ProduceType.SUCCULENT, 4)
+				Global.change_quota_count(Global.ProduceType.ORANGE, 5)
+				Global.change_seed_count(Global.PlantType.FLOWER, 10)
+				Global.change_seed_count(Global.PlantType.BERRY_VINE, 1)
+				Global.change_seed_count(Global.PlantType.SUCCULENT, 4)
+				Global.change_seed_count(Global.PlantType.ORANGE_TREE, 1),
+		},
+	])
+	
+	main4.is_triggered = func():
+		return Global.day == 21
+	main4.script([
+		
+	])
+	
 	Story.active_set.push_back(main1)
 	Story.active_set.push_back(sidedan1)
 	Story.active_set.push_back(main2)
+	Story.active_set.push_back(main3)
 
 func take_quota(convo : Conversation):
 	pass
