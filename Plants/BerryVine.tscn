@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ceyd71bbq1om7"]
+[gd_scene load_steps=38 format=3 uid="uid://ceyd71bbq1om7"]
 
 [ext_resource type="Script" path="res://Plants/BerryVine.gd" id="1_pts4f"]
 [ext_resource type="Texture2D" uid="uid://bmnw5f48oef5w" path="res://Graphics/Plants/BerryVine/DeadCentre10000.png" id="2_ise3r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dg4rcmcna7psq" path="res://Graphics/Plants/BerryVine/Berry10000.png" id="4_j52dy"]
 [ext_resource type="Texture2D" uid="uid://bwxcm2nphueqf" path="res://Graphics/Plants/BerryVine/Berry20000.png" id="5_n4isl"]
 [ext_resource type="Texture2D" uid="uid://lcmc51egpe2a" path="res://Graphics/Plants/BerryVine/Berry30000.png" id="6_s2yr1"]
+[ext_resource type="Texture2D" uid="uid://cayb2il4kvn8j" path="res://Graphics/Particles/Soil0000.png" id="9_7la0g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5m5up"]
 animations = [{
@@ -54,27 +55,92 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xdl8u"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0utc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vbfxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fjqnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_83x8r"]
+_data = [Vector2(0, 0.884211), 0.0, 0.0, 0, 0, Vector2(0.686813, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.905263), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_0oawh"]
+offsets = PackedFloat32Array(0, 0.13245, 0.556291, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_twt15"]
+offsets = PackedFloat32Array(0, 0.668874)
+colors = PackedColorArray(1, 1, 1, 1, 0.847474, 0.847474, 0.847474, 1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfj5v"]
 animation = &"Alive"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2umxc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kdmy"]
 animation = &"Dying"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op3uw"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eu6ox"]
+animation = &"SpreadLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c52ps"]
+animation = &"SpreadRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nccko"]
+animation = &"Withered"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_chlv6"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xbdra"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_05a4c"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ar24"]
-states/Alive/node = SubResource("AnimationNodeAnimation_xdl8u")
-states/Alive/position = Vector2(319, 100)
-states/Dying/node = SubResource("AnimationNodeAnimation_2umxc")
-states/Dying/position = Vector2(379, 177)
-transitions = ["Start", "Alive", SubResource("AnimationNodeStateMachineTransition_op3uw"), "Alive", "Dying", SubResource("AnimationNodeStateMachineTransition_xbdra")]
-graph_offset = Vector2(-55, 17)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mk5r6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o6u61"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u2131"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rav7g"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yjj2g"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0jxfp"]
+states/Alive/node = SubResource("AnimationNodeAnimation_jfj5v")
+states/Alive/position = Vector2(358, 101)
+states/Dying/node = SubResource("AnimationNodeAnimation_2kdmy")
+states/Dying/position = Vector2(473, 164)
+states/SpreadLeft/node = SubResource("AnimationNodeAnimation_eu6ox")
+states/SpreadLeft/position = Vector2(312, -11.9242)
+states/SpreadRight/node = SubResource("AnimationNodeAnimation_c52ps")
+states/SpreadRight/position = Vector2(456, -11.9242)
+states/Withered/node = SubResource("AnimationNodeAnimation_nccko")
+states/Withered/position = Vector2(581, 109)
+transitions = ["Start", "Alive", SubResource("AnimationNodeStateMachineTransition_chlv6"), "Alive", "Dying", SubResource("AnimationNodeStateMachineTransition_05a4c"), "Alive", "SpreadLeft", SubResource("AnimationNodeStateMachineTransition_mk5r6"), "Alive", "SpreadRight", SubResource("AnimationNodeStateMachineTransition_o6u61"), "SpreadLeft", "Alive", SubResource("AnimationNodeStateMachineTransition_u2131"), "SpreadRight", "Alive", SubResource("AnimationNodeStateMachineTransition_rav7g"), "Dying", "Withered", SubResource("AnimationNodeStateMachineTransition_yjj2g")]
+graph_offset = Vector2(0, -222.924)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pn7lt"]
+graph_offset = Vector2(-86.843, -15.124)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0jxfp")
+nodes/StateMachine/position = Vector2(180, 160)
+nodes/output/position = Vector2(460, 160)
+node_connections = [&"output", 0, &"StateMachine"]
 
 [sub_resource type="Animation" id="Animation_5lisw"]
 resource_name = "Alive"
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -139,6 +205,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Spread:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_as4wg"]
 length = 0.001
@@ -178,19 +256,215 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SreadPoofLeft:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SreadPoofRight:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("../Spread:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("../Spread/FrontBushRight:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("../Spread/FrontBushLeft:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rdbho"]
+resource_name = "SpreadLeft"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Spread:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SreadPoofLeft:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Spread/FrontBushLeft:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0khnf"]
+resource_name = "SpreadRight"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SreadPoofRight:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Spread/FrontBushRight:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4jm5l"]
+resource_name = "Withered"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BerryVine/DeadCentre:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BerryVine/Centre:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BerryVine/Centre:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hugo0"]
 _data = {
 "Alive": SubResource("Animation_5lisw"),
 "Dying": SubResource("Animation_ggtuc"),
-"RESET": SubResource("Animation_as4wg")
+"RESET": SubResource("Animation_as4wg"),
+"SpreadLeft": SubResource("Animation_rdbho"),
+"SpreadRight": SubResource("Animation_0khnf"),
+"Withered": SubResource("Animation_4jm5l")
 }
 
 [node name="BerryVine" type="Node2D"]
 script = ExtResource("1_pts4f")
 
 [node name="BerryVine" type="Node2D" parent="."]
-position = Vector2(0, -36)
+position = Vector2(4, -39)
 scale = Vector2(0.5, 0.5)
 
 [node name="DeadCentre" type="AnimatedSprite2D" parent="BerryVine"]
@@ -205,8 +479,101 @@ frame = 1
 [node name="Berry" type="AnimatedSprite2D" parent="BerryVine/Centre"]
 sprite_frames = SubResource("SpriteFrames_nfhed")
 
+[node name="Spread" type="Node2D" parent="."]
+position = Vector2(6, 0)
+
+[node name="FrontBushRight" type="AnimatedSprite2D" parent="Spread"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(57, -0.999998)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_c0utc")
+
+[node name="FrontBushLeft" type="AnimatedSprite2D" parent="Spread"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-62, -0.999998)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_c0utc")
+
+[node name="SreadPoofRight" type="CPUParticles2D" parent="."]
+self_modulate = Color(0, 0.554688, 0.210938, 1)
+position = Vector2(65, 13)
+scale = Vector2(0.4, 0.4)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.85
+lifetime_randomness = 0.3
+texture = ExtResource("9_7la0g")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 30)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_83x8r")
+color_ramp = SubResource("Gradient_0oawh")
+color_initial_ramp = SubResource("Gradient_twt15")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="SreadPoofLeft" type="CPUParticles2D" parent="."]
+self_modulate = Color(0, 0.554688, 0.210938, 1)
+position = Vector2(-55, 13)
+scale = Vector2(0.4, 0.4)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.85
+lifetime_randomness = 0.3
+texture = ExtResource("9_7la0g")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 30)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_83x8r")
+color_ramp = SubResource("Gradient_0oawh")
+color_initial_ramp = SubResource("Gradient_twt15")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="SreadPoofCentre" type="CPUParticles2D" parent="."]
+self_modulate = Color(0, 0.554688, 0.210938, 1)
+position = Vector2(0, -25)
+scale = Vector2(0.4, 0.4)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.85
+lifetime_randomness = 0.3
+texture = ExtResource("9_7la0g")
+emission_shape = 3
+emission_rect_extents = Vector2(60, 30)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.8
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_83x8r")
+color_ramp = SubResource("Gradient_0oawh")
+color_initial_ramp = SubResource("Gradient_twt15")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_1ar24")
+tree_root = SubResource("AnimationNodeBlendTree_pn7lt")
 anim_player = NodePath("AnimationPlayer")
 active = true
 
