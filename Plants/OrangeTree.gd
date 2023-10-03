@@ -38,7 +38,7 @@ func harvest():
 		age = time_to_grow
 		_orange_tween = create_tween()
 		_orange_tween.tween_property($Tree/Leaves/Orange, "modulate", Color.TRANSPARENT, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-		status == Status.GROWING
+		status = Status.GROWING
 
 func destroy():
 	super()
@@ -81,6 +81,7 @@ func sow(tile : PlantTile, use_seed: bool = true) -> bool:
 	return super(tile, use_seed)
 
 func _ruffle():
-	await get_tree().create_timer(randf_range(3, 10)).timeout
-	$Ruffle.play()
-	await $Ruffle.animation_finished
+	while true:
+		await get_tree().create_timer(randf_range(2, 6)).timeout
+		$Ruffle.play("Ruffle")
+		await $Ruffle.animation_finished

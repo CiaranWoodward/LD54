@@ -55,7 +55,7 @@ func _ready():
 				Global.change_seed_count(Global.PlantType.BERRY_VINE, 2),
 		},
 	])
-	main1.choice_text = "Respond with the response: \"Prosperity for all!\"?"
+	main1.choice_text = "Give the standard response: \"Prosperity for all!\"?"
 	main1.choice = func(answer: bool):
 		if answer:
 			Story.bootlicker += 1
@@ -216,7 +216,7 @@ func _ready():
 	])
 	main2.callback = func():
 		Global.clear_quota()
-		Global.set_quota_count(Global.ProduceType.FLOWER, 10)
+		Global.set_quota_count(Global.ProduceType.FLOWER, 7)
 		Global.set_quota_count(Global.ProduceType.BERRY, 10)
 		Global.set_quota_count(Global.ProduceType.SUCCULENT, 2)
 		Global.change_seed_count(Global.PlantType.FLOWER, 20)
@@ -393,7 +393,7 @@ func _ready():
 			callback = func(): Story.failure += 1,
 		},
 		{
-			text = "We need medicinal supplies. These [u]mushrooms[/u] thrive off dead plant matter, and will spread to other dead things. [u]succulents[/u] need dry conditions."
+			text = "We need medicinal supplies. These [u]mushrooms[/u] thrive off dead plant matter, and will spread to other dead things. [u]Succulents[/u] need dry conditions."
 		},
 		{
 			when = func(): return !Global.is_quota_met(),
@@ -420,7 +420,9 @@ func _ready():
 	])
 	
 	final.is_triggered = func():
-		return Global.day == 49
+		if Global.day == 49:
+			return true
+		return false
 	final.script([
 		{
 			text = "[i]Jon is looking even worse than last time.[/i]",
@@ -457,8 +459,9 @@ func _ready():
 		Global.next_quota_day = 999
 		Story.complete = true
 	
-	post_final.priority = 99
-	post_final.is_triggered = func(): return Story.complete
+	post_final.priority = -1
+	post_final.is_triggered = func():
+		return Story.complete
 	post_final.script([
 		{
 			text = "Thank you for playing!",

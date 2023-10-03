@@ -22,7 +22,7 @@ func _process(delta):
 
 func tick_story(dialogue_scene):
 	active_set.sort_custom(func(a : Conversation, b : Conversation): return a.priority > b.priority)
-	var aset_copy = active_set
+	var aset_copy = active_set.duplicate()
 	for convo in aset_copy:
 		if convo.is_triggered.call():
 			active_set.erase(convo)

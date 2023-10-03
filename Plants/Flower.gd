@@ -13,7 +13,7 @@ static func plant_name():
 	return "Flower"
 
 static func plant_description():
-	return "Improves soil moisture for later planting."
+	return "Improves soil moisture in adjacent tiles for later planting."
 
 func harvest_description() -> Dictionary:
 	if (status == Status.DEAD):

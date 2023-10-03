@@ -12,7 +12,7 @@ static func plant_name():
 	return "Spike Shooter"
 
 static func plant_description():
-	return "Kills plants around it."
+	return "Kills plants around it for several days. Very hardy."
 	
 func harvest_description() -> Dictionary:
 	return {
@@ -29,8 +29,8 @@ func plant_type():
 	
 func tick():
 	super()
-	stateMachine.travel("Shoot")
 	if (age < kill_turns):
+		stateMachine.travel("Shoot")
 		# get the tiles that the spiky plant will kill
 		var toKill = parent_tile.getAdjacent().filter(func(tile: PlantTile):
 			return randi_range(0, 100) < kill_percent

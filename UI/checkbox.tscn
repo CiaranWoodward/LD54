@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dj6pwf4pbg3ar"]
+[gd_scene load_steps=17 format=3 uid="uid://dj6pwf4pbg3ar"]
 
 [ext_resource type="Texture2D" uid="uid://bjufao3kl0xpj" path="res://Graphics/Icons/Tick0000.png" id="1_bnpe6"]
+[ext_resource type="Script" path="res://UI/checkbox.gd" id="1_ys841"]
 [ext_resource type="Texture2D" uid="uid://oi66d81nyxpu" path="res://Graphics/Icons/Tick0001.png" id="2_3tlxw"]
 [ext_resource type="Texture2D" uid="uid://c7ldv8hfrcdf8" path="res://Graphics/Icons/Tick0002.png" id="3_u8fw4"]
 [ext_resource type="Texture2D" uid="uid://pxaobfwl63xp" path="res://Graphics/Icons/Tick0003.png" id="4_jhm37"]
@@ -53,21 +54,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_tx1pl"]
-resource_name = "Tick"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tickbox:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-
 [sub_resource type="Animation" id="Animation_0p6r4"]
 length = 0.001
 tracks/0/type = "value"
@@ -81,6 +67,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tx1pl"]
+resource_name = "Tick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tickbox:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1c67k"]
@@ -98,6 +99,7 @@ offset_right = -0.0400009
 offset_bottom = 0.32
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ys841")
 
 [node name="Tickbox" type="AnimatedSprite2D" parent="."]
 position = Vector2(14, 14)

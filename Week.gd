@@ -7,4 +7,4 @@ func _ready():
 	Global.day_changed.connect(update)
 
 func update(day: int):
-	text = template.format({"week": ceili(day / 7)})
+	text = template.format({"week": ceili(day / 7) + 1})

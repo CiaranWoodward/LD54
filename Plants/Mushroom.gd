@@ -9,7 +9,7 @@ static func plant_name():
 	return "Mushroom"
 
 static func plant_description():
-	return "Thrives on dead plant life."
+	return "Thrives on dead plant life. Spreads to nearby dead plants."
 	
 func harvest_description() -> Dictionary:
 	return {

@@ -36,7 +36,7 @@ gradient = SubResource("Gradient_v60wk")
 
 [sub_resource type="Curve2D" id="Curve2D_y42ux"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -431, 1502, 0, 0, 0, 0, -223, 551, 0, 0, 0, 0, 71, -106, 0, 0, 0, 0, 638, -472, 0, 0, 0, 0, 1265, -627, 0, 0, 0, 0, 1952, -431, 0, 0, 0, 0, 2367, -155, 0, 0, 0, 0, 2677, 491, 0, 0, 0, 0, 2877, 1502)
+"points": PackedVector2Array(0, 0, 0, 0, -248, 1473, 0, 0, 0, 0, -35, 541, 0, 0, 0, 0, 253, -46, 0, 0, 0, 0, 714, -289, 0, 0, 0, 0, 1226, -385, 0, 0, 0, 0, 1880, -280, 0, 0, 0, 0, 2248, 50, 0, 0, 0, 0, 2497, 613, 0, 0, 0, 0, 2638, 1497)
 }
 point_count = 9
 
@@ -421,7 +421,7 @@ texture = ExtResource("2_hutii")
 [node name="BackRight" type="Sprite2D" parent="Sky/Buildings"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 z_index = 1
-position = Vector2(4768, 2080)
+position = Vector2(4756, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("2_hutii")
 
@@ -448,7 +448,7 @@ texture = ExtResource("3_agx13")
 
 [node name="BackRight" type="Sprite2D" parent="Sky/Lights"]
 z_index = 1
-position = Vector2(4768, 2080)
+position = Vector2(4756, 2080)
 scale = Vector2(5, 5)
 texture = ExtResource("3_agx13")
 
@@ -469,7 +469,7 @@ position = Vector2(1738, 823)
 curve = SubResource("Curve2D_y42ux")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Sky/SunPath"]
-position = Vector2(-431, 1502)
+position = Vector2(-248, 1473)
 rotation = 1.46413
 rotates = false
 
